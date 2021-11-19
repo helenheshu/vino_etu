@@ -60,7 +60,7 @@ class BouteilleController extends Controller
     }
     else
     {
-        //Get match on name
+        
         $bouteilles = Bouteille::rechercherCatalogue($motCle);
     }
    
