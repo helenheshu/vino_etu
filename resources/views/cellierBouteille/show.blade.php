@@ -37,9 +37,9 @@
                 <div class="bouteilleSAQConteneur-fiche">
                     @if($bouteille->url_saq)
                     <a class="lienSAQ" href="{{ $bouteille->url_saq }}">SAQ</a>
-                    <div class="cercle ">
+                    <!-- <div class="cercle ">
                         <i class="material-icon check">check</i>
-                    </div>
+                    </div> -->
                     @else
                         <!-- Ajouter boutons modifier et suprimer bouteille ici à la place des infos SAQ !!! -->
                         <p>SAQ</p>
@@ -54,21 +54,21 @@
             </div>
 
         </article>
-        <article>
+        <!-- <article>
             <h2 class="description-titre">Description</h2>
             <p>{{ $bouteille->description ?? "Aucune description" }}</p>
-        </article>
+        </article> -->
         <article>
         <div id="social-links">
             <ul>
                 <li>
                     <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.positronx.io/create-autocomplete-search-in-laravel-with-typeahead-js/" class="social-button " id="" title="" rel="">
-                    <span class="fab fa-facebook-square"></span>
+                     <span class=" fab fa-facebook-square"></span>
                     </a>
                 </li>
                 <li>
                     <a href="https://twitter.com/intent/tweet?text=Your+share+text+comes+here&amp;url=https://www.positronx.io/create-autocomplete-search-in-laravel-with-typeahead-js/" class="social-button " id="" title="" rel="">
-                    <span class="fab fa-twitter"></span>
+                    <!-- <span class="fab fa-twitter"></span> -->
                     </a>
                 </li>
                 <li>
