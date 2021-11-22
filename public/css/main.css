@@ -64,8 +64,6 @@ img {
 }
 
 .logo{
-    margin-top: 0.64rem;
-    margin-bottom: 0.64rem;
     width: 3.815rem;
     height: 3.815rem;
 }
@@ -115,10 +113,10 @@ footer{
 	align-items: center;
 }
 
-.padding-1rem {
+/* .padding-1rem {
     padding-left: 0.64rem;
     padding-right: 0.64rem;
-}
+} */
 
 nav .sidenav-trigger{
 	margin: 0;
@@ -299,9 +297,6 @@ input[type=number] {
 
 .select-wrapper {
     margin-right: 1em;
-    margin-left: 1em;
-    padding-left: 1.953rem;
-    padding-right: 1.953rem;
 }
 
 .select-wrapper .caret {
