@@ -300,6 +300,8 @@ input[type=number] {
 .select-wrapper {
     margin-right: 1em;
     margin-left: 1em;
+    padding-left: 1.953rem;
+    padding-right: 1.953rem;
 }
 
 .select-wrapper .caret {
