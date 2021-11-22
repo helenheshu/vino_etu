@@ -70,6 +70,17 @@ class CellierController extends Controller
     }
 
     /**
+     * Affiche des bouteilles par nom
+     *
+     * @param  \App\Models\Cellier  $cellier
+     * @return \Illuminate\Http\Response
+     */
+    public function tirerParNom(Cellier $cellier)
+    {
+        return CellierBouteilleController::indexParNom($cellier->id);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Cellier  $cellier

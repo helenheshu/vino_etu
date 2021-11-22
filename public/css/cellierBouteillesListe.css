@@ -231,6 +231,10 @@ color: #343B41;
     margin-bottom: 1rem;
 }
 
+.bouton-ajout-vin-conteneur span {
+    margin-right: 1rem;
+}
+
 .bouton-ajout-vin {
     display: flex;
     justify-content: center;

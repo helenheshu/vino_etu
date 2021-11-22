@@ -37,10 +37,25 @@
                 <label class="button searchbutton" for="searchright"><span class="mglass">&#9906;</span></label>
             </form>
         </div>
+
+        
     
     </div>
 
+    <div class="input-field col s12 flex-row bouton-ajout-vin-conteneur">
+        <span>Trier par:</span>
+        <select data-js-select>
+        <!-- <option value="" disabled selected>Trier par:</option> -->
+        <option value="nom">Nom</option>
+        <option value="type">Type</option>
+        <option value="quantite">Quantité</option>
+        <option value="pays">Pays</option>
+        <option value="millesime">Millésime</option>
+        </select>
+        
+    </div>
 
+    <div id="table">
     <div class="articlesConteneur">
         @forelse ($cellierBouteillesByIDs as $vin)
         <article class="articleVin">
@@ -150,11 +165,12 @@
             </div>
         </article>
             @empty
-    <div class="list-empty">
-        <p>Vous n'avez pour l'instant aucun vin.</p>
-    </div>
+        <div class="list-empty">
+            <p>Vous n'avez pour l'instant aucun vin.</p>
+        </div>
         
         @endforelse
+    </div>
     </div>
 
 

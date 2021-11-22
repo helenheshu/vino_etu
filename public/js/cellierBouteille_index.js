@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    var elems = document.querySelectorAll('select');
+    M.FormSelect.init(elems);
+
    const init = () => { 
     const sections = document.querySelectorAll("section");
 
@@ -310,5 +313,41 @@ document.addEventListener("DOMContentLoaded", function () {
             }).catch((error) => console.log(error));
         }, 300);
     });
+
+    /**
+     * Redéssiner le DOM lors de tirer
+     */
+
+    const ElSelect = document.querySelector("[data-js-select]");
+    
+
+    const tirerParNom = () => {
+        fetch(`/tirerParNom`)
+        .then(response => {
+            return (response.json())
+        })
+        .then(response => {
+            
+            document.querySelector('#table').innerHTML = response.table;
+            
+        }).catch(error => console.log(error))
+    }
+
+
+    ElSelect.addEventListener("change",() => {
+        if(ElSelect.value == "nom"){
+            console.log(ElSelect.value);
+
+        }else if (ElSelect.value == "type"){
+            console.log(ElSelect.value);
+        }else if (ElSelect.value == "quantite"){
+            console.log(ElSelect.value);
+        }else if (ElSelect.value == "pays"){
+            console.log(ElSelect.value);
+        }else if (ElSelect.value == "millesime"){
+            console.log(ElSelect.value);
+        }
+    });
+
 });
 
