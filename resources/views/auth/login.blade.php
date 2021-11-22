@@ -32,8 +32,8 @@
                 <span class="red-text">{{ $errors->first('password') }}</span>
             @endif
           </div>
-          <div class="input-field col s12">
-            <button type="submit" class="waves-effect waves-light btn-small right">Ouvrir une session</button>
+          <div class="input-field col s12 btn-space">
+            <button type="submit" class="btn waves-effect waves-light button btn-ajouter">Ouvrir une session</button>
             @if(session('success'))
                       <div class="text-center p-t-12">
               <span class="red-text">{{ session('success')}}</span>
