@@ -132,6 +132,9 @@
 
     
     <!-- Footer -->
+    @guest
+    @else
+    @if(session('user')->admin !== 1)
     <footer class="footer text-faded text-center py-5">
         <div class="container footer-nav precedent z-depth-1">
         <i class="material-icons">arrow_back</i>
@@ -139,6 +142,9 @@
             
         </div>
     </footer>
+    @endif
+    @endguest
+
     <link href="{{asset('css/footer-nav.css')}}" rel="stylesheet" />
     <link  rel="stylesheet" href="{{asset('css/materialize.min.css')}}">
     <link href="{{asset('css/main.css')}}" rel="stylesheet" />
