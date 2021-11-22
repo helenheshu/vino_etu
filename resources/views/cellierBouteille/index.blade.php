@@ -37,9 +37,49 @@
                 <label class="button searchbutton" for="searchright"><span class="mglass">&#9906;</span></label>
             </form>
         </div>
-    
+        <a class="modal-trigger black-text" href="#tri"><i class="tri material-icon">sort</i></a>
     </div>
-
+    <div id="tri" class="modal">
+        <div class="modal-content">
+            <h4>Trier par :</h4>
+            <form action="#">
+                <p>
+                <label>
+                    <input name="tri" type="radio" value="nom" />
+                    <span>Nom</span>
+                </label>
+                </p>
+                <p>
+                <label>
+                    <input name="tri" value="type" type="radio" />
+                    <span>Type</span>
+                </label>
+                </p>
+                <p>
+                <label>
+                    <input name="tri" value="pays" type="radio"  />
+                    <span>Pays</span>
+                </label>
+                </p>
+                <p>
+                <label>
+                    <input name="tri" value="taille" type="radio"  />
+                    <span>Format</span>
+                </label>
+                </p>
+                <p>
+                <label>
+                    <input name="tri" value="url_saq" type="radio"  />
+                    <span>SAQ</span>
+                </label>
+                </p>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" id="reinitialiser" class="waves-effect waves-green btn-flat">Réinitialiser</a>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Annuler</a>
+        </div>
+    </div>
 
     <div class="articlesConteneur">
         @forelse ($cellierBouteillesByIDs as $vin)
