@@ -61,7 +61,7 @@
                     <li><a href="{{ route('register') }}">S'inscrire</a></li>
                     <li><a href="{{ route('login') }}">Se connecter</a></li>
                 @else
-                    @if( session('user')->admin == 1)
+                    @if( session('user')->admin === 1)
                     <li><a href="{{ route('importerBouteille') }}">Importer bouteille</a></li>
                     <li><a href="{{ route('gererUsagers') }}">Gérer des usagers</a></li>
                     <li><a href="{{ route('modifierCatalogue') }}">Modification de bouteilles</a></li>
