@@ -49,8 +49,8 @@
                 @endif
               </div>
 
-              <div class="input-field col s12">
-                <button type="submit" class="waves-effect waves-light btn-small right">Créer compte</button>
+              <div class="input-field col s12 btn-space">
+                <button type="submit" class="btn waves-effect waves-light button btn-ajouter">Créer compte</button>
               </div>
               
               <div class="input-field col s12">
