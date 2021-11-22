@@ -5,6 +5,7 @@
     font-weight: 700;
     color: #7A5958;
     background-color: #E0CFA0;
+    text-overflow: ellipsis;
 }
 
 .localisation {
@@ -103,7 +104,6 @@
 .lienSAQ {
     color: #7A5958;
     font-weight: 700;
-    padding: 0.64rem; 
     text-decoration: underline;
 }
 
@@ -322,4 +322,11 @@ color: #343B41;
 
 .tri {
     font-size: 2.9rem;
+}
+
+.select-wrapper {
+    margin-right: 1em;
+     margin-left: 1em; 
+     padding-left: 1.953rem;
+    padding-right: 1.953rem; 
 }
