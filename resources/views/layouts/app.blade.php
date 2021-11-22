@@ -61,7 +61,7 @@
                     <li><a href="{{ route('register') }}">S'inscrire</a></li>
                     <li><a href="{{ route('login') }}">Se connecter</a></li>
                 @else
-                    @if( session('user')->admin == 1)
+                    @if( session('user')->admin === 1)
                     <li><a href="{{ route('importerBouteille') }}">Importer bouteille</a></li>
                     <li><a href="{{ route('gererUsagers') }}">Gérer des usagers</a></li>
                     <li><a href="{{ route('modifierCatalogue') }}">Modification de bouteilles</a></li>
@@ -100,6 +100,7 @@
 
     
     <!-- Footer -->
+    @if(session('user') !== "" && session('user')->admin !== 1)
     <footer class="footer text-faded text-center py-5">
         <div class="container footer-nav precedent z-depth-1">
         <i class="material-icons">arrow_back</i>
@@ -107,6 +108,7 @@
             
         </div>
     </footer>
+    @endif
 
 
   
