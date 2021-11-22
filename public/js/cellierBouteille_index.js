@@ -186,18 +186,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
        
     })
-    const trierCellier = (tri, response) => {
-        if(tri == 'nom'){
+    const trierCellier = (trierPar, response) => {
+        if(trierPar == 'nom'){
             response.sort((a, b) => (a.nom > b.nom) ? 1 : (b.nom > a.nom) ? -1 : 0)
-        }else if(tri == 'pays'){
+        }else if(trierPar == 'pays'){
             response.sort((a, b) => (a.pays > b.pays) ? 1 : (b.pays > a.pays) ? -1 : 0)
-        }else if(tri == 'taille'){
+        }else if(trierPar == 'taille'){
             response.sort((a, b) => (a.taille > b.taille) ? 1 : (b.taille > a.taille) ? -1 : 0)
-        }else if(tri == 'saq'){
+        }else if(trierPar == 'saq'){
             response.sort((a, b) => (a.saq > b.saq) ? 1 : (b.saq > a.saq) ? -1 : 0)
-        }else if(tri == 'type'){
+        }else if(trierPar == 'type'){
             response.sort((a, b) => (a.type > b.type) ? 1 : (b.type > a.type) ? -1 : 0)
-        }else if(tri == 'taille'){
+        }else if(trierPar == 'taille'){
             response.sort((a, b) => (a.taille > b.taille) ? 1 : (b.taille > a.taille) ? -1 : 0)     
         }
     }
@@ -206,148 +206,159 @@ document.addEventListener("DOMContentLoaded", function () {
         chemin = `/rechercheDansCellier/${barreRecherche.value}/${idCellier}`;
         clearTimeout(timer);
         timer = setTimeout(() => {
-        if(barreRecherche.value.trim() == '')  {
-            chemin = `/reinitialiserCellier/${idCellier}`;
-        }
-
-        articlesConteneur.innerHTML = "";
-    
-        fetch(chemin)
-        .then((response) => {
-            return response.json();
-        })
-        .then((response) => {
-        trierCellier(document.querySelector('input[name=tri]:checked').value, response);
-          
-            console.log(response)
-            if(response.length  <=0 && barreRecherche.value.trim() == '') {
-                articlesConteneur.innerHTML = ` <div class="list-empty">
-                                                    <p>Vous n'avez pour l'instant aucun vin.</p>
-                                                </div>`;
-            }else {
-                bouteilles = {};
-
-                for (let index = 0; index < response.length; index++) {
-                    console.log(response[index])
-                    if (!bouteilles["_" + response[index].bouteille_id]) {
-                        
-                        bouteilles["_" + response[index].bouteille_id] = {
-                            nom: response[index].nom,
-                            pays: response[index].pays,
-                            taille: response[index].taille,
-                            url_img: response[index].url_img,
-                            url_saq: response[index].url_saq,
-                            type: response[index].type,
-                            cellierBouteilles: [
-                                {
-                                    millesime: response[index].millesime,
-                                    quantite: response[index].quantite,
-                                    note: response[index].note,
-                                    prix : response[index].prix,
-                                    garde_jusqua : response[index].garde_jusqua,
-                                    description : response[index].description,
-                                    date_achat : response[index].date_achat,
-                                },
-                            ],
-                        };
-                    } else {
-                        bouteilles["_" + response[index].bouteille_id].cellierBouteilles.push({
-                            millesime: response[index].millesime,
-                            quantite: response[index].quantite,
-                            note: response[index].note,
-                            prix : response[index].prix,
-                            garde_jusqua : response[index].garde_jusqua,
-                            description : response[index].description,
-                            date_achat : response[index].date_achat,
-                        });
-                    }
-                }
-               
-                for (const key of Object.keys(bouteilles)) {
-                    
-                    let saq = "";
-                    if (bouteilles[key].url_saq != null) {
-                        saq = `<div class="bouteilleSAQConteneur"> <a class="lienSAQ" href="${bouteilles[key].url_saq}">SAQ</a>
-                                    <div class="cercle ">
-                                        <i class="material-icon check">check</i>
-                                    </div>
-                                </div>`;
-                    } else {
-                        saq = ` <div class="bouteilleSAQConteneur"> 
-                                    <p>SAQ</p>
-                                    <div class="cercle ">
-                                        <i class="material-icon check">close</i>
-                                    </div>
-                                </div>`;
-                    }
-                    let infoCellierBouteilleConteneur = '<div class="infoCellierBouteilleConteneur">'
-                    bouteilles[key].cellierBouteilles.forEach((cellierBouteille) => {
-                        if (cellierBouteille.millesime > 0) {
-                            millesimeTexte = `  <p>${cellierBouteille.millesime}</p>`;
-                        } else {
-                            millesimeTexte = `<p>Non millésimé</p>`;
-                        }
-
-                        note = `  <div class="select">
-                                        <select class="star-rating" data-id-bouteille="${key}" data-millesime="${cellierBouteille.millesime}" name="note">
-                                            <option value="">Choisir une note</option>
-                                            <option value="5"`; if(cellierBouteille.note == 5) {note += `selected`} note +=`>Excellent</option>
-                                            <option value="4"`; if(cellierBouteille.note == 4) {note += `selected`} note +=`>Très bon</option>
-                                            <option value="3"`; if(cellierBouteille.note == 3) {note += `selected`} note +=`>Passable</option>
-                                            <option value="2"`; if(cellierBouteille.note == 2) {note += `selected`} note +=`>Médiocre</option>
-                                            <option value="1"`; if(cellierBouteille.note == 1) {note += `selected`} note +=`>Terrible</option>
-                                        </select>
-                                    </div>`;
-                        infoCellierBouteilleConteneur += `   <section class="infoCellierBouteille">
-                                                                <div class="infoUnitaires">
-                                                                    ${millesimeTexte}     
-                                                                    ${note}
-                                            
-                                                                    <p class="quantite">Quantité : <span>${cellierBouteille.quantite}</span></p>
-                                                                </div>
-                                                                <div class=" flex bouton-conteneur">
-                                                                    <div class="cercle bouton-cercle-remove">
-                                                                        <a class="btn-floating btn-large waves-effect waves-light " name="btnRetirerBouteille" href="/boireBouteille/${idCellier}/${key}/${cellierBouteille.millesime}">
-                                                                            <i class="material-icon">remove</i>
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="cercle bouton-cercle-add">
-                                                                        <a class="btn-floating btn-large waves-effect waves-light" name="btnAjouterBouteille" href="/ajouterBouteille/${idCellier}/${key}/${cellierBouteille.millesime}">
-                                                                            <i class="material-icon">add</i>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </section>`;
-                    });
-                    infoCellierBouteilleConteneur += '</div>'
-                   
-                    articlesConteneur.innerHTML += `<article class="articleVin">
-                                                        <a href="/cellier/${idCellier}/${key}">
-                                                            <div class="nomVinConteneur">
-                                                                <h2>${bouteilles[key].nom}</h2>
-                                                            </div>
-                                                        </a>
-                                                        <div class="infoBouteilleConteneur">
-                                                            <img class="image" src="${bouteilles[key].url_img}" alt="Image ${bouteilles[key].nom}">
-                                                            <div class="info">
-                                                                <div>
-                                                                    <p>${bouteilles[key].pays ?? 'N/A'}</p>
-                                                                    <p>${bouteilles[key].type}</p>
-                                                                </div>                
-                                                                <p class="taille">${bouteilles[key].taille} cl</p>                 
-                                                            </div>
-                                                            ${saq}
-                                                        </div>
-                                                        ${infoCellierBouteilleConteneur}
-                                                            
-                                                    </article>`;
-                }
-
-                init();
-                
+            if(barreRecherche.value.trim() == '')  {
+                chemin = `/reinitialiserCellier/${idCellier}`;
             }
-        }).catch((error) => console.log(error));
-    }, 300);    
+
+            articlesConteneur.innerHTML = "";
+        
+            fetch(chemin)
+            .then((response) => {
+                return response.json();
+            })
+            .then((response) => {
+                const trierPar = document.querySelector('input[name=tri]:checked');
+                if(trierPar)
+                    trierCellier(trierPar.value, response); 
+            
+                if(response.length  <=0 && barreRecherche.value.trim() == '') {
+                    articlesConteneur.innerHTML = ` <div class="list-empty">
+                                                        <p>Vous n'avez pour l'instant aucun vin.</p>
+                                                    </div>`;
+                }else {
+                    bouteilles = {};
+
+                    for (let index = 0; index < response.length; index++) {
+                        console.log(response[index])
+                        if (!bouteilles["_" + response[index].bouteille_id]) {
+                            
+                            bouteilles["_" + response[index].bouteille_id] = {
+                                nom: response[index].nom,
+                                pays: response[index].pays,
+                                taille: response[index].taille,
+                                url_img: response[index].url_img,
+                                url_saq: response[index].url_saq,
+                                type: response[index].type,
+                                cellierBouteilles: [
+                                    {
+                                        millesime: response[index].millesime,
+                                        quantite: response[index].quantite,
+                                        note: response[index].note,
+                                        prix : response[index].prix,
+                                        garde_jusqua : response[index].garde_jusqua,
+                                        description : response[index].description,
+                                        date_achat : response[index].date_achat,
+                                    },
+                                ],
+                            };
+                        } else {
+                            bouteilles["_" + response[index].bouteille_id].cellierBouteilles.push({
+                                millesime: response[index].millesime,
+                                quantite: response[index].quantite,
+                                note: response[index].note,
+                                prix : response[index].prix,
+                                garde_jusqua : response[index].garde_jusqua,
+                                description : response[index].description,
+                                date_achat : response[index].date_achat,
+                            });
+                        }
+                    }
+                
+                    for (const key of Object.keys(bouteilles)) {
+                        
+                        let saq = "";
+                        if (bouteilles[key].url_saq != null) {
+                            saq = `<div class="bouteilleSAQConteneur"> <a class="lienSAQ" href="${bouteilles[key].url_saq}">SAQ</a>
+                                        <div class="cercle ">
+                                            <i class="material-icon check">check</i>
+                                        </div>
+                                    </div>`;
+                        } else {
+                            saq = ` <div class="bouteilleSAQConteneur"> 
+                                        <p>SAQ</p>
+                                        <div class="cercle ">
+                                            <i class="material-icon check">close</i>
+                                        </div>
+                                    </div>`;
+                        }
+                        let infoCellierBouteilleConteneur = '<div class="infoCellierBouteilleConteneur">'
+                        bouteilles[key].cellierBouteilles.forEach((cellierBouteille) => {
+                            if (cellierBouteille.millesime > 0) {
+                                millesimeTexte = `  <p>${cellierBouteille.millesime}</p>`;
+                            } else {
+                                millesimeTexte = `<p>Non millésimé</p>`;
+                            }
+
+                            note = `  <div class="select">
+                                            <select class="star-rating" data-id-bouteille="${key}" data-millesime="${cellierBouteille.millesime}" name="note">
+                                                <option value="">Choisir une note</option>
+                                                <option value="5"`; if(cellierBouteille.note == 5) {note += `selected`} note +=`>Excellent</option>
+                                                <option value="4"`; if(cellierBouteille.note == 4) {note += `selected`} note +=`>Très bon</option>
+                                                <option value="3"`; if(cellierBouteille.note == 3) {note += `selected`} note +=`>Passable</option>
+                                                <option value="2"`; if(cellierBouteille.note == 2) {note += `selected`} note +=`>Médiocre</option>
+                                                <option value="1"`; if(cellierBouteille.note == 1) {note += `selected`} note +=`>Terrible</option>
+                                            </select>
+                                        </div>`;
+                            infoCellierBouteilleConteneur += `   <section class="infoCellierBouteille">
+                                                                    <div class="infoUnitaires">
+                                                                        ${millesimeTexte}     
+                                                                        ${note}
+                                                
+                                                                        <p class="quantite">Quantité : <span>${cellierBouteille.quantite}</span></p>
+                                                                    </div>
+                                                                    <div class=" flex bouton-conteneur">
+                                                                        <div class="cercle bouton-cercle-remove">
+                                                                            <a class="btn-floating btn-large waves-effect waves-light " name="btnRetirerBouteille" href="/boireBouteille/${idCellier}/${key}/${cellierBouteille.millesime}">
+                                                                                <i class="material-icon">remove</i>
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="cercle bouton-cercle-add">
+                                                                            <a class="btn-floating btn-large waves-effect waves-light" name="btnAjouterBouteille" href="/ajouterBouteille/${idCellier}/${key}/${cellierBouteille.millesime}">
+                                                                                <i class="material-icon">add</i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </section>`;
+                        });
+                        infoCellierBouteilleConteneur += '</div>'
+                    
+                        articlesConteneur.innerHTML += `<article class="articleVin">
+                                                            <a href="/cellier/${idCellier}/${key}">
+                                                                <div class="nomVinConteneur">
+                                                                    <h2>${bouteilles[key].nom}</h2>
+                                                                </div>
+                                                            </a>
+                                                            <div class="infoBouteilleConteneur">
+                                                                <img class="image" src="${bouteilles[key].url_img}" alt="Image ${bouteilles[key].nom}">
+                                                                <div class="info">
+                                                                    <div>
+                                                                        <p>${bouteilles[key].pays ?? 'N/A'}</p>
+                                                                        <p>${bouteilles[key].type}</p>
+                                                                    </div>                
+                                                                    <p class="taille">${bouteilles[key].taille} cl</p>                 
+                                                                </div>
+                                                                ${saq}
+                                                            </div>
+                                                            ${infoCellierBouteilleConteneur}
+                                                                
+                                                        </article>`;
+                    }
+
+                    init();
+                    
+                }
+            }).catch((error) => console.log(error));
+        }, 300);    
     }
+
+    document.querySelector("#reinitialiser").addEventListener('click', () => {
+        const trierPar = document.querySelector('input[name=tri]:checked');
+        
+        if(trierPar){
+            trierPar.checked = false;
+            redessinerListeVins();
+        }
+        
+    })
 });
 
