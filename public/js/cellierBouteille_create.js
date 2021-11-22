@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 })
                 .then(response => {
                     
-                    response.forEach(function(element){
-                 
+                    response.forEach(function(element,i){
+                        
                         liste.innerHTML += `<div  data-description="${element.description ?? ''}" data-pays="${element.pays ?? ''}" data-idtype="${element.type_id}" data-idformat="${element.format_id}" data-id="${element.id}" data-prix="${element.prix_saq ?? 0}"  data-imgurl="${element.url_img}" data-nom="${element.nom}" >${element.nom} - ${element.type} -  ${element.taille} cL ${element.pays != null ? '- ' + element.pays : ''}</div>`;
                     })
                     

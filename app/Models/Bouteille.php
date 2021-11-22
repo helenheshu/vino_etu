@@ -46,10 +46,11 @@ class Bouteille extends Model
 
         return DB::table('bouteilles')
         ->select('bouteilles.nom', 'bouteilles.id', 'pays', 'description', 'type', 'type_id', 'format_id', 'url_img', 'prix_saq', 'taille' )
-        ->where('bouteilles.nom', "LIKE" , $motCle. "%")
+        ->where('bouteilles.nom', "LIKE" ,"%". $motCle. "%")
         ->whereIn("user_id", [1, session('user')->id])
         ->join('types', 'bouteilles.type_id', '=', 'types.id')
         ->join('formats', 'formats.id', '=', 'bouteilles.format_id')
+        ->limit(10)
         ->get();
     }
 
@@ -59,13 +60,13 @@ class Bouteille extends Model
         ->where('user_id', 1)
         ->where(function($query) use ($motCle){
          $query->where('bouteilles.nom', "LIKE" , "%" .$motCle. "%")
-        ->orWhere('taille', "LIKE" , $motCle. "%")
-        ->orWhere('pays', "LIKE" , $motCle. "%")
-        ->orWhere('prix_saq', "LIKE" , $motCle. "%")
-        ->orWhere('code_saq', "LIKE" , $motCle. "%")
-        ->orWhere('type', "LIKE" , $motCle. "%")
-        ->orWhere('description', "LIKE" , $motCle. "%")
-        ->orWhere('url_saq', "LIKE" , $motCle. "%");
+        ->orWhere('taille', "LIKE" ,"%" . $motCle. "%")
+        ->orWhere('pays', "LIKE" ,"%" . $motCle. "%")
+        ->orWhere('prix_saq', "LIKE" ,"%" . $motCle. "%")
+        ->orWhere('code_saq', "LIKE" ,"%" . $motCle. "%")
+        ->orWhere('type', "LIKE" ,"%" . $motCle. "%")
+        ->orWhere('description', "LIKE" ,"%" . $motCle. "%")
+        ->orWhere('url_saq', "LIKE" ,"%" . $motCle. "%");
         })
         ->join('types', 'bouteilles.type_id', '=', 'types.id')
         ->join('formats', 'formats.id', '=', 'bouteilles.format_id')
