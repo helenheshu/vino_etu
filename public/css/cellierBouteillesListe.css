@@ -304,6 +304,7 @@ color: #343B41;
     text-align: center;
     margin: 0;
     height: 1.5em;
+    text-overflow: ellipsis;
 }
 
 .bouteille-nom .dropdown-content li>span {

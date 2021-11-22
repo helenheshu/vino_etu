@@ -83,7 +83,7 @@
                     @else
 
                     <!-- Ajouter boutons modifier et suprimer bouteille ici à la place des infos SAQ !!! -->
-                    <p class="nonlienSAQ">SAQ</p>
+                    <!-- <p class="nonlienSAQ">SAQ</p> -->
                     <!-- <div class="cercle ">
                         <i class="material-icon check">close</i>
                     </div> -->
