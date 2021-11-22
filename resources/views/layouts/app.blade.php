@@ -140,6 +140,8 @@
             
         </div>
     </footer>
+    @endif
+
     <link href="{{asset('css/footer-nav.css')}}" rel="stylesheet" />
     <link  rel="stylesheet" href="{{asset('css/materialize.min.css')}}">
     <link href="{{asset('css/main.css')}}" rel="stylesheet" />
