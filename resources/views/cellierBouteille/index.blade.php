@@ -20,9 +20,9 @@
             @endforeach
           </select>
     </div>
-    <div class="localisation">
+    <!-- <div class="localisation">
         <span><img class="map-icone" src="{{URL::asset('/assets/icon/map-marker-rouge.svg')}}" alt="icone map"> {{ $cellier->localisation }}</span>
-    </div>
+    </div> -->
 
 
 </header>
@@ -116,17 +116,17 @@
                 <div class="bouteilleSAQConteneur">
                     @if($vin['bouteille']->url_saq)
                     <a class="lienSAQ underline" href="{{$vin['bouteille']->url_saq}}">SAQ</a>
-                    <div class="cercle ">
+                    <!-- <div class="cercle ">
                         <i class="material-icon check">check</i>
-                    </div>
+                    </div> -->
 
                     @else
 
                     <!-- Ajouter boutons modifier et suprimer bouteille ici à la place des infos SAQ !!! -->
-                    <p class="nonlienSAQ">SAQ</p>
-                    <div class="cercle ">
+                    <!-- <p class="nonlienSAQ">SAQ</p> -->
+                    <!-- <div class="cercle ">
                         <i class="material-icon check">close</i>
-                    </div>
+                    </div> -->
                     <!-- <div class="cercle nonborder">
                         <i class="material-icon">edit</i>
                     </div>
