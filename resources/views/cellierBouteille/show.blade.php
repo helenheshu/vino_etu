@@ -13,9 +13,9 @@
             @endforeach
         </select>
     </div>
-    <div class="localisation">
+    <!-- <div class="localisation">
         <span><img class="map-icone" src="{{URL::asset('/assets/icon/map-marker-rouge.svg')}}" alt="icone map"> {{ $cellier->localisation }}</span>
-    </div>
+    </div> -->
     <div class="bouteille-nom">
         <select  name ="select-bouteille">
             @foreach($cellierBouteillesByIDs as $vin)

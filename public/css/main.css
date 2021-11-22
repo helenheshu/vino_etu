@@ -60,10 +60,12 @@ body {
 img {
     width: 39.06px;
     height: 39.06px;
+  
 }
 
 .logo{
-
+    margin-top: 0.64rem;
+    margin-bottom: 0.64rem;
     width: 3.815rem;
     height: 3.815rem;
 }
@@ -114,8 +116,8 @@ footer{
 }
 
 .padding-1rem {
-	padding: 0.64rem;
-
+    padding-left: 0.64rem;
+    padding-right: 0.64rem;
 }
 
 nav .sidenav-trigger{
@@ -296,6 +298,7 @@ input[type=number] {
 
 .select-wrapper {
     margin-right: 1em;
+    margin-left: 1em;
 }
 
 .select-wrapper .caret {
@@ -337,3 +340,4 @@ input[type=number] {
 .couleur-noire{
     color:#343B41;
 }
+
