@@ -76,17 +76,17 @@
                 <div class="bouteilleSAQConteneur">
                     @if($vin['bouteille']->url_saq)
                     <a class="lienSAQ underline" href="{{$vin['bouteille']->url_saq}}">SAQ</a>
-                    <div class="cercle ">
+                    <!-- <div class="cercle ">
                         <i class="material-icon check">check</i>
-                    </div>
+                    </div> -->
 
                     @else
 
                     <!-- Ajouter boutons modifier et suprimer bouteille ici à la place des infos SAQ !!! -->
                     <p class="nonlienSAQ">SAQ</p>
-                    <div class="cercle ">
+                    <!-- <div class="cercle ">
                         <i class="material-icon check">close</i>
-                    </div>
+                    </div> -->
                     <!-- <div class="cercle nonborder">
                         <i class="material-icon">edit</i>
                     </div>
