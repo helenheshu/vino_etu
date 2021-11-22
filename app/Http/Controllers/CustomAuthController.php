@@ -8,7 +8,7 @@ use App\Models\Cellier;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Hash;
-use Session;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -83,8 +83,12 @@ class CustomAuthController extends Controller
         $credentials = $request->only('courriel', 'password');
         if(Auth::attempt($credentials)){
           session(['user' => Auth::user()]);
-                 
-          return redirect()->intended('importerBouteille');
+          if(Auth::user()->admin === 1) {
+            return redirect()->intended('importerBouteille');
+          }else {
+            return redirect()->intended('cellier');
+          }
+          
         }
 
         return redirect('login')->withSuccess('Les informations de connexion ne sont pas valides!');

@@ -1,8 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    var elems = document.querySelectorAll('select');
-    M.FormSelect.init(elems);
-
    const init = () => { 
     const sections = document.querySelectorAll("section");
 
@@ -164,6 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const idCellier = location.pathname.split("/")[2];
     const articlesConteneur = document.querySelector(".articlesConteneur");
+    let bouteilles = {};
     let chemin; 
     let timer; //https://typeofnan.dev/how-to-execute-a-function-after-the-user-stops-typing-in-javascript/
 
@@ -171,31 +169,70 @@ document.addEventListener("DOMContentLoaded", function () {
      * Redéssiner le DOM lors d'une recherche
      */
     barreRecherche.addEventListener("input", () => {
+        redessinerListeVins();
+    });
+
+    var modals = document.querySelectorAll('.modal');
+    M.Modal.init(modals);
+
+    const tri = document.querySelectorAll('input[name=tri]')
+
+ 
+    tri.forEach(radio => {
+        radio.addEventListener('change', () => {
+           
+           redessinerListeVins();
+        })
+
+       
+    })
+    const trierCellier = (trierPar, response) => {
+        if(trierPar == 'nom'){
+            response.sort((a, b) => (a.nom > b.nom) ? 1 : (b.nom > a.nom) ? -1 : 0)
+        }else if(trierPar == 'pays'){
+            response.sort((a, b) => (a.pays > b.pays) ? 1 : (b.pays > a.pays) ? -1 : 0)
+        }else if(trierPar == 'taille'){
+            response.sort((a, b) => (a.taille > b.taille) ? 1 : (b.taille > a.taille) ? -1 : 0)
+        }else if(trierPar == 'saq'){
+            response.sort((a, b) => (a.saq > b.saq) ? 1 : (b.saq > a.saq) ? -1 : 0)
+        }else if(trierPar == 'type'){
+            response.sort((a, b) => (a.type > b.type) ? 1 : (b.type > a.type) ? -1 : 0)
+        }else if(trierPar == 'taille'){
+            response.sort((a, b) => (a.taille > b.taille) ? 1 : (b.taille > a.taille) ? -1 : 0)     
+        }
+    }
+
+    const redessinerListeVins =  () => {
         chemin = `/rechercheDansCellier/${barreRecherche.value}/${idCellier}`;
         clearTimeout(timer);
         timer = setTimeout(() => {
-        if(barreRecherche.value.trim() == '')  {
-            chemin = `/reinitialiserCellier/${idCellier}`;
-        }
+            if(barreRecherche.value.trim() == '')  {
+                chemin = `/reinitialiserCellier/${idCellier}`;
+            }
 
-        articlesConteneur.innerHTML = "";
-    
+            articlesConteneur.innerHTML = "";
+        
             fetch(chemin)
             .then((response) => {
                 return response.json();
             })
             .then((response) => {
+                const trierPar = document.querySelector('input[name=tri]:checked');
+                if(trierPar)
+                    trierCellier(trierPar.value, response); 
+            
                 if(response.length  <=0 && barreRecherche.value.trim() == '') {
                     articlesConteneur.innerHTML = ` <div class="list-empty">
                                                         <p>Vous n'avez pour l'instant aucun vin.</p>
                                                     </div>`;
                 }else {
-                    let bouteilles = {};
+                    bouteilles = {};
 
                     for (let index = 0; index < response.length; index++) {
-                        if (!bouteilles[response[index].bouteille_id]) {
+                        console.log(response[index])
+                        if (!bouteilles["_" + response[index].bouteille_id]) {
                             
-                            bouteilles[response[index].bouteille_id] = {
+                            bouteilles["_" + response[index].bouteille_id] = {
                                 nom: response[index].nom,
                                 pays: response[index].pays,
                                 taille: response[index].taille,
@@ -215,7 +252,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 ],
                             };
                         } else {
-                            bouteilles[response[index].bouteille_id].cellierBouteilles.push({
+                            bouteilles["_" + response[index].bouteille_id].cellierBouteilles.push({
                                 millesime: response[index].millesime,
                                 quantite: response[index].quantite,
                                 note: response[index].note,
@@ -226,7 +263,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             });
                         }
                     }
-
+                
                     for (const key of Object.keys(bouteilles)) {
                         
                         let saq = "";
@@ -284,7 +321,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                                 </section>`;
                         });
                         infoCellierBouteilleConteneur += '</div>'
-                       
+                    
                         articlesConteneur.innerHTML += `<article class="articleVin">
                                                             <a href="/cellier/${idCellier}/${key}">
                                                                 <div class="nomVinConteneur">
@@ -311,10 +348,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     
                 }
             }).catch((error) => console.log(error));
-        }, 300);
-    });
+        }, 300);    
+    }
 
-    
-
+    document.querySelector("#reinitialiser").addEventListener('click', () => {
+        const trierPar = document.querySelector('input[name=tri]:checked');
+        
+        if(trierPar){
+            trierPar.checked = false;
+            redessinerListeVins();
+        }
+        
+    })
 });
 

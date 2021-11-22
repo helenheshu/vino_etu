@@ -123,7 +123,7 @@ class CellierController extends Controller
         $bouteilles = Cellier::rechercheDansCellier($motCle, $idCellier);
 
         return response()->json($bouteilles);
-    }
+    } 
 
     public function reinitialiserCellier($idCellier) {
         $bouteilles = CellierBouteille::obtenirListeBouteilleCellier($idCellier);

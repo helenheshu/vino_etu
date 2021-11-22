@@ -3,14 +3,13 @@
 .search-container .button {
 	display: inline-block;
 	margin: 4px 2px;
-	background-color: #444;
 	font-size: 14px;
 	padding-left: 32px;
 	padding-right: 32px;
 	height: 50px;
 	line-height: 50px;
 	text-align: center;
-	color: white;
+	color: black;
 	text-decoration: none;
 	cursor: pointer;
 	-moz-user-select: none;
@@ -32,7 +31,7 @@
 .search-container {
 	position: relative;
 	display: inline-block;
-	margin-left: 2em;
+
 	height: 50px;
 	width: 50px;
 	vertical-align: bottom;
@@ -49,11 +48,10 @@
 
 .search-container .searchbutton {
 	position: absolute;
-	font-size: 22px;
+	font-size: 2.5rem;
 	width: 100%;
 	margin: 0;
 	padding: 0;
-    border: 1px solid black;
     height: 50px;
     border-radius: initial;
 }
@@ -75,8 +73,7 @@ div.search-container form .search {
 	left: 49px; /* Button width-1px (Not 50px/100% because that will sometimes show a 1px line between the search box and button) */
 	background-color: white;
 	outline: none;
-	border: 1px solid black;
-    border-right: none;
+	border-bottom: 1px solid black;
 	padding: 0;
 	width: 0;
 	height: 48px;
@@ -116,6 +113,5 @@ input[type=search]::-webkit-search-decoration {
 
 div.search-container form input[type=search]:not(.browser-default):focus:not([readonly]){
     box-shadow: none;
-    border: 1px solid black;
-    border-right: none;
+	border-bottom: 1px solid black;
 }

@@ -45,7 +45,6 @@ class CellierBouteilleController extends Controller
     }
 
 
-
     /**
      * Show the form for creating a new resource.
      *
@@ -174,16 +173,9 @@ class CellierBouteilleController extends Controller
             ];
 
         }
-        // print_r ($cellierBouteille);
-        $shareComponent = Share::currentPage()
-        ->facebook()
-        ->twitter()
-        ->linkedin()
-        ->telegram()
-        ->whatsapp()        
-        ->reddit();
+        
 
-        return view('cellierBouteille.show', compact('shareComponent'),[
+        return view('cellierBouteille.show',[
             'bouteille' => $bouteille[0],
             'cellierBouteille' => $cellierBouteille[0],
             'cellier' => $cellier,
