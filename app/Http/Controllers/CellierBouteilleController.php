@@ -45,9 +45,6 @@ class CellierBouteilleController extends Controller
     }
 
 
-    public static function indexParNom($idCellier){
-        // 
-    }
 
     /**
      * Show the form for creating a new resource.

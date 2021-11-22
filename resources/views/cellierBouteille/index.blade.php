@@ -42,10 +42,10 @@
     
     </div>
 
-    <div class="input-field col s12 flex-row bouton-ajout-vin-conteneur">
-        <span>Trier par:</span>
+    <!--<div class="input-field col s12 flex-row bouton-ajout-vin-conteneur">
+        <span class="margin-right-1">Trier par:</span>
         <select data-js-select>
-        <!-- <option value="" disabled selected>Trier par:</option> -->
+         <option value="" disabled selected>Trier par:</option> 
         <option value="nom">Nom</option>
         <option value="type">Type</option>
         <option value="quantite">Quantité</option>
@@ -53,7 +53,7 @@
         <option value="millesime">Millésime</option>
         </select>
         
-    </div>
+    </div>-->
 
     <div id="table">
     <div class="articlesConteneur">

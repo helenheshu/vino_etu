@@ -127,7 +127,5 @@ Route::get('/modifierCatalogue', [BouteilleController::class, 'modifierCatalogue
 Route::get('/rechercherUsager/{motCle}', [CustomAuthController::class, 'rechercheUsersParMotCle'])->name('rechercheUsersParMotCle')->middleware('admin')->middleware('prevent-back-history');
 Route::get('/affichelisteUsager', [CustomAuthController::class, 'affichelisteUsager'])->name('affichelisteUsager')->middleware('admin')->middleware('prevent-back-history');
 
-/* Tirer */
 
-Route::get('/tirerParNom/{cellier}', [CellierController::class, 'tirerParNom'])->name('cellier.tirerParNom')->middleware('auth')->middleware('prevent-back-history');
 
