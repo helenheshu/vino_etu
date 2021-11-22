@@ -81,6 +81,7 @@
         </div>
     </div>
 
+    <div id="table">
     <div class="articlesConteneur">
         @forelse ($cellierBouteillesByIDs as $vin)
         <article class="articleVin">
@@ -190,11 +191,12 @@
             </div>
         </article>
             @empty
-    <div class="list-empty">
-        <p>Vous n'avez pour l'instant aucun vin.</p>
-    </div>
+        <div class="list-empty">
+            <p>Vous n'avez pour l'instant aucun vin.</p>
+        </div>
         
         @endforelse
+    </div>
     </div>
 
 
