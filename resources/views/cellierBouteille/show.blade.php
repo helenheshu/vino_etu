@@ -48,7 +48,7 @@
                         </div>
                     @endif
                 </div>
-                @if(!$bouteille->url_saq || Auth::user()->admin)
+                @if(!$bouteille->url_saq && $bouteille->user_id == Session::get('user')->id)
                     <a class="bouteilleSAQConteneur-fiche" href="{{ route('bouteilleEdit', $bouteille->id)}}"><i class="material-icons-fiche">edit</i></a>
                 @endif
             </div>
@@ -58,11 +58,6 @@
             <h2 class="description-titre">Description</h2>
             <p>{{ $bouteille->description ?? "Aucune description" }}</p>
         </article>
-        <article>
-        {!! $shareComponent !!}
-        
-        </article>
-
     </section>
 
 
@@ -189,7 +184,6 @@
 <link href="{{asset('css/star-rating.css')}}" rel="stylesheet" />
 <link href="{{asset('css/fiche-vin.css')}}" rel="stylesheet" />
 <script src="{{asset('js/star-rating.js')}}"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 <script src="{{asset('js/cellier_index.js')}}"></script>
 
 
