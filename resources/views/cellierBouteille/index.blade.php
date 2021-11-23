@@ -29,6 +29,8 @@
 
 <main>
     <div class="bouton-ajout-vin-conteneur">
+        
+        <a class="modal-trigger black-text" href="#tri"><i class="tri material-icon">sort</i></a>
         <a class="bouton-ajout-vin" href="{{ route('ajouterVin', $cellier->id) }}"><i class="material-icon">add</i> Ajouter un vin</a>
 
         <div class="search-container">
@@ -37,7 +39,7 @@
                 <label class="button searchbutton" for="searchright"><span class="mglass">&#9906;</span></label>
             </form>
         </div>
-        <a class="modal-trigger black-text" href="#tri"><i class="tri material-icon">sort</i></a>
+        
     </div>
     <div id="tri" class="modal">
         <div class="modal-content">
@@ -96,23 +98,26 @@
 
            
             <div class="infoBouteilleConteneur">
-                @if(isset($vin['bouteille']->url_img))
-                    <img class="image" src="{{$vin['bouteille']->url_img}}" alt="{{$vin['bouteille']->nom}}">
-                @else
-                    <img class="image" src="{{asset('assets/icon/bouteille-fiche-vin.svg')}}" alt="Image {{$vin['bouteille']->nom}}">
-                @endif               
-
-                <div class="info">
-                    <div>
-                    @if(isset($vin['bouteille']->pays))
-                        <p>{{$vin['bouteille']->pays}}</p>
+                <div class="infoEtSaq">
+                    @if(isset($vin['bouteille']->url_img))
+                        <img class="image" src="{{$vin['bouteille']->url_img}}" alt="{{$vin['bouteille']->nom}}">
                     @else
-                        <p>N/A</p>
-                    @endif
-                    <p>{{$vin['bouteille']->type}}</p>
-                    </div>
-                    
-                    <p class="taille">{{$vin['bouteille']->taille}} cl</p>
+                        <img class="image" src="{{asset('assets/icon/bouteille-fiche-vin.svg')}}" alt="Image {{$vin['bouteille']->nom}}">
+                    @endif               
+
+                        <div class="info">
+                            <div>
+                            @if(isset($vin['bouteille']->pays))
+                                <p>{{$vin['bouteille']->pays}}</p>
+                            @else
+                                <p>N/A</p>
+                            @endif
+                            <p>{{$vin['bouteille']->type}}</p>
+                            </div>
+                            <p class="formatPadding">{{$vin['bouteille']->taille}} cl</p>
+                        
+                            
+                        </div>
                 </div>
                 <div class="bouteilleSAQConteneur">
                     @if($vin['bouteille']->url_saq)
@@ -120,9 +125,7 @@
                     <!-- <div class="cercle ">
                         <i class="material-icon check">check</i>
                     </div> -->
-
                     @else
-
                     <!-- Ajouter boutons modifier et suprimer bouteille ici à la place des infos SAQ !!! -->
                     <!-- <p class="nonlienSAQ">SAQ</p> -->
                     <!-- <div class="cercle ">
@@ -134,10 +137,6 @@
                     <div class="cercle nonborder">
                         <i class="material-icon">delete</i>
                     </div> -->
-
-
-
-
                     @endif
                 </div>
             </div>

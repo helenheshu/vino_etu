@@ -13,7 +13,7 @@
     <meta name="author" content="" />
 
     <title>In Vino Veritas</title>
-    <link rel="icon" href="{{asset('assets/logo/logo-vino(2).svg') }}">
+    <link rel="icon" href="{{asset('assets/logo/vino-logo-v2.svg') }}">
     <!-- Polices  -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -91,7 +91,7 @@
     @if(session('user')->admin !== 1)
     <footer class="footer text-faded text-center py-5">
         <div class="container footer-nav precedent z-depth-1">
-        <i class="material-icons">arrow_back</i>
+        <i class="material-icons">navigate_before</i>
         <span>Retour</span>
             
         </div>
