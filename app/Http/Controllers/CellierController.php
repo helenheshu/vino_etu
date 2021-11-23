@@ -69,6 +69,8 @@ class CellierController extends Controller
         return CellierBouteilleController::index($cellier->id);
     }
 
+    
+
     /**
      * Show the form for editing the specified resource.
      *

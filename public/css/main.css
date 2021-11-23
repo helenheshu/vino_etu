@@ -60,12 +60,12 @@ body {
 img {
     width: 39.06px;
     height: 39.06px;
+  
 }
 
 .logo{
-
-    width: 76.29px;
-    height: 76.29px;
+    width: 3.815rem;
+    height: 3.815rem;
 }
 
 .input-field .helper-text.erreur {
@@ -113,10 +113,10 @@ footer{
 	align-items: center;
 }
 
-.padding-1rem {
-	padding: 0.64rem;
-
-}
+ .padding-1rem {
+    padding-left: 0.64rem;
+    padding-right: 0.64rem;
+} 
 
 nav .sidenav-trigger{
 	margin: 0;
@@ -338,3 +338,4 @@ input[type=number] {
 .couleur-noire{
     color:#343B41;
 }
+

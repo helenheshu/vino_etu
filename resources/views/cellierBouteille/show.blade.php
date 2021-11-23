@@ -13,9 +13,9 @@
             @endforeach
         </select>
     </div>
-    <div class="localisation">
+    <!-- <div class="localisation">
         <span><img class="map-icone" src="{{URL::asset('/assets/icon/map-marker-rouge.svg')}}" alt="icone map"> {{ $cellier->localisation }}</span>
-    </div>
+    </div> -->
     <div class="bouteille-nom">
         <select  name ="select-bouteille">
             @foreach($cellierBouteillesByIDs as $vin)
@@ -31,21 +31,21 @@
                 <p class="bold">@if($bouteille->pays){{ $bouteille->pays }} | @endif {{ $bouteille->type }}</p>
                 <p>{{  $bouteille->format }}</p>
                 <p>{{  $bouteille->taille }} cl</p>
-                <p>Prix Saq | @if($bouteille->prix_saq)<span class="bold-20px">{{ $bouteille->prix_saq  }} $</span> @else N/A @endif</p>
+                <p class="prixSaq">Prix Saq | @if($bouteille->prix_saq)<span class="bold-20px">{{ $bouteille->prix_saq  }} $</span> @else N/A @endif</p>
             </div>
             <div>
                 <div class="bouteilleSAQConteneur-fiche">
                     @if($bouteille->url_saq)
                     <a class="lienSAQ" href="{{ $bouteille->url_saq }}">SAQ</a>
-                    <div class="cercle ">
+                    <!-- <div class="cercle ">
                         <i class="material-icon check">check</i>
-                    </div>
+                    </div> -->
                     @else
                         <!-- Ajouter boutons modifier et suprimer bouteille ici à la place des infos SAQ !!! -->
-                        <p>SAQ</p>
+                        <!-- <p>SAQ</p>
                         <div class="cercle ">
                             <i class="material-icon check">close</i>
-                        </div>
+                        </div> -->
                     @endif
                 </div>
                 @if(!$bouteille->url_saq && $bouteille->user_id == Session::get('user')->id)
@@ -54,10 +54,11 @@
             </div>
 
         </article>
-        <article>
+        <!-- <article>
             <h2 class="description-titre">Description</h2>
             <p>{{ $bouteille->description ?? "Aucune description" }}</p>
-        </article>
+        </article> -->
+       
     </section>
 
 
@@ -81,7 +82,7 @@
 
     <section class="">
         <div class="form-modifier form">
-            <form id="" name="myForm" action="" method="POST" class="form-modifier" data-js-form> 
+            <form id="" name="myForm" action="" method="POST" class="form-modifier" data-js-form>
                 @method('PUT')
                 @csrf
                 <div class="millesime-info-debut">
@@ -91,7 +92,7 @@
                     @else
                         <img class="image-fiche" src="{{asset('assets/icon/bouteille-fiche-vin.svg')}}" alt="">
                     @endif
-                    <div> 
+                    <div>
                         <div class="select-form"> <!-- La note de 0 à 5 sous forme d'étoiles -->
                             <select class="star-rating"  name="note"  data-id-bouteille="{{$cellierBouteille->bouteille_id}}" data-millesime="{{$cellierBouteille->millesime}}">
                                 <option value="">Choisir une note</option>
@@ -103,7 +104,7 @@
                             </select>
                         </div>
                         <div>
-                            <div class="form-modifier-item " > 
+                            <div class="form-modifier-item " >
                                 <!-- Le champs millésime n'est pas modifiable -->
                                 <label for="millesime">Millésime</label>
                                 <input  name="millesime" readonly="readonly" id="millesime"  class="input-fiche-cercle" value="@if($cellierBouteille->millesime != 0){{ $cellierBouteille->millesime }} @else N/A @endif"/>
@@ -140,13 +141,54 @@
 
                 <!-- Validation non fonctionnelle, à terminer dans le sprint 3 -->
                 <!-- Boutons, modifier, annuler, valider, suprimer -->
-
+                
+                
                 <div class="bouton">
                     <button class="bouton-fiche valider"  data-js-modifier>Modifier</button>
-                    <button class="bouton-fiche non-active" data-js-btnAnnuler>Annuler</button> 
+                    <button class="bouton-fiche non-active" data-js-btnAnnuler>Annuler</button>
                     <button  class="bouton-fiche valider non-active modal-trigger" href="#modal-valider" data-js-btnValider >Valider</button>
                     <button class="bouton-fiche effacer non-active modal-trigger" href="#modal-suprimer"  data-js-btnEffacer >Supprimer</button>
                 </div>
+
+
+                <!-- Icônes média sociaux, standby pour l'instant -->
+                
+                <!-- <article>
+                    <div id="social-links">
+                        <ul>
+                            <li>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.positronx.io/create-autocomplete-search-in-laravel-with-typeahead-js/" class="social-button " id="" title="" rel="">
+                                <span class=" fab fa-facebook-square"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/intent/tweet?text=Your+share+text+comes+here&amp;url=https://www.positronx.io/create-autocomplete-search-in-laravel-with-typeahead-js/" class="social-button " id="" title="" rel="">
+                            <span class="fab fa-twitter"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/sharing/share-offsite?mini=true&amp;url=https://www.positronx.io/create-autocomplete-search-in-laravel-with-typeahead-js/&amp;title=Your+share+text+comes+here&amp;summary=" class="social-button " id="" title="" rel="">
+                                <span class="fab fa-linkedin"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://telegram.me/share/url?url=https://www.positronx.io/create-autocomplete-search-in-laravel-with-typeahead-js/&amp;text=Your+share+text+comes+here" class="social-button " id="" title="" rel="">
+                                <span class="fab fa-telegram"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://wa.me/?text=https://www.positronx.io/create-autocomplete-search-in-laravel-with-typeahead-js/" class="social-button " id="" title="" rel="">
+                                <span class="fab fa-whatsapp"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://www.reddit.com/submit?title=Your+share+text+comes+here&amp;url=https://www.positronx.io/create-autocomplete-search-in-laravel-with-typeahead-js/" class="social-button " id="" title="" rel="">
+                                <span class="fab fa-reddit"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </article> -->
 
                 <!-- Modal bouton suprimer -->
                 <div id="modal-suprimer" class="modal">
@@ -179,7 +221,7 @@
 @endsection
 
 <!-- Script et CSS -->
-<script src="{{asset('js/cellierBouteille_show.js')}}"></script> 
+<script src="{{asset('js/cellierBouteille_show.js')}}"></script>
 <link href="{{asset('css/cellierBouteillesListe.css')}}" rel="stylesheet" />
 <link href="{{asset('css/star-rating.css')}}" rel="stylesheet" />
 <link href="{{asset('css/fiche-vin.css')}}" rel="stylesheet" />
