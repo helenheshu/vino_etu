@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('content')
 
+@if(Session::get('nouvelleCellier'))
+<span class="nouvelleCellier"></span>
+@endif
+
 @if(Session::get('modifieBouteille'))
 <span class="modifieBouteille"></span>
 @endif

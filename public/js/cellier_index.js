@@ -14,6 +14,26 @@ document.addEventListener('DOMContentLoaded', function() {
       
       })
     })
+
+    /**
+     * Message Dialogue si un cellier a été supprimé
+     */
+
+     const deleteCellier = document.querySelector(".deleteCellier");
+     console.log(deleteCellier);
+
+     if (deleteCellier) {
+         var toastHTML =
+             '<span>Un Cellier a été supprimé</span><button class="btn-flat toast-action">Fermer</button>';
+         M.toast({ html: toastHTML, displayLength: 5000 });
+ 
+         const message = document.querySelector(".toast-action");
+ 
+         message.addEventListener("click", () => {
+             M.Toast.dismissAll();
+         });
+     }
+
     
   
   });
