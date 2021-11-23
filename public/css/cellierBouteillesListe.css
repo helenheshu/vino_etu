@@ -231,7 +231,7 @@ color: #343B41;
 
 .bouton-ajout-vin-conteneur {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 1rem;
     margin-left: 0.64rem;
     margin-right: 0.64rem;
