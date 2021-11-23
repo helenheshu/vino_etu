@@ -30,7 +30,7 @@
 <main>
     <div class="bouton-ajout-vin-conteneur">
         
-        <a class="modal-trigger black-text" href="#tri"><i class="tri material-icon">sort</i></a>
+        <a class="modal-trigger black-text" href="#tri"><i class="tri material-icon">filter_list</i></a>
         <a class="bouton-ajout-vin" href="{{ route('ajouterVin', $cellier->id) }}"><i class="material-icon">add</i> Ajouter un vin</a>
 
         <div class="search-container">

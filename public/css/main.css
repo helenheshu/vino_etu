@@ -64,8 +64,10 @@ img {
 }
 
 .logo{
-    width: 3.815rem;
-    height: 3.815rem;
+    width: 48.83px;
+    height: 48.83px;
+    margin-top: 0.64rem;
+    margin-bottom: 0.64rem;
 }
 
 .input-field .helper-text.erreur {
@@ -97,7 +99,10 @@ footer{
 .flex-row {
 	display: flex;
 	flex-direction: row;
-	align-items: center;
+	align-items: start;
+    /* padding-top:0.64rem; */
+    padding-left: 0.64rem;
+    padding-right:0.64rem;
 }
 
 .flex-box {
@@ -178,6 +183,7 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
     flex-grow: 1;
     font-weight: bold;
     font-size: 1.25rem;
+    font-family: inherit;
     /* margin-left: 10px;
     margin-right: 10px; */
 }
@@ -300,7 +306,7 @@ input[type=number] {
 }
 
 .select-wrapper .caret {
-    right: -25px;
+    /* right: -25px; */
     z-index: 99;
 }
 
@@ -337,5 +343,6 @@ input[type=number] {
 
 .couleur-noire{
     color:#343B41;
+    font-size: 40px;
 }
 
