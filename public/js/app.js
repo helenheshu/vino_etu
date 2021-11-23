@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const footerNav = document.querySelector('.footer-nav');
     const url = location.href;
 
-    if(page != 'login' && page != 'registration' && page != 'importerBouteille' && (page != 'cellier' || location.href.split('/')[4])){   
+    if(footerNav != null && (page != 'cellier' || location.href.split('/')[4])){   
 
       footerNav.style.display = 'flex';
       

@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
-<link href="{{asset('css/celliers.css')}}" rel="stylesheet" />
-<script src="{{asset('js/cellier_index.js')}}"></script>
+<link href="{{asset('css/celliers.css')}}" rel="stylesheet" media="print"
+    onload="this.media='all'" />
+<script src="{{asset('js/cellier_index.js')}}" defer></script>
 
 @if(isset(Auth::user()->id))
 

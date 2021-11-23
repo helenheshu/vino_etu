@@ -5,7 +5,7 @@
 <span class="modifie"></span>
 @endif
 
-<script src="{{asset('js/liste_usager.js')}}"></script>
+<script src="{{asset('js/liste_usager.js')}}" defer></script>
 
 
 <h1 class="titre">Liste d'usager</h1>

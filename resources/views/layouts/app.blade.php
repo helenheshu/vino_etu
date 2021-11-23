@@ -13,58 +13,12 @@
     <meta name="author" content="" />
 
     <title>In Vino Veritas</title>
-    <link rel="icon" href="{{asset('assets/logo/logo-vino(2).svg') }}">
-    
-    
-    
+    <link rel="icon" href="{{asset('assets/logo/vino-logo-v2.svg') }}">
     <!-- Polices  -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    
-
-    <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Acme&display=swap"
-    media="print"
-    onload="this.media='all'"
-/>
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap"
-    media="print"
-    onload="this.media='all'"
-/>
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    media="print"
-    onload="this.media='all'"
-/>
-<noscript>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Acme&display=swap"
-        rel="stylesheet"
-        type="text/css"
-    />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap"
-        rel="stylesheet"
-        type="text/css"
-    />
-    <link
-        href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet"
-        type="text/css"
-    />
-</noscript>
-
-
     
 </head>
 
@@ -145,12 +99,56 @@
     @endif
     @endguest
 
+
+
+    <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Acme&display=swap"
+    media="print"
+    onload="this.media='all'"
+/>
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap"
+    media="print"
+    onload="this.media='all'"
+/>
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap"
+    media="print"
+    onload="this.media='all'"
+/>
+    <link href="{{asset('css/footer-nav.css')}}" rel="stylesheet" media="print"
+    onload="this.media='all'" />
+    <link  rel="stylesheet" href="{{asset('css/materialize.min.css')}}" media="print"
+    onload="this.media='all'">
+    <link href="{{asset('css/main.css')}}" rel="stylesheet" media="print"
+    onload="this.media='all'" />
+<noscript>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Acme&display=swap"
+        rel="stylesheet"
+        type="text/css"
+    />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap"
+        rel="stylesheet"
+        type="text/css"
+    />
+    <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap"
+        rel="stylesheet"
+        type="text/css"
+    />
     <link href="{{asset('css/footer-nav.css')}}" rel="stylesheet" />
-    <link  rel="stylesheet" href="{{asset('css/materialize.min.css')}}">
-    <link href="{{asset('css/main.css')}}" rel="stylesheet" />
-    <script src="{{asset('js/materialize.min.js')}}"></script>
-    <script src="{{asset('js/scripts.js')}}"></script>
-    <script src="{{asset('js/app.js')}}"></script>
+    <link  rel="stylesheet" href="{{asset('css/materialize.min.css')}}" >
+    <link href="{{asset('css/main.css')}}" rel="stylesheet"  />
+</noscript>
+
+    <script src="{{asset('js/materialize.min.js')}}"defer></script>
+    <script src="{{asset('js/scripts.js')}}"defer></script>
+    <script src="{{asset('js/app.js')}}"defer></script>
 </div>
 </body>
 

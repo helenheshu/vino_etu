@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
        const recherche = document.querySelector("#search");
    
        const rechercherUsagers = () => {
-           fetch(`/rechercherUsager/${recherche.value.trim()}`)
+           fetch(`/rechercherUsager/${recherche.value.trim().replaceAll('.', "~point~")}`)
            .then(response => {
                return (response.json())
            })

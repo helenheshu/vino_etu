@@ -221,12 +221,15 @@
 @endsection
 
 <!-- Script et CSS -->
-<script src="{{asset('js/cellierBouteille_show.js')}}"></script>
-<link href="{{asset('css/cellierBouteillesListe.css')}}" rel="stylesheet" />
-<link href="{{asset('css/star-rating.css')}}" rel="stylesheet" />
-<link href="{{asset('css/fiche-vin.css')}}" rel="stylesheet" />
-<script src="{{asset('js/star-rating.js')}}"></script>
-<script src="{{asset('js/cellier_index.js')}}"></script>
+<script src="{{asset('js/cellierBouteille_show.js')}}" defer></script>
+<link href="{{asset('css/cellierBouteillesListe.css')}}" rel="stylesheet" media="print"
+    onload="this.media='all'" />
+<link href="{{asset('css/star-rating.css')}}" rel="stylesheet" media="print"
+    onload="this.media='all'" />
+<link href="{{asset('css/fiche-vin.css')}}" rel="stylesheet"  media="print"
+    onload="this.media='all'" />
+<script src="{{asset('js/star-rating.js')}}" defer></script>
+<script src="{{asset('js/cellier_index.js')}}" defer></script>
 
 
 
