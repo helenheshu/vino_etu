@@ -92,6 +92,7 @@
 
 @endsection
 
-<script src="{{asset('js/dashboard.js')}}" defer></script>
+<script src="{{asset('js/dashboard.js')}}"></script>
+<link href="{{asset('css/dashboard.css')}}" rel="stylesheet" />
 
 
