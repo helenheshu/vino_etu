@@ -61,7 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                                         <td> <img class='image'  src="${response[index][i].url_img}" alt="${response[index][i].nom}"></td>
                                                         <td>${response[index][i].nom}</td>
                                                         <td>${response[index][i].pays}</td>
-                                                        <td>${response[index][i].description}</td>
                                                         <td>${response[index][i].code_saq}</td>
                                                         <td>${response[index][i].prix_saq}</td>
                                                         <td>${response[index][i].url_saq}</td>

@@ -52,11 +52,6 @@
           @if($errors->first('format_id')) <span class="helper-text erreur" data-error="Format invalid">Champ obligatoire</span> @endif
         </div>
         <div class="input-field col s12">
-          <textarea id="description" name="description" class="materialize-textarea">{{ old('description') }}</textarea>
-          <label for="description">Description</label>
-          <span class="helper-text" data-error="Format invalid"></span>
-        </div>
-        <div class="input-field col s12">
           <input id="pays" type="text" name="pays" pattern="^[-a-zA-ZáéíóúÁÉÍÓÚÑñÇç ]*$" class="@if($errors->first('pays')) invalid @endif validate"  value="{{ old('pays') }}">
           <label for="pays">Pays</label>
           <span class="helper-text" data-error="Format invalid"></span>
@@ -137,8 +132,11 @@
 
 
 
-<link href="{{asset('css/autocomplete.css')}}" rel="stylesheet" />
-<link href="{{asset('css/cellierBouteilles.css')}}" rel="stylesheet" />
-<script src="{{asset('js/cellierBouteille_create.js')}}"></script>
-<link href="{{asset('css/star-rating.css')}}" rel="stylesheet" />
-<script src="{{asset('js/star-rating.js')}}"></script>
+<link href="{{asset('css/autocomplete.css')}}" rel="stylesheet"  media="print"
+    onload="this.media='all'" />
+<link href="{{asset('css/cellierBouteilles.css')}}" rel="stylesheet" media="print"
+    onload="this.media='all'" />
+<script src="{{asset('js/cellierBouteille_create.js')}}" defer></script>
+<link href="{{asset('css/star-rating.css')}}" rel="stylesheet" media="print"
+    onload="this.media='all'" />
+<script src="{{asset('js/star-rating.js')}}" defer></script>

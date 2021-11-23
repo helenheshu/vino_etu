@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
-<link href="{{asset('css/celliers.css')}}" rel="stylesheet" />
-<script src="{{asset('js/cellier_index.js')}}"></script>
+<link href="{{asset('css/celliers.css')}}" rel="stylesheet" media="print"
+    onload="this.media='all'" />
+<script src="{{asset('js/cellier_index.js')}}" defer></script>
 @if(isset(Auth::user()->id))
 <div class="entete-page">
     <h1>Modifier ce cellier</h1>
@@ -17,7 +18,7 @@
             <input type="text" name="nom" id="nom" class="@if($errors->first('nom')) invalid @endif validate" value="{!! $cellier->nom !!}" required max="32"/>
             <label for="nom">Nom :</label>
 
-            <span class="helper-text" data-error="Champ obligatoire"></span>
+            <span class="helper-text" data-error="{{ $errors->first('nom') }}"></span>
        
         </div>
 
@@ -26,7 +27,7 @@
             <input type="text" name="localisation" id="localisation" class="validate" value="{!! $cellier->localisation !!}" required max="40" />
             <label for="localisation">Localisation :</label>
             
-            <span class="helper-text" data-error="Champ obligatoire"></span>
+            <span class="helper-text" data-error="{{ $errors->first('localisation') }}"></span>
           
         </div>
 

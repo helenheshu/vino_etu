@@ -67,4 +67,5 @@
 
 @endsection
 
-<link href="{{asset('css/auth.css')}}" rel="stylesheet" />
+<link href="{{asset('css/auth.css')}}" rel="stylesheet" media="print"
+    onload="this.media='all'" />

@@ -46,11 +46,6 @@
             <label>Format</label>
             @if($errors->first('format_id')) <span class="helper-text erreur" data-error="Format invalid">Champ obligatoire</span> @endif
         </div>
-        <div class="input-field col s12">
-            <textarea id="description" name="description" class="materialize-textarea">{{$bouteille->description}}</textarea>
-            <label for="description">Description</label>
-            <span class="helper-text" data-error="Format invalid"></span>
-        </div>
 
         <input type="hidden" name="url_img" value="{{$bouteille->url_img}}">
 
@@ -119,5 +114,6 @@
 </div>
 
 @endsection
-<link href="{{asset('css/bouteille_edit.css')}}" rel="stylesheet" />
-<script src="{{asset('js/bouteille_edit.js')}}"></script>
+<link href="{{asset('css/bouteille_edit.css')}}" rel="stylesheet" media="print"
+    onload="this.media='all'" />
+<script src="{{asset('js/bouteille_edit.js')}}" defer></script>

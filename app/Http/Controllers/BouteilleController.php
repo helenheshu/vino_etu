@@ -105,7 +105,6 @@ class BouteilleController extends Controller
         $request->validate([
             'nom' => 'required|max:111',
             'pays' => 'nullable|regex:^[A-ZÀÂÇÉÈÊËÎÏÔÛÙÜŸÑa-zàâçéèêëîïôûùüÿñ]+$^ | max:45',
-            'description' => 'nullable | min:3 | max:1000',
             'type_id' => 'required|exists:types,id',
             'format_id' => 'required|exists:formats,id',
         ]);
@@ -122,7 +121,6 @@ class BouteilleController extends Controller
 
             'nom' => $request->nom,
             'pays' => $request->pays,
-            'description' =>  $request->description,
             'format_id' =>  $request->format_id,
             'url_img' => $request->url_img,
             'type_id' =>  $request->type_id,
@@ -179,7 +177,6 @@ class BouteilleController extends Controller
         $request->validate([
             'nom' => 'required|max:111',
             'pays' => 'nullable|regex:^[A-ZÀÂÇÉÈÊËÎÏÔÛÙÜŸÑa-zàâçéèêëîïôûùüÿñ]+$^ | max:45',
-            'description' => 'nullable | min:3 | max:1000',
             'code_saq' => 'max:50',
             'prix_saq' => 'numeric|regex:/[0-9]+(\.[0-9][0-9]?)?/|gte:0|max:100000', //prix maximum trouvé pour une bouteille : 100 000.00$
             'url_saq' => 'url',

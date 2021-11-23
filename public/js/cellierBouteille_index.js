@@ -172,6 +172,12 @@ document.addEventListener("DOMContentLoaded", function () {
         redessinerListeVins();
     });
 
+    barreRecherche.addEventListener("keydown", (e) => {
+        if(e.keyCode == 13) {
+            e.preventDefault();
+        }
+    });
+
     var modals = document.querySelectorAll('.modal');
     M.Modal.init(modals);
 
@@ -203,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const redessinerListeVins =  () => {
-        chemin = `/rechercheDansCellier/${barreRecherche.value}/${idCellier}`;
+        chemin = `/rechercheDansCellier/${barreRecherche.value.trim().replaceAll('.', "~point~")}/${idCellier}`;
         clearTimeout(timer);
         timer = setTimeout(() => {
             if(barreRecherche.value.trim() == '')  {
@@ -217,6 +223,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return response.json();
             })
             .then((response) => {
+
                 const trierPar = document.querySelector('input[name=tri]:checked');
                 if(trierPar)
                     trierCellier(trierPar.value, response); 
@@ -229,7 +236,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     bouteilles = {};
 
                     for (let index = 0; index < response.length; index++) {
-                        console.log(response[index])
+
                         if (!bouteilles["_" + response[index].bouteille_id]) {
                             
                             bouteilles["_" + response[index].bouteille_id] = {
@@ -269,16 +276,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         let saq = "";
                         if (bouteilles[key].url_saq != null) {
                             saq = `<div class="bouteilleSAQConteneur"> <a class="lienSAQ" href="${bouteilles[key].url_saq}">SAQ</a>
-                                        <div class="cercle ">
-                                            <i class="material-icon check">check</i>
-                                        </div>
+            
                                     </div>`;
                         } else {
                             saq = ` <div class="bouteilleSAQConteneur"> 
-                                        <p>SAQ</p>
-                                        <div class="cercle ">
-                                            <i class="material-icon check">close</i>
-                                        </div>
+                                   
                                     </div>`;
                         }
                         let infoCellierBouteilleConteneur = '<div class="infoCellierBouteilleConteneur">'
@@ -323,7 +325,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         infoCellierBouteilleConteneur += '</div>'
                     
                         articlesConteneur.innerHTML += `<article class="articleVin">
-                                                            <a href="/cellier/${idCellier}/${key}">
+                                                            <a href="/cellier/${idCellier}/${key.replace('_', '')}">
                                                                 <div class="nomVinConteneur">
                                                                     <h2>${bouteilles[key].nom}</h2>
                                                                 </div>
