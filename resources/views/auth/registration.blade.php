@@ -4,10 +4,7 @@
 
 
 <div class="flex-box">
-  <div class="row"> 
-    
-    <div class="col s12 m12">
-      <div class="card">
+  
         <div class="card-content flex-center entete-login">
           <h1 class="titre-formulaire">Créer un compte</h1>
           <img src="{{asset('assets/icon/bouteille-diagonale.svg')}}" class="center" alt="icone bouteille diagonale"></a>
@@ -16,7 +13,6 @@
         <div class="card-content">
           <form action="{{ route('register.custom') }}" method="POST">
           @csrf
-            <div class="row">
               <div class="input-field col s12">
                   <input id="nom" type="text" class="validate" name="nom" value="{{ old('nom')}}">
                   <label for="nom">Nom et prénom</label>
@@ -56,12 +52,10 @@
               <div class="input-field col s12">
                 <a href="{{ route('login') }}" class="right">Déjà inscrit? Ouvrir une session</a>
               </div>      
-            </div>	
+            
           </form>
-        </div>
-      </div>
-    </div>
-  </div>
+        
+      
 </div>
  
 
