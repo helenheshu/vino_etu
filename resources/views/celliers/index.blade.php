@@ -5,7 +5,6 @@
     onload="this.media='all'" />
 <script src="{{asset('js/cellier_index.js')}}" defer></script>
 
-
 @if(Session::get('deleteCellier'))
 <span class="deleteCellier"></span>
 @endif

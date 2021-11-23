@@ -103,7 +103,7 @@ class CellierController extends Controller
             'nom' => $request->nom,
             'localisation' => $request->localisation,
         ]);
-        return redirect('/')->withInput()->with("modifieCellier", "un cellier modifiée");
+        return redirect('/cellier')->withInput()->with("modifieCellier", "un cellier modifiée");
     }
 
     /**
@@ -116,7 +116,7 @@ class CellierController extends Controller
     {
         $cellier->delete();
 
-        return redirect('/')->withInput()->with('deleteCellier', "un cellier supprimé");
+        return redirect('/cellier')->withInput()->with('deleteCellier', "un cellier supprimé");
     }
 
     public function rechercheDansCellier($motCle, $idCellier) {

@@ -20,9 +20,10 @@ document.addEventListener('DOMContentLoaded', function() {
      */
 
      const deleteCellier = document.querySelector(".deleteCellier");
-     console.log(deleteCellier);
+     
 
      if (deleteCellier) {
+         
          var toastHTML =
              '<span>Un Cellier a été supprimé</span><button class="btn-flat toast-action">Fermer</button>';
          M.toast({ html: toastHTML, displayLength: 5000 });
@@ -33,6 +34,28 @@ document.addEventListener('DOMContentLoaded', function() {
              M.Toast.dismissAll();
          });
      }
+
+   /**
+     * Message Dialogue si un cellier a été supprimé
+     */
+
+    const modifieCellier = document.querySelector(".modifieCellier");
+     
+
+    if (modifieCellier) {
+        
+        var toastHTML =
+            '<span>Un Cellier a été modifié</span><button class="btn-flat toast-action">Fermer</button>';
+        M.toast({ html: toastHTML, displayLength: 5000 });
+
+        const message = document.querySelector(".toast-action");
+
+        message.addEventListener("click", () => {
+            M.Toast.dismissAll();
+        });
+    }
+
+
 
     
   
