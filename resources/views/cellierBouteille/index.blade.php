@@ -96,23 +96,26 @@
 
            
             <div class="infoBouteilleConteneur">
-                @if(isset($vin['bouteille']->url_img))
-                    <img class="image" src="{{$vin['bouteille']->url_img}}" alt="{{$vin['bouteille']->nom}}">
-                @else
-                    <img class="image" src="{{asset('assets/icon/bouteille-fiche-vin.svg')}}" alt="Image {{$vin['bouteille']->nom}}">
-                @endif               
-
-                <div class="info">
-                    <div>
-                    @if(isset($vin['bouteille']->pays))
-                        <p>{{$vin['bouteille']->pays}}</p>
+                <div class="infoEtSaq">
+                    @if(isset($vin['bouteille']->url_img))
+                        <img class="image" src="{{$vin['bouteille']->url_img}}" alt="{{$vin['bouteille']->nom}}">
                     @else
-                        <p>N/A</p>
-                    @endif
-                    <p>{{$vin['bouteille']->type}}</p>
-                    </div>
-                    
-                    <p class="taille">{{$vin['bouteille']->taille}} cl</p>
+                        <img class="image" src="{{asset('assets/icon/bouteille-fiche-vin.svg')}}" alt="Image {{$vin['bouteille']->nom}}">
+                    @endif               
+
+                        <div class="info">
+                            <div>
+                            @if(isset($vin['bouteille']->pays))
+                                <p>{{$vin['bouteille']->pays}}</p>
+                            @else
+                                <p>N/A</p>
+                            @endif
+                            <p>{{$vin['bouteille']->type}}</p>
+                            </div>
+                            <p class="formatPadding">{{$vin['bouteille']->taille}} cl</p>
+                        
+                            
+                        </div>
                 </div>
                 <div class="bouteilleSAQConteneur">
                     @if($vin['bouteille']->url_saq)
@@ -120,9 +123,7 @@
                     <!-- <div class="cercle ">
                         <i class="material-icon check">check</i>
                     </div> -->
-
                     @else
-
                     <!-- Ajouter boutons modifier et suprimer bouteille ici à la place des infos SAQ !!! -->
                     <!-- <p class="nonlienSAQ">SAQ</p> -->
                     <!-- <div class="cercle ">
@@ -134,10 +135,6 @@
                     <div class="cercle nonborder">
                         <i class="material-icon">delete</i>
                     </div> -->
-
-
-
-
                     @endif
                 </div>
             </div>

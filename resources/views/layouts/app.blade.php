@@ -137,7 +137,7 @@
     @if(session('user')->admin !== 1)
     <footer class="footer text-faded text-center py-5">
         <div class="container footer-nav precedent z-depth-1">
-        <i class="material-icons">arrow_back</i>
+        <i class="material-icons">navigate_before</i>
         <span>Retour</span>
             
         </div>
