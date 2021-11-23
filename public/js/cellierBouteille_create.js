@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
             liste.innerHTML = "";
            
          
-                fetch("/rechercheBouteillesParMotCle/" + recherche.value)
+                fetch("/rechercheBouteillesParMotCle/" + recherche.value.replaceAll('.', "~point~"))
                 .then(response => {
                     return (response.json())
                 })
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     response.forEach(function(element,i){
                         
-                        liste.innerHTML += `<div  data-description="${element.description ?? ''}" data-pays="${element.pays ?? ''}" data-idtype="${element.type_id}" data-idformat="${element.format_id}" data-id="${element.id}" data-prix="${element.prix_saq ?? 0}"  data-imgurl="${element.url_img}" data-nom="${element.nom}" >${element.nom} - ${element.type} -  ${element.taille} cL ${element.pays != null ? '- ' + element.pays : ''}</div>`;
+                        liste.innerHTML += `<div data-pays="${element.pays ?? ''}" data-idtype="${element.type_id}" data-idformat="${element.format_id}" data-id="${element.id}" data-prix="${element.prix_saq ?? 0}"  data-imgurl="${element.url_img}" data-nom="${element.nom}" >${element.nom} - ${element.type} -  ${element.taille} cL ${element.pays != null ? '- ' + element.pays : ''}</div>`;
                     })
                     
                 }).catch(error => console.log(error))
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
      * Insérer les informations de la bouteille lorsqu'on clique sur le nom d'une bouteille
      */
     const inputNom = document.querySelector('#nom');
-    const description = document.querySelector('#description');
+
     const type_id = document.querySelector('[name="type_id"]');
     const format_id = document.querySelector('[name="format_id"]');
     const labelMillesime = document.querySelector('[name="labelMillesime"]');
@@ -81,10 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }else {
                 prix.value = 0;
             }
-            
-
-            description.value = e.target.dataset.description;
-            
 
             fetch(`/obtenirMillesimesParBouteille/${idCellier}/${e.target.dataset.id}`)
             .then(response => {

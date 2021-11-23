@@ -13,7 +13,7 @@ class Bouteille extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'nom', 'code_saq', 'pays', 'description', 'prix_saq', 'url_saq', 'url_img', 'format_id', 'type_id', 'user_id'];
+    protected $fillable = ['id', 'nom', 'code_saq', 'pays',  'prix_saq', 'url_saq', 'url_img', 'format_id', 'type_id', 'user_id'];
 
     /**
      * Obtenir les informations de la table types
@@ -30,7 +30,7 @@ class Bouteille extends Model
 
     public static function obtenirBouteilles(){
         return DB::table('bouteilles')
-        ->select('bouteilles.nom', 'bouteilles.id', 'pays', 'description', 'type', 'code_saq', 'url_saq', 'url_img', 'prix_saq', 'taille' )
+        ->select('bouteilles.nom', 'bouteilles.id', 'pays', 'type', 'code_saq', 'url_saq', 'url_img', 'prix_saq', 'taille' )
         ->join('types', 'bouteilles.type_id', '=', 'types.id')
         ->join('formats', 'formats.id', '=', 'bouteilles.format_id')
         ->where('user_id', 1)
@@ -43,10 +43,10 @@ class Bouteille extends Model
      * @return rows des lignes de la table bouteilles
      */
     public static function rechercheBouteillesParMotCle($motCle) {
-
+        $motCle = str_replace("~point~", ".",  $motCle);
         return DB::table('bouteilles')
-        ->select('bouteilles.nom', 'bouteilles.id', 'pays', 'description', 'type', 'type_id', 'format_id', 'url_img', 'prix_saq', 'taille' )
-        ->where('bouteilles.nom', "LIKE" ,"%". $motCle. "%")
+        ->select('bouteilles.nom', 'bouteilles.id', 'pays', 'type', 'type_id', 'format_id', 'url_img', 'prix_saq', 'taille' )
+        ->where('bouteilles.nom', "LIKE" , $motCle. "%")
         ->whereIn("user_id", [1, session('user')->id])
         ->join('types', 'bouteilles.type_id', '=', 'types.id')
         ->join('formats', 'formats.id', '=', 'bouteilles.format_id')
@@ -55,18 +55,18 @@ class Bouteille extends Model
     }
 
     public static function rechercherCatalogue($motCle) {
+        $motCle = str_replace("~point~", ".",  $motCle);
         return DB::table('bouteilles')
-        ->select('bouteilles.nom', 'bouteilles.id', 'pays', 'description', 'type', 'type_id', 'format_id', 'url_img', 'prix_saq', 'taille', 'code_saq', 'url_saq' )
+        ->select('bouteilles.nom', 'bouteilles.id', 'pays',  'type', 'type_id', 'format_id', 'url_img', 'prix_saq', 'taille', 'code_saq', 'url_saq' )
         ->where('user_id', 1)
         ->where(function($query) use ($motCle){
-         $query->where('bouteilles.nom', "LIKE" , "%" .$motCle. "%")
-        ->orWhere('taille', "LIKE" ,"%" . $motCle. "%")
-        ->orWhere('pays', "LIKE" ,"%" . $motCle. "%")
-        ->orWhere('prix_saq', "LIKE" ,"%" . $motCle. "%")
-        ->orWhere('code_saq', "LIKE" ,"%" . $motCle. "%")
-        ->orWhere('type', "LIKE" ,"%" . $motCle. "%")
-        ->orWhere('description', "LIKE" ,"%" . $motCle. "%")
-        ->orWhere('url_saq', "LIKE" ,"%" . $motCle. "%");
+         $query->where('bouteilles.nom', "LIKE" , $motCle. "%")
+        ->orWhere('taille', "LIKE" , $motCle. "%")
+        ->orWhere('pays', "LIKE" , $motCle. "%")
+        ->orWhere('prix_saq', "LIKE" , $motCle. "%")
+        ->orWhere('code_saq', "LIKE" , $motCle. "%")
+        ->orWhere('type', "LIKE" , $motCle. "%")
+        ->orWhere('url_saq', "LIKE" , $motCle. "%");
         })
         ->join('types', 'bouteilles.type_id', '=', 'types.id')
         ->join('formats', 'formats.id', '=', 'bouteilles.format_id')
@@ -94,7 +94,7 @@ class Bouteille extends Model
      */
     public static function getDataBouteilleByID($IDBouteille) {
         return DB::table('bouteilles')
-        ->select('bouteilles.id', 'bouteilles.nom as nom','pays', 'formats.nom as format', 'type', 'formats.taille as taille', 'url_img', 'description', 'prix_saq', 'code_saq', 'url_saq', 'user_id')
+        ->select('bouteilles.id', 'bouteilles.nom as nom','pays', 'formats.nom as format', 'type', 'formats.taille as taille', 'url_img', 'prix_saq', 'code_saq', 'url_saq', 'user_id')
         ->join('types', 'types.id', '=', 'bouteilles.type_id')
         ->join('formats', 'formats.id', '=', 'bouteilles.format_id')
         ->where('bouteilles.id', $IDBouteille)

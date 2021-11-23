@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const recherche = document.querySelector("#search");
    
     const rechercherBouteilles = () => {
-        fetch(`/rechercherCatalogue/${recherche.value.trim()}`)
+        fetch(`/rechercherCatalogue/${recherche.value.trim().replaceAll('.', "~point~")}`)
         .then(response => {
             return (response.json())
         })
