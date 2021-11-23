@@ -61,6 +61,8 @@
 
 @endsection
 
-<script src="{{asset('js/modifierCatalogue.js')}}"></script>
-<link href="{{asset('css/liste-usager.css')}}" rel="stylesheet" />
-<link href="{{asset('css/modifierCatalogue.css')}}" rel="stylesheet" />
+<script src="{{asset('js/modifierCatalogue.js')}}" defer></script>
+<link href="{{asset('css/liste-usager.css')}}" rel="stylesheet" media="print"
+    onload="this.media='all'" />
+<link href="{{asset('css/modifierCatalogue.css')}}" rel="stylesheet" media="print"
+    onload="this.media='all'" />

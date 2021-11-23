@@ -32,7 +32,7 @@
         <a class="bouton-ajout-vin" href="{{ route('ajouterVin', $cellier->id) }}"><i class="material-icon">add</i> Ajouter un vin</a>
 
         <div class="search-container">
-            <form action="/search" method="get">
+            <form >
                 <input class="search expandright" id="searchright" type="search" name="q" placeholder="Rechercher une bouteille" autocomplete="off">
                 <label class="button searchbutton" for="searchright"><span class="mglass">&#9906;</span></label>
             </form>
@@ -206,9 +206,13 @@
 </main>
 @endsection
 
-<script src="{{asset('js/cellierBouteille_index.js')}}"></script>
-<link href="{{asset('css/cellierBouteillesListe.css')}}" rel="stylesheet" />
-<link href="{{asset('css/star-rating.css')}}" rel="stylesheet" />
-<script src="{{asset('js/star-rating.js')}}"></script>
-<link href="{{asset('css/autocomplete.css')}}" rel="stylesheet" />
-<link href="{{asset('css/barre-recherche.css')}}" rel="stylesheet" />
+<script src="{{asset('js/cellierBouteille_index.js')}}" defer></script>
+<link href="{{asset('css/cellierBouteillesListe.css')}}" rel="stylesheet" media="print"
+    onload="this.media='all'"  />
+<link href="{{asset('css/star-rating.css')}}" rel="stylesheet" media="print"
+    onload="this.media='all'"  />
+<script src="{{asset('js/star-rating.js')}}" defer></script>
+<link href="{{asset('css/autocomplete.css')}}" rel="stylesheet" media="print"
+    onload="this.media='all'" />
+<link href="{{asset('css/barre-recherche.css')}}" rel="stylesheet" media="print"
+    onload="this.media='all'" />

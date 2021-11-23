@@ -114,5 +114,6 @@
 </div>
 
 @endsection
-<link href="{{asset('css/bouteille_edit.css')}}" rel="stylesheet" />
-<script src="{{asset('js/bouteille_edit.js')}}"></script>
+<link href="{{asset('css/bouteille_edit.css')}}" rel="stylesheet" media="print"
+    onload="this.media='all'" />
+<script src="{{asset('js/bouteille_edit.js')}}" defer></script>

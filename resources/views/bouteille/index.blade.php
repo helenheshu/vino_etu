@@ -41,5 +41,6 @@
 <span class="message"></span>
 @endsection
 
-<link href="{{asset('css/bouteilles.css')}}" rel="stylesheet" />
-<script src="{{asset('js/bouteille_index.js')}}"></script>
+<link href="{{asset('css/bouteilles.css')}}" rel="stylesheet" media="print"
+    onload="this.media='all'" />
+<script src="{{asset('js/bouteille_index.js')}}" defer></script>

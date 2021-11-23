@@ -132,8 +132,11 @@
 
 
 
-<link href="{{asset('css/autocomplete.css')}}" rel="stylesheet" />
-<link href="{{asset('css/cellierBouteilles.css')}}" rel="stylesheet" />
-<script src="{{asset('js/cellierBouteille_create.js')}}"></script>
-<link href="{{asset('css/star-rating.css')}}" rel="stylesheet" />
-<script src="{{asset('js/star-rating.js')}}"></script>
+<link href="{{asset('css/autocomplete.css')}}" rel="stylesheet"  media="print"
+    onload="this.media='all'" />
+<link href="{{asset('css/cellierBouteilles.css')}}" rel="stylesheet" media="print"
+    onload="this.media='all'" />
+<script src="{{asset('js/cellierBouteille_create.js')}}" defer></script>
+<link href="{{asset('css/star-rating.css')}}" rel="stylesheet" media="print"
+    onload="this.media='all'" />
+<script src="{{asset('js/star-rating.js')}}" defer></script>
