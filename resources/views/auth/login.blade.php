@@ -34,12 +34,13 @@
           </div>
           <div class="input-field col s12 btn-space">
             <button type="submit" class="btn waves-effect waves-light button btn-ajouter">Ouvrir une session</button>
-            @if(session('success'))
+            
+          </div>
+          @if(session('success'))
                       <div class="text-center p-t-12">
               <span class="red-text">{{ session('success')}}</span>
             </div>
             @endif
-          </div>
 
         <!-- <div class="input-field col s12">
           <a href="#" class="right">Mot de passe oublié?</a>
