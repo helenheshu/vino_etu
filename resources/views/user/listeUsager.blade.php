@@ -16,7 +16,7 @@
         <div class="input-field">
         <input id="search" type="search" placeholder="Rechercher" autocomplete="off" required>
           <label class="label-icon" for="search"><i class="material-icons black-text">search</i></label>
-          <i class="material-icons">close</i>
+          <i id="close" class="material-icons">close</i>
         </div>
       </form>
     </div>
@@ -104,5 +104,5 @@
  
 @endsection
 
-<link href="{{asset('css/liste-usager.css')}}" rel="stylesheet" />
+<link href="{{asset('css/liste-usager.css')}}" rel="stylesheet"  />
 

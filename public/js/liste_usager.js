@@ -46,6 +46,13 @@ document.addEventListener('DOMContentLoaded', function() {
     //    });
 
 
+    const supprimerRecherche = document.querySelector('#close');
+
+    supprimerRecherche.addEventListener('click', () => {
+        recherche.value = '';
+        showListeUsager();
+    })
+
 
 
     /**

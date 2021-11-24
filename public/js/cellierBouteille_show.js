@@ -313,7 +313,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     btnAnnuleActive.classList.add("non-active");
                     btnValideActive.classList.add("non-active");
                     btnEffacerActive.classList.add("non-active");
-
+                    infoForm.querySelector('#quantite').value = parseInt(infoForm.querySelector('#quantite').value, 10);
+                    infoForm.querySelector('#prix').value = infoForm.querySelector('#prix').value.replace(/^0+/, '');
                     var toastHTML =
                     '<span>Une bouteille a été modifié</span><button class="btn-flat toast-action">Fermer</button>';
                 M.toast({ html: toastHTML, displayLength: 5000 });
