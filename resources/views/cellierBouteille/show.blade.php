@@ -80,6 +80,7 @@
             </button>
         </div>
         @endforeach
+        <a name="ajouterMillesime" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a>
     </section>
 
     <!-- Section du fomulaire -->
@@ -112,7 +113,17 @@
                                 <!-- Le champs millésime n'est pas modifiable -->
                                 <label for="millesime">Millésime</label>
                                 <input  name="millesime" readonly="readonly" id="millesime"  class="input-fiche-cercle" value="@if($cellierBouteille->millesime != 0){{ $cellierBouteille->millesime }} @else N/A @endif"/>
+                                <select name ="select-millesime" >
+                                <option value="" disabled selected></option>
+                                {{ $anneeDebut= 1700 }}
+                                {{ $anneePresent = date('Y') }}
+
+                                @for ($i = $anneePresent; $i >= $anneeDebut; $i--)
+                                    <option value="{{ $i }}">{{ $i }}</option>
+                                @endfor
+                                </select>
                             </div>
+                            <p id="messageMillesime" class="nonValide"></p>
                             <div class="form-modifier-item" >
                                 <label for="prix">Prix d'achat</label>
                                 <input type="number" name="prix"  readonly="readonly" id="prix" data-js-input class="input-fiche-cercle" value="{!! $cellierBouteille->prix !!}"/>
@@ -148,51 +159,12 @@
                 
                 
                 <div class="bouton">
+                    <button class="bouton-fiche valider hide"  data-js-ajouter>Ajouter</button>
                     <button class="bouton-fiche valider"  data-js-modifier>Modifier</button>
                     <button class="bouton-fiche non-active" data-js-btnAnnuler>Annuler</button>
                     <button  class="bouton-fiche valider non-active modal-trigger" href="#modal-valider" data-js-btnValider >Valider</button>
-                    <button class="bouton-fiche effacer non-active modal-trigger" href="#modal-suprimer"  data-js-btnEffacer >Suprimer</button>
+                    <button class="bouton-fiche effacer non-active modal-trigger" href="#modal-suprimer"  data-js-btnEffacer >Supprimer</button>
                 </div>
-
-
-                <!-- Icônes média sociaux, standby pour l'instant -->
-                
-                <!-- <article>
-                    <div id="social-links">
-                        <ul>
-                            <li>
-                                <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.positronx.io/create-autocomplete-search-in-laravel-with-typeahead-js/" class="social-button " id="" title="" rel="">
-                                <span class=" fab fa-facebook-square"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://twitter.com/intent/tweet?text=Your+share+text+comes+here&amp;url=https://www.positronx.io/create-autocomplete-search-in-laravel-with-typeahead-js/" class="social-button " id="" title="" rel="">
-                            <span class="fab fa-twitter"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.linkedin.com/sharing/share-offsite?mini=true&amp;url=https://www.positronx.io/create-autocomplete-search-in-laravel-with-typeahead-js/&amp;title=Your+share+text+comes+here&amp;summary=" class="social-button " id="" title="" rel="">
-                                <span class="fab fa-linkedin"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="https://telegram.me/share/url?url=https://www.positronx.io/create-autocomplete-search-in-laravel-with-typeahead-js/&amp;text=Your+share+text+comes+here" class="social-button " id="" title="" rel="">
-                                <span class="fab fa-telegram"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="https://wa.me/?text=https://www.positronx.io/create-autocomplete-search-in-laravel-with-typeahead-js/" class="social-button " id="" title="" rel="">
-                                <span class="fab fa-whatsapp"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="https://www.reddit.com/submit?title=Your+share+text+comes+here&amp;url=https://www.positronx.io/create-autocomplete-search-in-laravel-with-typeahead-js/" class="social-button " id="" title="" rel="">
-                                <span class="fab fa-reddit"></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </article> -->
 
                 <!-- Modal bouton suprimer -->
                 <div id="modal-suprimer" class="modal">

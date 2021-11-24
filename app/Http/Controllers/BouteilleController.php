@@ -119,7 +119,7 @@ class BouteilleController extends Controller
 
         $bouteille = Bouteille::create([
 
-            'nom' => $request->nom,
+            'nom' => ucfirst($request->nom),
             'pays' => $request->pays,
             'format_id' =>  $request->format_id,
             'url_img' => $request->url_img,
@@ -227,7 +227,8 @@ class BouteilleController extends Controller
 
     public static function updateBouteille(Bouteille $bouteille, Request $request){
         $bouteille->fill($request->all());
-    
+        $bouteille->nom = ucfirst( $bouteille->nom);
+
         if ($request->file) {
 
             if($request->url_img != URL::to('') . '/assets/icon/bouteille-cellier.svg'){
