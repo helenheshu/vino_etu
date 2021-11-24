@@ -37,9 +37,12 @@
         
 
         </div>
+        <div class="btn-space-col">
+        <a class="btn waves-effect waves-light button btn-modifier modal-trigger" href="#modal-modifier">Modifier</a>
+        </div>
         <div class="btn-space">
             <a class="btn waves-effect waves-light button btn-annuler" href="{{route('cellier')}}">Annuler</a>
-            <a class="btn waves-effect waves-light button btn-modifier modal-trigger" href="#modal-modifier">Modifier</a>
+            <a class="btn waves-effect waves-light button btn-supprimer modal-trigger" href="#{{$cellier->id}}">Supprimer</a>
             <!-- Modal Structure modal-modifier-->
             <div id="modal-modifier" class="modal">
                 <div class="modal-content">
@@ -58,7 +61,7 @@
     </form>
 </div>
 <div class="btn-sup-container">
-    <a class="btn waves-effect waves-light button btn-supprimer modal-trigger" href="#{{$cellier->id}}"><i class="material-icons">delete</i></a>
+   
     <!-- Modal Structure -->
     <div id="{{$cellier->id}}" class="modal">
         <div class="modal-content">
