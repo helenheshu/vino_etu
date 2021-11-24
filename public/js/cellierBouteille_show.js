@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
+    var selectMillesime = document.querySelector('[name="select-millesime"]');
+    M.FormSelect.init(selectMillesime);
+    const wrapper = document.querySelector('.form-modifier-item > .select-wrapper');
+    const ajouterMillesime = document.querySelector('[name="ajouterMillesime"]');
+    const btnAjouterMillesime = document.querySelector('[data-js-ajouter]')
+    let messageMillesime = document.querySelector('#messageMillesime');
+    let validMillesime = true;
+    let selectedMillesime = document.querySelector('.millesime-item-selected');
+   wrapper.classList.add('hide');
+
 
          /**
      * Message Dialogue si une bouteille a été modifiée
@@ -48,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
     let btnMillesime = document.querySelector('[data-millesime]');
-    console.log(btnMillesime)
+
     let elMillesime = document.querySelector('[data-millesime]').dataset.millesime;
     
     sessionStorage.setItem('idCellier', idCellier);
@@ -124,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
 /* Boutons millesime */
 
  for (let i = 0; i < boutonMillesime.length; i++) {
-
+       
         boutonMillesime[i].addEventListener("click", function(e) {
         e.preventDefault();
         wrapper.classList.add('hide');
@@ -182,7 +192,15 @@ document.addEventListener('DOMContentLoaded', function() {
              infoForm.querySelector('#garde_jusqua').value=response[0].garde_jusqua;
 
         }).catch(error => console.log(error))
+       
       });
+
+      if(localStorage.getItem('millesime') != null){
+          if(localStorage.getItem('millesime') == boutonMillesime[i].dataset.jsBouton){
+              boutonMillesime[i].click();
+              localStorage.clear();
+          }
+      }
     }
 
     /* Activer les champs inputs et les boutons annuler, valider, effacer */ 
@@ -193,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         boutonModifier.classList.add("non-active");
         for (let i = 0; i < inputs.length; i++){
-                console.log(inputs[i])
+
                 inputs[i].readOnly = false;
                 inputs[i].classList.add("input-active");
                 if (inputs[i].classList.contains("input-fiche-cercle")){
@@ -292,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return (response.json())
             })
             .then(response => {
-                console.log(response);
+
                 location.href=response;
     
             }).catch(error => console.log(error))
@@ -365,7 +383,7 @@ document.addEventListener('DOMContentLoaded', function() {
          inputs.forEach((input) => {
              input.addEventListener("input", (e) => {
                  e.preventDefault();
-                 console.log('change');
+
                  estValide(input);
                   if(!estValide(input)){
                       btnAjouterMillesime
@@ -385,17 +403,11 @@ document.addEventListener('DOMContentLoaded', function() {
              });
          });
 
-         var selectMillesime = document.querySelector('[name="select-millesime"]');
-         M.FormSelect.init(selectMillesime);
-         const wrapper = document.querySelector('.form-modifier-item > .select-wrapper');
-        wrapper.classList.add('hide');
-        const ajouterMillesime = document.querySelector('[name="ajouterMillesime"]');
-        const btnAjouterMillesime = document.querySelector('[data-js-ajouter]')
-        let messageMillesime = document.querySelector('#messageMillesime');
-        let validMillesime = true;
-        const selectedMillesime = document.querySelector('.millesime-item-selected');
+        
+      
         
         ajouterMillesime.addEventListener('click', () => {
+            selectedMillesime = document.querySelector('.millesime-item-selected');
             selectedMillesime.classList.remove('millesime-item-selected');
             boutonMillesime.forEach(bouton => {
                 if(bouton.dataset.jsBouton == '0'){
@@ -432,7 +444,7 @@ document.addEventListener('DOMContentLoaded', function() {
             btnValideActive.classList.add("non-active");
             btnEffacerActive.classList.add('non-active');
             btnAnnuleActive.classList.remove("non-active");
-            
+           
         })
 
         btnAjouterMillesime.addEventListener('click', e => {
@@ -466,15 +478,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     btnValideActive.classList.add("non-active");
                     btnEffacerActive.classList.add("non-active");
             }
+            localStorage.setItem("millesime", selectMillesime.value);
+            location.reload();
         })
 
         selectMillesime.addEventListener('change', () => {
-            
+            messageMillesime.innerHTML = "";
+            validMillesime = true;
+            btnAjouterMillesime.classList.remove("boutonNonValide");
+            btnAjouterMillesime.removeAttribute('disabled');
             boutonMillesime.forEach(bouton => {
-                messageMillesime.innerHTML = "";
-                validMillesime = true;
-                btnAjouterMillesime.classList.remove("boutonNonValide");
-                btnAjouterMillesime.removeAttribute('disabled');
+              
                 if(bouton.dataset.jsBouton == selectMillesime.value){
                     messageMillesime.innerHTML = "Millésime existant."
                     validMillesime = false;
