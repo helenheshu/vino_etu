@@ -118,15 +118,25 @@ footer{
     padding-right: 0.64rem;
 } 
 
-nav .sidenav-trigger{
-	margin: 0;
-}
+
 
 .container {
 	text-align: center;
     max-width: inherit;
     width: 100%;
 }
+
+    /*Nav*/
+
+    nav .sidenav-trigger{
+        margin: 0;
+    }
+
+    nav {
+        align-self: center;
+        display: flex;
+        justify-content: flex-end;
+    }
 
 
   /* Materialize css */

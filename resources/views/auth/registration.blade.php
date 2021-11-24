@@ -3,12 +3,12 @@
 @section('content')
 
 
-<div class="flex-box">
+<article class="flex-box">
   
-        <div class="card-content flex-center entete-login">
+        <header class="card-content flex-center entete-login">
           <h1 class="titre-formulaire">Créer un compte</h1>
           <img src="{{asset('assets/icon/bouteille-diagonale.svg')}}" class="center" alt="icone bouteille diagonale"></a>
-        </div>
+        </header>
 
         <div class="card-content">
           <form action="{{ route('register.custom') }}" method="POST">
@@ -56,7 +56,7 @@
           </form>
         
       
-</div>
+</article>
  
 
 @endsection
