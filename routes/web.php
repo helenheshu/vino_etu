@@ -111,6 +111,8 @@ Route::get('/suprimerCellierBouteille/{idCellier}/{idBouteille}/{millesime}', [C
 
 Route::get('/modifierCellierBouteille/{idCellier}/{idBouteille}/{millesime}/{prix}/{quantite}/{date_achat}/{commentaire?}/{garde_jusqua?}', [CellierBouteilleController::class, 'modifierCellierBouteille'])->name('modifierCellierBouteille')->middleware('auth')->middleware('prevent-back-history');
 
+Route::get('/ajouterCellierBouteille/{idCellier}/{idBouteille}/{millesime}/{note}/{prix}/{quantite}/{date_achat}/{commentaire?}/{garde_jusqua?}', [CellierBouteilleController::class, 'ajouterCellierBouteille'])->name('ajouterCellierBouteille')->middleware('auth')->middleware('prevent-back-history');
+
 /* Recherche */
 
 Route::get('/rechercheBouteilleExistante/{nom}/{type_id}/{format_id}/{pays?}', [BouteilleController::class, 'rechercheBouteilleExistante'])->name('rechercheBouteilleExistante')->middleware('auth')->middleware('prevent-back-history');

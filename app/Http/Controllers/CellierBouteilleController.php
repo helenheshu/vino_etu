@@ -286,6 +286,15 @@ class CellierBouteilleController extends Controller
 
      }
 
+     
+    public function  ajouterCellierBouteille($idCellier, $idBouteille, $millesime,$note, $prix, $quantite, $date_achat, $commentaire=null, $garde_jusqua=null)
+    {   
+        CellierBouteille::ajouterCellierBouteille($idCellier, $idBouteille, $millesime, $note, $prix, $quantite, $date_achat, trim($commentaire), $garde_jusqua);
+
+
+     }
+
+
     /**
      * Remove the specified resource from storage.
      *

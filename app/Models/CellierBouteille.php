@@ -157,6 +157,7 @@ class CellierBouteille extends Model
      */
     public static function modifierCellierBouteille($idCellier, $idBouteille, $millesime, $prix, $quantite, $date_achat, $commentaire=null, $garde_jusqua=null)
     {
+        $prix = str_replace("~point~", ".",  $prix);
          DB::table('cellier_bouteilles')
         ->where('cellier_id', $idCellier)
         ->where('bouteille_id', $idBouteille)
@@ -178,6 +179,23 @@ class CellierBouteille extends Model
         ->where('bouteille_id', $idBouteille)
         ->where('millesime','like' ,$millesime . "%")
         ->delete();
+    }
+
+
+    public static function ajouterCellierBouteille($idCellier, $idBouteille, $millesime, $note, $prix, $quantite, $date_achat, $commentaire=null, $garde_jusqua=null)
+    {
+        
+        DB::table('cellier_bouteilles')
+        ->insert(['cellier_id'=> $idCellier,
+                    'bouteille_id'=> $idBouteille,
+                    'millesime' =>$millesime,
+                    'prix' => $prix,
+                    'quantite'=> $quantite,
+                    'commentaire'=>$commentaire,
+                    'garde_jusqua'=>$garde_jusqua,
+                    'date_achat'=>$date_achat,
+                    'note' => $note
+                    ]);
     }
 
 }

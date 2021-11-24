@@ -45,7 +45,7 @@
           <select name ="format_id">
             <option value="" disabled selected></option>
             @foreach($formats as $format)
-            <option value="{{ $format->id }}" @if( old('format_id') == $format->id) selected @endif>{{ $format->nom}} - {{$format->taille}} cL </option>
+            <option value="{{ $format->id }}" @if( old('format_id') == $format->id) selected @endif>@if(isset($format->nom)){{ $format->nom }} -  @endif {{$format->taille}} cL </option>
             @endforeach
           </select>
           <label>Format</label>

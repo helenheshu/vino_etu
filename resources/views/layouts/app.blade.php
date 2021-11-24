@@ -30,6 +30,7 @@
 
         <nav class="nav-extended white z-depth-0">
             
+<<<<<<< HEAD
             <div class="nav-wrapper">
                 <a href="#" class="sidenav-trigger right" data-target="mobile-links"><i class="material-icons" style="font-size: 48px;"><span class=" couleur-noire  md-48">menu</span></i></a>
                 <ul class="right hide-on-med-and-down">
@@ -42,6 +43,8 @@
                     @endguest
                 </ul>
             </div>
+=======
+>>>>>>> cf7a6488da80e9395a65668d1a69488c8ce591ad
             <ul class="sidenav" id="mobile-links">
                
                 @guest
@@ -76,6 +79,18 @@
                     @endguest
                     </ul>
                 </div>
+            </div>
+            <div class="nav-wrapper">
+                <a href="#" class="sidenav-trigger right" data-target="mobile-links"><i class="material-icons" style="font-size: 50px;"><span class=" couleur-noire  md-48">menu</span></i></a>
+                <ul class="right hide-on-med-and-down">
+                    @guest
+                    <li><a href="{{ route('register') }}"><span class="black-text">S'inscrire</span></a></li>
+                    <li><a href="{{ route('login') }}"><span class="black-text">Se connecter</sapn></a></li>
+                    @else
+                    <li><a href="{{ route('logout') }}"><span class="black-text">Se déconnecter</span></a></li>
+                    <li><a href="{{ route('dashboard') }}"><i class="large material-icons"><span class="black-text">account_circle</span></i></a></li>
+                    @endguest
+                </ul>
             </div>
         </nav>
 
