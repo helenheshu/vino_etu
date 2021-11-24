@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     const trierCellier = (trierPar, response) => {
         if(trierPar == 'nom'){
-            response.sort((a, b) => (a.nom > b.nom) ? 1 : (b.nom > a.nom) ? -1 : 0)
+            response.sort((a, b) => (a.nom.toLowerCase() > b.nom.toLowerCase()) ? 1 : (b.nom.toLowerCase() > a.nom.toLowerCase()) ? -1 : 0)
         }else if(trierPar == 'pays'){
             response.sort((a, b) => (a.pays > b.pays) ? 1 : (b.pays > a.pays) ? -1 : 0)
         }else if(trierPar == 'taille'){
@@ -331,13 +331,15 @@ document.addEventListener("DOMContentLoaded", function () {
                                                                 </div>
                                                             </a>
                                                             <div class="infoBouteilleConteneur">
-                                                                <img class="image" src="${bouteilles[key].url_img}" alt="Image ${bouteilles[key].nom}">
-                                                                <div class="info">
-                                                                    <div>
-                                                                        <p>${bouteilles[key].pays ?? 'N/A'}</p>
-                                                                        <p>${bouteilles[key].type}</p>
-                                                                    </div>                
-                                                                    <p class="taille">${bouteilles[key].taille} cl</p>                 
+                                                                <div class="infoEtSaq">
+                                                                    <img class="image" src="${bouteilles[key].url_img}" alt="Image ${bouteilles[key].nom}">
+                                                                    <div class="info">
+                                                                        <div>
+                                                                            <p>${bouteilles[key].pays ?? 'N/A'}</p>
+                                                                            <p>${bouteilles[key].type}</p>
+                                                                        </div>
+                                                                        <p class="taille">${bouteilles[key].taille} cl</p>
+                                                                    </div>
                                                                 </div>
                                                                 ${saq}
                                                             </div>

@@ -81,6 +81,10 @@ textarea:focus-visible{
     padding-top: 25px;
 } 
 
+input[type=number]{
+  border-bottom-color: red;
+} 
+    
 .item-commentaire{
     display: flex;
     flex-direction: column;
@@ -118,6 +122,12 @@ textarea:focus-visible{
     text-align: center;
     margin-bottom: 0;
     padding:1px;
+}
+
+.form-modifier .form-modifier-item .select-wrapper {
+    margin-left: unset; 
+    padding-left: unset; 
+    padding-right: unset;
 }
 
 input[type=number]::-webkit-inner-spin-button, 
@@ -267,30 +277,6 @@ input:focus-visible{
     opacity: 50%;
 }
 
- div#social-links {
-    display: flex;
-    flex-direction: row;
-    margin-left: 0.64rem;
-    margin-right: 0.64rem;
-    justify-content: space-evenly;
-     /* max-width: 500px;  */
-} 
-
-div#social-links ul{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-div#social-links ul li {
-    display: inline-block; 
-    padding: 0.64rem;
-}          
-div#social-links ul li a {
-    /* padding-right: 0.64rem; */
-    margin: 1px;
-    font-size: 30px;
-    color:#343B41;
-}
 
 .prixSaq{
     padding-top: 0.512rem;
@@ -300,5 +286,4 @@ label .item-commentaire.millesime-info-fin .form{
     font-size: .8rem;
     color: #707070;
 }
-
 

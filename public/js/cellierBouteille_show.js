@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   M.Toast.dismissAll();
               });
           }
-
+        
         /**
      * Un select permettant de changer de cellier
      */
@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
     let btnMillesime = document.querySelector('[data-millesime]');
+    console.log(btnMillesime)
     let elMillesime = document.querySelector('[data-millesime]').dataset.millesime;
     
     sessionStorage.setItem('idCellier', idCellier);
@@ -102,16 +103,18 @@ document.addEventListener('DOMContentLoaded', function() {
      notes.forEach((note) => {
          note.addEventListener("change", (e) => {
          
-           
-             const millesime = document.querySelector('.millesime-item-selected').parentElement.dataset.jsBouton;
-             
-           
-             const note = document.querySelector("[data-rating]").dataset.rating;
- 
-             fetch(
-                 `/ajouterNote/${idCellier}/${idBouteille}/${millesime}/${note}`
-             ).catch((error) => console.log(error));
+           if(wrapper.classList.contains('hide')) {
+                const millesime = document.querySelector('.millesime-item-selected').parentElement.dataset.jsBouton;
+                
+            
+                const note = document.querySelector("[data-rating]").dataset.rating;
+    
+                fetch(
+                    `/ajouterNote/${idCellier}/${idBouteille}/${millesime}/${note}`
+                ).catch((error) => console.log(error));
+            }
          });
+         
      });
 
 
@@ -124,14 +127,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
         boutonMillesime[i].addEventListener("click", function(e) {
         e.preventDefault();
-        
+        wrapper.classList.add('hide');
+
+        for (let i = 0; i < inputs.length; i++){
+            inputs[i].readOnly = true;
+            inputs[i].classList.remove("input-active");
+            inputs[i].classList.add("input-fiche-cercle");
+            }
+            datepicker.disabled =  true;
          elMillesime = boutonMillesime[i].dataset.jsBouton;
+         infoForm.querySelector('#millesime').classList.remove('hide');
+         boutonModifier.classList.remove("non-active");
+         btnAjouterMillesime.classList.add('hide')
         btnMillesime = boutonMillesime[i];
         document.querySelectorAll('button').forEach(button => {
             button.classList.remove('millesime-item-selected');
         })
 
-        
+        messageMillesime.innerHTML = "";
         
 
         boutonMillesime[i].querySelector('button').classList.add('millesime-item-selected');
@@ -180,6 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         boutonModifier.classList.add("non-active");
         for (let i = 0; i < inputs.length; i++){
+                console.log(inputs[i])
                 inputs[i].readOnly = false;
                 inputs[i].classList.add("input-active");
                 if (inputs[i].classList.contains("input-fiche-cercle")){
@@ -211,8 +225,10 @@ document.addEventListener('DOMContentLoaded', function() {
         btnEffacerActive.classList.add("non-active");
         btnValideActive.classList.add("non-active");
         btnAnnuleActive.classList.add("non-active");
-        
+        wrapper.classList.add('hide');
 
+        infoForm.querySelector('#millesime').classList.remove('hide');
+        btnAjouterMillesime.classList.add('hide');
         for (let i = 0; i < inputs.length; i++){
             inputs[i].readOnly = true;
             inputs[i].classList.remove("input-active");
@@ -220,6 +236,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             datepicker.disabled =  true;
             btnMillesime.click();   
+
+            selectedMillesime.classList.add('millesime-item-selected');
+            messageMillesime.innerHTML = "";
     });
 
 
@@ -227,7 +246,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnValideActiveModal = document.querySelector('[data-js-validerModal]')
     btnValideActiveModal.addEventListener("click",function(e){
             e.preventDefault();
-            let annee = millesime.value;
+            let annee = millesime.value.trim();
              
             if(commentaire.value.trim()==""){
                 commentaire.value=" ";
@@ -235,9 +254,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if(isNaN(millesime.value)){
                 annee = 0;
-            }
+            }   
 
-            fetch(`/modifierCellierBouteille/${idCellier}/${idBouteille}/${annee}/${prix.value}/${quantite.value}/${date_achat.value}/${commentaire.value}/${garde_jusqua.value}`)
+            fetch(`/modifierCellierBouteille/${idCellier}/${idBouteille}/${annee}/${prix.value.trim().replaceAll('.', "~point~")}/${quantite.value}/${date_achat.value}/${commentaire.value}/${garde_jusqua.value}`)
             .then(() => {
                 commentaire.value = commentaire.value.trim()
             })
@@ -265,7 +284,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
          btnEffacerActiveModal.addEventListener("click",function(e){
             e.preventDefault();
-            console.log('click effacer');
 
 
             fetch(`/suprimerCellierBouteille/${idCellier}/${idBouteille}/${elMillesime}`)
@@ -288,6 +306,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             let valide = true;
             let prixRegex ="^[0-9]+(\.[0-9]{1,2})?$";
+            let quantiteRegex = /^[0-9]\d*$/;
             if(!prix.value.match(prixRegex)){
                 let messagePrix = "Format invalide";
                 document.getElementById("messagePrix").innerHTML = messagePrix;
@@ -302,7 +321,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 prix.classList.remove("champNonValide");
             }
 
-            if( quantite.value < 0 || quantite.value > 999) {
+            if(!quantite.value.match(quantiteRegex)){
+                let messageQuantite = "Format invalide";
+                document.getElementById("messageQuantite").innerHTML = messageQuantite;
+                valide = false;
+            }else if( quantite.value < 0 || quantite.value > 999) {
                 let messageQuantite = "Quantité entre 0 et 999";
                 quantite.classList.add("champNonValide");
                 document.getElementById("messageQuantite").innerHTML = messageQuantite;
@@ -345,13 +368,119 @@ document.addEventListener('DOMContentLoaded', function() {
                  console.log('change');
                  estValide(input);
                   if(!estValide(input)){
-                    btnValideActive.classList.add("boutonNonValide");
-                    btnValideActive.setAttribute("disabled","true");
+                      btnAjouterMillesime
+                      btnValideActive.classList.add("boutonNonValide");
+                      btnValideActive.setAttribute("disabled","true");
+                      btnAjouterMillesime.classList.add("boutonNonValide");
+                      btnAjouterMillesime.setAttribute("disabled","true");
                   }else{
                     btnValideActive.classList.remove("boutonNonValide");
                     btnValideActive.removeAttribute('disabled');
+                    if(validMillesime) {
+                        btnAjouterMillesime.classList.remove("boutonNonValide");
+                        btnAjouterMillesime.removeAttribute('disabled');
+                    }
                   }
                 
              });
          });
+
+         var selectMillesime = document.querySelector('[name="select-millesime"]');
+         M.FormSelect.init(selectMillesime);
+         const wrapper = document.querySelector('.form-modifier-item > .select-wrapper');
+        wrapper.classList.add('hide');
+        const ajouterMillesime = document.querySelector('[name="ajouterMillesime"]');
+        const btnAjouterMillesime = document.querySelector('[data-js-ajouter]')
+        let messageMillesime = document.querySelector('#messageMillesime');
+        let validMillesime = true;
+        const selectedMillesime = document.querySelector('.millesime-item-selected');
+        
+        ajouterMillesime.addEventListener('click', () => {
+            selectedMillesime.classList.remove('millesime-item-selected');
+            boutonMillesime.forEach(bouton => {
+                if(bouton.dataset.jsBouton == '0'){
+                    messageMillesime.innerHTML = "Millésime existant";
+                    validMillesime = false;
+                    btnAjouterMillesime.classList.add("boutonNonValide");
+                    btnAjouterMillesime.setAttribute("disabled","true");
+                }
+            })
+
+            infoForm.querySelectorAll('[data-value]').forEach(etoile => {
+                etoile.classList.remove('gl-active', 'gl-selected');
+            })
+             
+
+            boutonModifier.classList.add("non-active");
+            for (let i = 0; i < inputs.length; i++){
+                    inputs[i].readOnly = false;
+                    inputs[i].classList.add("input-active");
+                    if (inputs[i].classList.contains("input-fiche-cercle")){
+                        inputs[i].classList.remove("input-fiche-cercle");
+                    }
+            }
+            infoForm.querySelector('#millesime').classList.add('hide');
+            infoForm.querySelector('#prix').value=0;
+            infoForm.querySelector('#quantite').value=1;
+             infoForm.querySelector('#commentaire').value= '';
+             infoForm.querySelector('#date_achat').value= new Date().toISOString().slice(0, 10);
+             infoForm.querySelector('#garde_jusqua').value= '';
+      
+            datepicker.disabled = false;
+            wrapper.classList.remove('hide');
+            btnAjouterMillesime.classList.remove('hide');
+            btnValideActive.classList.add("non-active");
+            btnEffacerActive.classList.add('non-active');
+            btnAnnuleActive.classList.remove("non-active");
+            
+        })
+
+        btnAjouterMillesime.addEventListener('click', e => {
+            e.preventDefault();
+             
+            if(commentaire.value.trim()==""){
+                commentaire.value=" ";
+             }        
+            
+            wrapper.classList.add('hide');
+            btnAjouterMillesime.classList.add('hide');
+            infoForm.querySelector('#millesime').classList.remove('hide');
+
+            const note = document.querySelector("[data-rating]").dataset.rating
+            fetch(`/ajouterCellierBouteille/${idCellier}/${idBouteille}/${selectMillesime.value}/${note}/${prix.value.trim().replaceAll('.', "~point~")}/${quantite.value}/${date_achat.value}/${commentaire.value}/${garde_jusqua.value}`)
+            .then(() => {
+                commentaire.value = commentaire.value.trim()
+            })
+              .catch(error => console.log('Le fetch ne fonctionne toujours pas',error))
+
+            if(estValide()){
+
+                    for (let i = 0; i < inputs.length; i++){
+                        inputs[i].readOnly = true;
+                        inputs[i].classList.remove("input-active");
+                        inputs[i].classList.add("input-fiche-cercle");
+                    }
+
+                    boutonModifier.classList.remove("non-active");
+                    btnAnnuleActive.classList.add("non-active");
+                    btnValideActive.classList.add("non-active");
+                    btnEffacerActive.classList.add("non-active");
+            }
+        })
+
+        selectMillesime.addEventListener('change', () => {
+            
+            boutonMillesime.forEach(bouton => {
+                messageMillesime.innerHTML = "";
+                validMillesime = true;
+                btnAjouterMillesime.classList.remove("boutonNonValide");
+                btnAjouterMillesime.removeAttribute('disabled');
+                if(bouton.dataset.jsBouton == selectMillesime.value){
+                    messageMillesime.innerHTML = "Millésime existant."
+                    validMillesime = false;
+                    btnAjouterMillesime.classList.add("boutonNonValide");
+                    btnAjouterMillesime.setAttribute("disabled","true");
+                }
+            })
+        })
 });
