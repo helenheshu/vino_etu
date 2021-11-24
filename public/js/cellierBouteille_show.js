@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         wrapper.classList.add('hide');
         ajouterMillesime.removeAttribute('disabled');
-        
+
         for (let i = 0; i < inputs.length; i++){
             inputs[i].readOnly = true;
             inputs[i].classList.remove("input-active");
@@ -160,6 +160,10 @@ document.addEventListener('DOMContentLoaded', function() {
          elMillesime = boutonMillesime[i].dataset.jsBouton;
          infoForm.querySelector('#millesime').classList.remove('hide');
          boutonModifier.classList.remove("non-active");
+         btnEffacerActive.classList.add("non-active");
+         btnAnnuleActive.classList.add("non-active");
+         btnValideActive.classList.add("non-active");
+         btnAnnuleActive.classList.add("non-active")
          btnAjouterMillesime.classList.add('hide')
         btnMillesime = boutonMillesime[i];
         document.querySelectorAll('button').forEach(button => {
