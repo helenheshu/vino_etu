@@ -192,13 +192,13 @@
             @empty
         <div class="list-empty">
             <p>Vous n'avez pour l'instant aucun vin.</p>
-            
+            </div>
+        <div class="conteneurManqueVin"  ><img class="logoManqueDeVin" src="{{asset('assets/icon/manqueDeVin.svg')}}" alt="logo manque de vin"></a></div>
+    </div>
         </div>
             
         @endforelse
-    </div>
-        <div class="conteneurManqueVin"  ><img class="logoManqueDeVin" src="{{asset('assets/icon/manqueDeVin.svg')}}" alt="logo manque de vin"></a></div>
-    </div>
+    
 
 
 
