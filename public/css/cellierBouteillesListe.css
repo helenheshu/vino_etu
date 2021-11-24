@@ -1,7 +1,7 @@
 .cellier {
     text-align: center;
-    padding-right: 0.64rem;
-    padding-left: 0.64rem;
+    /* padding-right: 0.64rem; */
+    /* padding-left: 0.64rem; */
     font-size: 1.25rem;
     font-weight: 700;
     color: #7A5958;
@@ -38,10 +38,10 @@
 
 .articleVin {
     border: 2px solid;
+    border-radius: 3px;
     border-color: #7A5958;
     display: flex;
     flex-direction: column;
-    
 }
 
 .underline{
@@ -97,8 +97,13 @@
 .bouteilleSAQConteneur {
     display: flex;
     gap: 0.64rem;
-    padding: 1rem;
+    margin: 0.64rem; 
     align-self: flex-start;
+    /* background-color: #AC9678; */
+    width: 56px;
+    height: 56px;
+    justify-content: center;
+    align-items:center;
 }
 
 .infoEtSaq{
@@ -231,11 +236,19 @@ color: #343B41;
 
 .bouton-ajout-vin-conteneur {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin-top: 1rem;
     margin-left: 0.64rem;
     margin-right: 0.64rem;
     margin-bottom: 1rem;
+    padding: 0.64rem 0;
+    /* background-color: #343b413d; */
+    border-radius: 3px;
+    border-style: solid;
+    border-color:#778D83 ;
+    border-width: 2px;
+    
+
 }
 
 .margin-right-1 {
@@ -254,6 +267,7 @@ color: #343B41;
     border-color: #707070; */
     border-radius: 30px;
     color: #343B41;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
     font-weight: 700;
     background-color: #99AAA2;
     transition: all 0.2s ease;
@@ -288,9 +302,10 @@ color: #343B41;
 }
 
 .cellier .select-wrapper input.select-dropdown {
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 700;
     color: #7A5958;
+    padding: 0.41rem 0;
     font-family: 'Raleway', sans-serif;
     text-align: center;
     margin: 0;
@@ -313,6 +328,7 @@ color: #343B41;
     color: white;
     font-family: 'Raleway', sans-serif;
     text-align: center;
+    padding: 0.41rem 0;
     margin: 0;
     height: 1.5em;
     text-overflow: ellipsis;
@@ -342,4 +358,15 @@ color: #343B41;
 
 .formatPadding{
     padding-top: 0.512rem;
+}
+
+
+.conteneurManqueVin{
+    display: flex;
+    justify-content: center;
+}
+
+ .logoManqueDeVin{
+    width: 100px;
+    height: 100px;
 }

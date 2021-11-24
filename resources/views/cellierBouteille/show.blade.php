@@ -161,9 +161,10 @@
                 <div class="bouton">
                     <button class="bouton-fiche valider hide"  data-js-ajouter>Ajouter</button>
                     <button class="bouton-fiche valider"  data-js-modifier>Modifier</button>
-                    <button class="bouton-fiche non-active" data-js-btnAnnuler>Annuler</button>
+                    
                     <button  class="bouton-fiche valider non-active modal-trigger" href="#modal-valider" data-js-btnValider >Valider</button>
-                    <button class="bouton-fiche effacer non-active modal-trigger" href="#modal-suprimer"  data-js-btnEffacer >Supprimer</button>
+                    <button class="bouton-fiche non-active" data-js-btnAnnuler>Annuler</button>
+                    <button class="bouton-fiche effacer non-active modal-trigger" href="#modal-suprimer"  data-js-btnEffacer >Suprimer</button>
                 </div>
 
                 <!-- Modal bouton suprimer -->

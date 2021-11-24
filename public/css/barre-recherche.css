@@ -9,7 +9,7 @@
 	height: 50px;
 	line-height: 50px;
 	text-align: center;
-	color: black;
+	color: #343B41;
 	text-decoration: none;
 	cursor: pointer;
 	-moz-user-select: none;
@@ -24,14 +24,13 @@
 	-moz-transition-duration: 0.4s;
 	-webkit-transition-duration: 0.4s;
 	-o-transition-duration: 0.4s;
-	background-color: white;
-	color: black;
+	background-color: #343B41;
+	color: white;
 }
 
 .search-container {
 	position: relative;
 	display: inline-block;
-
 	height: 50px;
 	width: 50px;
 	vertical-align: bottom;
@@ -53,7 +52,7 @@
 	margin: 0;
 	padding: 0;
     height: 50px;
-    border-radius: initial;
+    border-radius: 3px;
 }
 
 
