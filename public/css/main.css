@@ -189,9 +189,11 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 }
 
 .btn-annuler {
-	border: 1px solid #99AAA2;
+	/* border: 1px solid #99AAA2;
     background-color: white;
-	color: #343B41;
+	color: #343B41; */
+    background-color: #E0CFA0;
+    color: #7A5958;
 }
 
 .btn-ajouter {
@@ -200,8 +202,10 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 }
 
 .btn-modifier {
-	background-color: #E5CB85;
-    color: #774444;
+	/* background-color: #E5CB85;
+    color: #774444; */
+    background-color: #99AAA2;
+    color: #343B41;
 }
 
 .btn-modifier:hover {
@@ -211,9 +215,12 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 }
 
 .btn-supprimer {
+    /* color: white;
+    background-color: #774444; */
+    background-color: #7A5958;
     color: white;
-    background-color: #774444;
 }
+
 
 .btn-supprimer:hover {
     color: #774444;

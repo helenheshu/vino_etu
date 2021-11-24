@@ -162,8 +162,8 @@ input:focus-visible{
 
 .bouton-fiche{
     text-align: center;
-    padding-top: 1.563rem;
-    padding-bottom: 1.563rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     font-weight: 700;
     font-size: 1.953rem;
     background-color: #E0CFA0;

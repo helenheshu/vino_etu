@@ -39,14 +39,13 @@
         </div>
         <div class="btn-space">
         <a class="btn waves-effect waves-light button btn-annuler" href="{{route('cellier')}}">Annuler</a>
-            <button class="btn waves-effect waves-light button btn-modifier" type="submit">Modifier</button>
+        <button class="btn waves-effect waves-light button btn-modifier" type="submit">Modifier</button>
             <!-- <a class="btn waves-effect waves-light button btn-supprimer " href="#"><i class="material-icons">delete</i></a> -->
-
         </div>
     </form>
 </div>
 <div class="btn-sup-container">
-    <a class="btn waves-effect waves-light button btn-supprimer modal-trigger" href="#"><i class="material-icons">delete</i></a>
+    <!-- <a class="btn waves-effect waves-light button btn-supprimer modal-trigger" href="#"><i class="material-icons">delete</i></a> -->
     <!-- Modal Structure -->
     <div id="{{$cellier->id}}" class="modal">
         <div class="modal-content">
