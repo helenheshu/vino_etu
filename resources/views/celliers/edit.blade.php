@@ -38,8 +38,21 @@
 
         </div>
         <div class="btn-space">
-        <a class="btn waves-effect waves-light button btn-annuler" href="{{route('cellier')}}">Annuler</a>
-            <button class="btn waves-effect waves-light button btn-modifier" type="submit">Modifier</button>
+            <a class="btn waves-effect waves-light button btn-annuler" href="{{route('cellier')}}">Annuler</a>
+            <a class="btn waves-effect waves-light button btn-modifier modal-trigger" href="#modal-modifier">Modifier</a>
+            <!-- Modal Structure modal-modifier-->
+            <div id="modal-modifier" class="modal">
+                <div class="modal-content">
+                    <h4>Modifier ce cellier</h4>
+                    <p>Êtes-vous certain de vouloir le cellier <span>{{ ucfirst($cellier->nom) }}</span>?</p>
+                </div>
+                <div class="modal-footer">
+                
+                    <button class="waves-effect waves-green btn-flat" type="submit">Modifier</button>
+                                
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Annuler</a>
+                </div>
+            </div>
             <!-- <a class="btn waves-effect waves-light button btn-supprimer " href="#"><i class="material-icons">delete</i></a> -->
 
         </div>

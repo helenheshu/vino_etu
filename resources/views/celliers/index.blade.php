@@ -5,6 +5,15 @@
     onload="this.media='all'" />
 <script src="{{asset('js/cellier_index.js')}}" defer></script>
 
+@if(Session::get('deleteCellier'))
+<span class="deleteCellier"></span>
+@endif
+
+@if(Session::get('modifieCellier'))
+<span class="modifieCellier"></span>
+@endif
+
+
 @if(isset(Auth::user()->id))
 
 <div class="titre">
