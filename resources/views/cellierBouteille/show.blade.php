@@ -72,7 +72,10 @@
         <div class="nom-Millesime-Fiche">
             <h2>Millésimes</h2>
             <a name="ajouterMillesime" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a>
+            <a class="waves-effect waves-light  modifier valider" data-js-modifier><i class="material-icons">edit</i></a>
+            <a class="waves-effect waves-light  supprimer modal-trigger effacer"  href="#modal-suprimer"  data-js-btnEffacer><i class="material-icons">delete</i></a>
             
+            <!-- <button class="bouton-fiche effacer non-active modal-trigger" href="#modal-suprimer"  data-js-btnEffacer >Suprimer</button> -->
         </div>
         <div class="millesime-conteneur">
             @foreach($cellierBouteilleMillesime as $cellierBouteille)
@@ -161,10 +164,6 @@
                                 <label for="date_achat">Date d'achat :</label>
                                 <input type="text" name="date_achat" disabled tabindex="-1" autocomplete="off" class="datepicker" id="date_achat" data-js-input class="" value="{!! $cellierBouteille->date_achat !!}"/>
                             </div>
-                            <div>
-                                <a class="waves-effect waves-light button modifier valider" data-js-modifie><i class="material-icons">edit</i></a>
-                                <a class="waves-effect waves-light button supprimer modal-trigger effacer" href="#{{$cellier->id}}"><i class="material-icons">delete</i></a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -179,7 +178,7 @@
                     
                     <button  class="bouton-fiche valider non-active modal-trigger" href="#modal-valider" data-js-btnValider >Valider</button>
                     <button class="bouton-fiche non-active" data-js-btnAnnuler>Annuler</button>
-                    <button class="bouton-fiche effacer non-active modal-trigger" href="#modal-suprimer"  data-js-btnEffacer >Suprimer</button>
+                    <!-- <button class="bouton-fiche effacer non-active modal-trigger" href="#modal-suprimer"  data-js-btnEffacer >Suprimer</button> -->
                 </div>
 
                 <!-- Modal bouton suprimer -->
