@@ -33,8 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     return response.json();
                 })
                 .then((response) => {
-                    quantitePrecedent.innerHTML =
-                        parseInt(quantitePrecedent.innerHTML) + response;
+                    
+                    quantitePrecedent.innerHTML = parseInt(quantitePrecedent.innerHTML) + response;
                 })
                 .catch((error) => console.log(error));
         });
@@ -54,9 +54,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     return response.json();
                 })
                 .then((response) => {
-                    if (parseInt(quantitePrecedent.innerHTML) + response >= 0)
-                        quantitePrecedent.innerHTML =
-                            parseInt(quantitePrecedent.innerHTML) + response;
+                    if (parseInt(quantitePrecedent.innerHTML) + response >= 0){
+                      
+                        quantitePrecedent.innerHTML = parseInt(quantitePrecedent.innerHTML) + response;
+                    }     
                 })
                 .catch((error) => console.log(error));
         });
@@ -88,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
     notes.forEach((note) => {
         note.addEventListener("change", (e) => {
             const idBouteille = e.target.dataset.idBouteille;
-            const millesime = e.target.dataset.millesime;
+            let millesime = e.target.dataset.millesime;
             const idCellier = location.pathname.split("/")[2];
             const uneNote = note.closest('span').querySelector('[data-rating]').dataset.rating;
             
@@ -97,6 +98,8 @@ document.addEventListener("DOMContentLoaded", function () {
             ).catch((error) => console.log(error));
         });
     });
+
+    
    }
    
    init();
@@ -222,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const redessinerListeVins =  () => {
-        chemin = `/rechercheDansCellier/${barreRecherche.value.trim().replaceAll('.', "~point~")}/${idCellier}`;
+        chemin = `/rechercheDansCellier/${barreRecherche.value.trim().replaceAll('.', "~point~").replaceAll('#', "~sharp~").replaceAll('%', "~pourcent~")}/${idCellier}`;
         clearTimeout(timer);
         timer = setTimeout(() => {
             if(barreRecherche.value.trim() == '')  {
@@ -377,5 +380,24 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         
     })
-});
+    var isScrolling;
+    document.addEventListener('scroll', ()=> {
+        let bouteilles = document.querySelectorAll('.infoCellierBouteille');
+        bouteilles.forEach(bouteille => {
+            bouteille.classList.add('disabled');
+        })
+        // Clear our timeout throughout the scroll
+	window.clearTimeout( isScrolling );
+
+	// Set a timeout to run after scrolling ends
+	isScrolling = setTimeout(function() {
+
+        bouteilles.forEach(bouteille => {
+            bouteille.classList.remove('disabled');
+        })
+
+	}, 66);
+        
+    })
+}, false);
 

@@ -1,9 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<link href="{{asset('css/celliers.css')}}" rel="stylesheet" media="print"
-    onload="this.media='all'" />
-<script src="{{asset('js/cellier_index.js')}}" defer></script>
+<link href="{{asset('css/celliers.css')}}" rel="stylesheet"/>
 
 @if(Session::get('deleteCellier'))
 <span class="deleteCellier"></span>
@@ -79,5 +77,5 @@
 
 @endif
 
-
+<script src="{{asset('js/cellier_index.js')}}" defer></script>
 @endsection

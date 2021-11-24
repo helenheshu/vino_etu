@@ -5,13 +5,16 @@
 <span class="modifieBouteille"></span>
 @endif
 
+<link href="{{asset('css/liste-usager.css')}}" rel="stylesheet"  />
+<link href="{{asset('css/modifierCatalogue.css')}}" rel="stylesheet"  />
+
 @if(Session::get('deleteBouteille'))
 <span class="deleteBouteille"></span>
 @endif
 
 <h1 class="titre">Modification de bouteilles</h1>
 
-<nav class="white ">
+<nav class="white search">
     <div class="nav-wrapper">
       <form>
         <div class="input-field">
@@ -62,7 +65,3 @@
 @endsection
 
 <script src="{{asset('js/modifierCatalogue.js')}}" defer></script>
-<link href="{{asset('css/liste-usager.css')}}" rel="stylesheet" media="print"
-    onload="this.media='all'" />
-<link href="{{asset('css/modifierCatalogue.css')}}" rel="stylesheet" media="print"
-    onload="this.media='all'" />

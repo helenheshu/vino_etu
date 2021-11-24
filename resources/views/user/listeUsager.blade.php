@@ -10,7 +10,7 @@
 
 <h1 class="titre">Liste d'usager</h1>
 
-<nav class="white margin-bottom">
+<nav class="white margin-bottom search">
     <div class="nav-wrapper">
       <form>
         <div class="input-field">
