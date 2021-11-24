@@ -124,6 +124,15 @@ input[type=number]{
     padding:1px;
 }
 
+.select-wrapper input.select-dropdown.champNonValide:focus,
+.select-wrapper input.select-dropdown.champNonValide,
+input[type=number].champNonValide:not(.browser-default):focus:not([readonly]),
+.form-modifier-item label ~ input.champNonValide {
+    border-bottom:  2px dashed red;
+    background-color: #cbd0d488;
+    box-shadow: unset;
+}
+
 .form-modifier .form-modifier-item .select-wrapper {
     margin-left: unset; 
     padding-left: unset; 

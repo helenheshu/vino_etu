@@ -363,6 +363,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if(!prix.value.match(prixRegex)){
                 let messagePrix = "Format invalide";
                 document.getElementById("messagePrix").innerHTML = messagePrix;
+                prix.classList.add("champNonValide");
                 valide = false;
             }else if( prix.value < 0 || prix.value > 100000){
                 let messagePrix = "Prix de 0 à 100 000";
@@ -377,6 +378,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if(!quantite.value.match(quantiteRegex)){
                 let messageQuantite = "Format invalide";
                 document.getElementById("messageQuantite").innerHTML = messageQuantite;
+                quantite.classList.add("champNonValide");
                 valide = false;
             }else if( quantite.value < 0 || quantite.value > 999) {
                 let messageQuantite = "Quantité entre 0 et 999";
@@ -447,6 +449,7 @@ document.addEventListener('DOMContentLoaded', function() {
             boutonMillesime.forEach(bouton => {
                 if(bouton.dataset.jsBouton == '0'){
                     messageMillesime.innerHTML = "Millésime existant";
+                    wrapper.querySelector('.select-dropdown').classList.add('champNonValide');
                     validMillesime = false;
                     btnAjouterMillesime.classList.add("boutonNonValide");
                     btnAjouterMillesime.setAttribute("disabled","true");
@@ -520,6 +523,7 @@ document.addEventListener('DOMContentLoaded', function() {
         selectMillesime.addEventListener('change', () => {
             messageMillesime.innerHTML = "";
             validMillesime = true;
+            wrapper.querySelector('.select-dropdown').classList.remove('champNonValide');
             btnAjouterMillesime.classList.remove("boutonNonValide");
             btnAjouterMillesime.removeAttribute('disabled');
             boutonMillesime.forEach(bouton => {
@@ -527,6 +531,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if(bouton.dataset.jsBouton == selectMillesime.value){
                     messageMillesime.innerHTML = "Millésime existant."
                     validMillesime = false;
+                    wrapper.querySelector('.select-dropdown').classList.add('champNonValide');
                     btnAjouterMillesime.classList.add("boutonNonValide");
                     btnAjouterMillesime.setAttribute("disabled","true");
                 }
