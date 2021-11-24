@@ -7,9 +7,20 @@ document.addEventListener('DOMContentLoaded', function() {
     let messageMillesime = document.querySelector('#messageMillesime');
     let validMillesime = true;
     let selectedMillesime = document.querySelector('.millesime-item-selected');
-   wrapper.classList.add('hide');
+    wrapper.classList.add('hide');
 
+    if(localStorage.getItem('supprime') != null) {
+        localStorage.clear();
+            var toastHTML =
+            '<span>Une bouteille a été supprimée</span><button class="btn-flat toast-action">Fermer</button>';
+        M.toast({ html: toastHTML, displayLength: 5000 });
 
+        const message = document.querySelector(".toast-action");
+
+        message.addEventListener("click", () => {
+            M.Toast.dismissAll();
+        });
+    }
          /**
      * Message Dialogue si une bouteille a été modifiée
      */
@@ -199,6 +210,16 @@ document.addEventListener('DOMContentLoaded', function() {
           if(localStorage.getItem('millesime') == boutonMillesime[i].dataset.jsBouton){
               boutonMillesime[i].click();
               localStorage.clear();
+
+              var toastHTML =
+              '<span>Une bouteille a été ajoutée</span><button class="btn-flat toast-action">Fermer</button>';
+          M.toast({ html: toastHTML, displayLength: 5000 });
+  
+          const message = document.querySelector(".toast-action");
+  
+          message.addEventListener("click", () => {
+              M.Toast.dismissAll();
+          });
           }
       }
     }
@@ -292,6 +313,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     btnAnnuleActive.classList.add("non-active");
                     btnValideActive.classList.add("non-active");
                     btnEffacerActive.classList.add("non-active");
+
+                    var toastHTML =
+                    '<span>Une bouteille a été modifié</span><button class="btn-flat toast-action">Fermer</button>';
+                M.toast({ html: toastHTML, displayLength: 5000 });
+        
+                const message = document.querySelector(".toast-action");
+        
+                message.addEventListener("click", () => {
+                    M.Toast.dismissAll();
+                });
             }
         });
 
@@ -310,7 +341,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 return (response.json())
             })
             .then(response => {
-
+                if(boutonMillesime.length > 1) {
+                    localStorage.setItem("supprime", "supprime");
+                }else {
+                    localStorage.setItem("aucunMillesime", "aucunMillesime");
+                }
                 location.href=response;
     
             }).catch(error => console.log(error))
