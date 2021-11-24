@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
          elMillesime = boutonMillesime[i].dataset.jsBouton;
          infoForm.querySelector('#millesime').classList.remove('hide');
          boutonModifier.classList.remove("non-active");
-         btnEffacerActive.classList.add("non-active");
+        //  btnEffacerActive.classList.add("non-active");
          btnAnnuleActive.classList.add("non-active");
          btnValideActive.classList.add("non-active");
          btnAnnuleActive.classList.add("non-active")
@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
     boutonModifier.addEventListener("click", function(e) {
         e.preventDefault();
 
-        boutonModifier.classList.add("non-active");
+        // boutonModifier.classList.add("non-active");
         for (let i = 0; i < inputs.length; i++){
 
                 inputs[i].readOnly = false;
@@ -265,8 +265,8 @@ document.addEventListener('DOMContentLoaded', function() {
         infoForm.reset();
         
         estValide();
-        boutonModifier.classList.remove("non-active");
-        btnEffacerActive.classList.add("non-active");
+        // boutonModifier.classList.remove("non-active");
+        // btnEffacerActive.classList.add("non-active");
         btnValideActive.classList.add("non-active");
         btnAnnuleActive.classList.add("non-active");
         wrapper.classList.add('hide');
@@ -315,10 +315,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         inputs[i].classList.add("input-fiche-cercle");
                     }
 
-                    boutonModifier.classList.remove("non-active");
+                    // boutonModifier.classList.remove("non-active");
                     btnAnnuleActive.classList.add("non-active");
                     btnValideActive.classList.add("non-active");
-                    btnEffacerActive.classList.add("non-active");
+                    // btnEffacerActive.classList.add("non-active");
                     infoForm.querySelector('#quantite').value = parseInt(infoForm.querySelector('#quantite').value, 10);
                     infoForm.querySelector('#prix').value = parseFloat(infoForm.querySelector('#prix').value.replace(/^0+/, '')).toFixed(2);
                     var toastHTML =
@@ -469,7 +469,8 @@ document.addEventListener('DOMContentLoaded', function() {
             })
              
 
-            boutonModifier.classList.add("non-active");
+         
+             boutonModifier.setAttribute("disabled","true");
             for (let i = 0; i < inputs.length; i++){
                     inputs[i].readOnly = false;
                     inputs[i].classList.add("input-active");
@@ -487,8 +488,8 @@ document.addEventListener('DOMContentLoaded', function() {
             datepicker.disabled = false;
             wrapper.classList.remove('hide');
             btnAjouterMillesime.classList.remove('hide');
-            btnValideActive.classList.add("non-active");
-            btnEffacerActive.classList.add('non-active');
+            // btnValideActive.classList.add("non-active");
+            btnEffacerActive.setAttribute("disabled","true");
             btnAnnuleActive.classList.remove("non-active");
            
         })
