@@ -44,7 +44,7 @@
             <div id="modal-modifier" class="modal">
                 <div class="modal-content">
                     <h4>Modifier ce cellier</h4>
-                    <p>Êtes-vous certain de vouloir le cellier <span>{{ ucfirst($cellier->nom) }}</span>?</p>
+                    <p>Êtes-vous certain de vouloir modifier le cellier <span>{{ ucfirst($cellier->nom) }}</span>?</p>
                 </div>
                 <div class="modal-footer">
                 
@@ -63,7 +63,7 @@
     <div id="{{$cellier->id}}" class="modal">
         <div class="modal-content">
             <h4>Supprimer ce cellier</h4>
-            <p>Êtes-vous certain de vouloir le cellier <span>{{ ucfirst($cellier->nom) }}</span>? Tous les bouteilles dans le cellier seront supprimées aussi.</p>
+            <p>Êtes-vous certain de vouloir supprimer le cellier <span>{{ ucfirst($cellier->nom) }}</span>? Tous les bouteilles dans le cellier seront supprimées aussi.</p>
         </div>
         <div class="modal-footer">
         <form action="{{ route('cellier.destroy', $cellier->id)}}" method="POST">
