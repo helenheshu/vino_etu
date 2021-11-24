@@ -30,8 +30,11 @@
 <div id="body_container">
     <header class="flex-row padding-1rem z-depth-1 nav-padding">
             <!-- Voir la navigation !!! -->
+            @if(session('user')!== null && session('user')->admin === 1)
+            <a href="{{ route('importerBouteille') }}" class="logo-lien"><img class="logo" src="{{asset('assets/logo/vino-logo-v2.svg')}}" alt="logo InVino"></a>
+            @else
         <a href="{{ route('cellier') }}" class="logo-lien"><img class="logo" src="{{asset('assets/logo/vino-logo-v2.svg')}}" alt="logo InVino"></a>
-
+        @endif
         <nav class="nav-extended white z-depth-0">
             
             <ul class="sidenav" id="mobile-links">
