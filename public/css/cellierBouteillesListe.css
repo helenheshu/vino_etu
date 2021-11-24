@@ -359,3 +359,14 @@ color: #343B41;
 .formatPadding{
     padding-top: 0.512rem;
 }
+
+
+.conteneurManqueVin{
+    display: flex;
+    justify-content: center;
+}
+
+ .logoManqueDeVin{
+    width: 100px;
+    height: 100px;
+}
