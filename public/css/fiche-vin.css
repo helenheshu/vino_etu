@@ -28,7 +28,7 @@
     flex-wrap: wrap;
     row-gap: 0.64rem;
     column-gap: 0.64rem;
-    padding-left:0.64rem;
+    padding:0.64rem;
 }
 
 .millesime-item{
@@ -259,6 +259,31 @@ input:focus-visible{
     justify-content: space-between;
 }
 
+.millesime-conteneur-encadre{
+    border-style: solid;
+    border-color:#CDCED1;
+    border-radius: 3px;
+    padding-bottom: 0.64rem;
+    margin: 0.64rem;
+}
+
+.nom-Millesime-Fiche {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.64rem;
+    color: white;
+    background-color: #CDCED1;
+    transition: all 0.3s ease;
+}
+
+.nom-Millesime-Fiche>h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #343B41;
+}
+
+
 
 /**** infographie, texture, police etc....***/
 
@@ -296,3 +321,6 @@ label .item-commentaire.millesime-info-fin .form{
     color: #707070;
 }
 
+.fiche-btn-mod-effacer{
+    display: flex;
+}
