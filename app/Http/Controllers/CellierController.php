@@ -55,7 +55,7 @@ class CellierController extends Controller
         ]);
 
         $post = Cellier::create($request->all());
-        return redirect('cellier/' . $post->id);
+        return redirect('cellier/' . $post->id)->withInput()->with("nouvelleCellier", "nouvelle cellier ajoutée");
     }
 
     /**
@@ -103,7 +103,7 @@ class CellierController extends Controller
             'nom' => $request->nom,
             'localisation' => $request->localisation,
         ]);
-        return redirect('/');
+        return redirect('/cellier')->withInput()->with("modifieCellier", "un cellier modifiée");
     }
 
     /**
@@ -116,7 +116,7 @@ class CellierController extends Controller
     {
         $cellier->delete();
 
-        return redirect('/');
+        return redirect('/cellier')->withInput()->with('deleteCellier', "un cellier supprimé");
     }
 
     public function rechercheDansCellier($motCle, $idCellier) {
