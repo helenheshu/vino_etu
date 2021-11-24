@@ -13,6 +13,10 @@
     <meta name="author" content="" />
 
     <title>In Vino Veritas</title>
+    
+    <link rel="stylesheet" href="{{asset('css/layout.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/boutons.css')}}"/>
+
     <link rel="icon" href="{{asset('assets/logo/vino-logo-v2.svg') }}">
     <!-- Polices  -->
 
@@ -47,10 +51,9 @@
                     <li><a href="{{ route('logout') }}"><span class="black-text">Se déconnecter</span></a></li>
                 @endguest
             </ul>
-            <div class="nav-content row white">
-                <div class="col s6">
+            <div class="nav-content white">
+                
                     <ul class="tabs tabs-transparent hide-on-med-and-down">
-                   
                     @guest
                     @else
                     @if( session('user')->admin == 1)
@@ -63,7 +66,7 @@
                     @endif
                     @endguest
                     </ul>
-                </div>
+                
             </div>
             <div class="nav-wrapper">
                 <a href="#" class="sidenav-trigger right" data-target="mobile-links"><i class="material-icons" style="font-size: 50px;"><span class=" couleur-noire  md-48">menu</span></i></a>
@@ -142,6 +145,7 @@
         rel="stylesheet"
         type="text/css"
     />
+    
     <link href="{{asset('css/footer-nav.css')}}" rel="stylesheet" />
     <link  rel="stylesheet" href="{{asset('css/materialize.min.css')}}" >
     <link href="{{asset('css/main.css')}}" rel="stylesheet"  />
