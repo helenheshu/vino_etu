@@ -1,0 +1,49 @@
+/*Nav*/
+
+.logo-lien {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 3.815rem;
+    height: 3.815rem;
+}
+
+nav .sidenav-trigger{
+    margin: 0;
+}
+
+nav {
+    align-self: center;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+.nav-padding {
+    padding: 0.64rem;
+}
+
+.nav-extended.white {
+    align-self: stretch;
+display: flex;
+align-items: stretch;
+justify-content: space-between;
+}
+
+.nav-content.white {
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-content.white *{
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-content.white span{
+align-self: center;
+}
+/* .nav-content.row {
+margin: unset;
+} */

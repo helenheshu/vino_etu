@@ -8,8 +8,8 @@
     color: white;
     font-size: 1.25rem;
     font-weight: 700;
-    padding-right: 0.64rem;
-    padding-left: 0.64rem;
+    /* padding-right: 0.64rem;
+    padding-left: 0.64rem; */
 }
 
 
@@ -181,8 +181,8 @@ input:focus-visible{
 
 .bouton-fiche{
     text-align: center;
-    padding-top: 1.563rem;
-    padding-bottom: 1.563rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     font-weight: 700;
     font-size: 1.953rem;
     background-color: #E0CFA0;
