@@ -63,12 +63,12 @@ img {
   
 }
 
-.logo{
+/* .logo{
     width: 48.83px;
     height: 48.83px;
     margin-top: 0.64rem;
     margin-bottom: 0.64rem;
-}
+} */
 
 .input-field .helper-text.erreur {
 	color: #F44336;
@@ -96,14 +96,21 @@ footer{
 }
 
 
-.flex-row {
+/* .flex-row {
 	display: flex;
 	flex-direction: row;
 	align-items: start;
     /* padding-top:0.64rem; */
-    padding-left: 0.64rem;
-    padding-right:0.64rem;
+    /* padding-left: 0.64rem;
+    padding-right:0.64rem; */
+
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
+
 
 .flex-box {
 	margin-left: auto;
@@ -131,17 +138,35 @@ footer{
     width: 100%;
 }
 
-    /*Nav*/
+/*Nav*/
 
-    nav .sidenav-trigger{
-        margin: 0;
-    }
+.logo-lien {
+    display: flex;
+    align-items: center;
+}
 
-    nav {
-        align-self: center;
-        display: flex;
-        justify-content: flex-end;
-    }
+.logo {
+    width: 3.815rem;
+    height: 3.815rem;
+}
+
+nav .sidenav-trigger{
+    margin: 0;
+}
+
+nav {
+    align-self: center;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-padding{
+    padding: 0.64rem;
+}
+
+
+
+
 
 
   /* Materialize css */
@@ -360,6 +385,5 @@ input[type=number] {
 
 .couleur-noire{
     color:#343B41;
-    font-size: 40px;
 }
 

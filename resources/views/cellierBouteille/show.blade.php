@@ -163,12 +163,8 @@
                     <button class="bouton-fiche valider"  data-js-modifier>Modifier</button>
                     
                     <button  class="bouton-fiche valider non-active modal-trigger" href="#modal-valider" data-js-btnValider >Valider</button>
-<<<<<<< HEAD
                     <button class="bouton-fiche non-active" data-js-btnAnnuler>Annuler</button>
                     <button class="bouton-fiche effacer non-active modal-trigger" href="#modal-suprimer"  data-js-btnEffacer >Suprimer</button>
-=======
-                    <button class="bouton-fiche effacer non-active modal-trigger" href="#modal-suprimer"  data-js-btnEffacer >Supprimer</button>
->>>>>>> cf7a6488da80e9395a65668d1a69488c8ce591ad
                 </div>
 
                 <!-- Modal bouton suprimer -->
