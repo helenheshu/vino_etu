@@ -149,6 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
         boutonMillesime[i].addEventListener("click", function(e) {
         e.preventDefault();
         wrapper.classList.add('hide');
+        ajouterMillesime.removeAttribute('disabled');
 
         for (let i = 0; i < inputs.length; i++){
             inputs[i].readOnly = true;
@@ -159,6 +160,10 @@ document.addEventListener('DOMContentLoaded', function() {
          elMillesime = boutonMillesime[i].dataset.jsBouton;
          infoForm.querySelector('#millesime').classList.remove('hide');
          boutonModifier.classList.remove("non-active");
+         btnEffacerActive.classList.add("non-active");
+         btnAnnuleActive.classList.add("non-active");
+         btnValideActive.classList.add("non-active");
+         btnAnnuleActive.classList.add("non-active")
          btnAjouterMillesime.classList.add('hide')
         btnMillesime = boutonMillesime[i];
         document.querySelectorAll('button').forEach(button => {
@@ -265,6 +270,7 @@ document.addEventListener('DOMContentLoaded', function() {
         btnValideActive.classList.add("non-active");
         btnAnnuleActive.classList.add("non-active");
         wrapper.classList.add('hide');
+        ajouterMillesime.removeAttribute('disabled');
 
         infoForm.querySelector('#millesime').classList.remove('hide');
         btnAjouterMillesime.classList.add('hide');
@@ -313,7 +319,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     btnAnnuleActive.classList.add("non-active");
                     btnValideActive.classList.add("non-active");
                     btnEffacerActive.classList.add("non-active");
-
+                    infoForm.querySelector('#quantite').value = parseInt(infoForm.querySelector('#quantite').value, 10);
+                    infoForm.querySelector('#prix').value = parseFloat(infoForm.querySelector('#prix').value.replace(/^0+/, '')).toFixed(2);
                     var toastHTML =
                     '<span>Une bouteille a été modifié</span><button class="btn-flat toast-action">Fermer</button>';
                 M.toast({ html: toastHTML, displayLength: 5000 });
@@ -444,6 +451,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
         
         ajouterMillesime.addEventListener('click', () => {
+            ajouterMillesime.setAttribute("disabled","true");
             selectedMillesime = document.querySelector('.millesime-item-selected');
             selectedMillesime.classList.remove('millesime-item-selected');
             boutonMillesime.forEach(bouton => {
@@ -470,7 +478,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
             }
             infoForm.querySelector('#millesime').classList.add('hide');
-            infoForm.querySelector('#prix').value=0;
+            infoForm.querySelector('#prix').value=parseFloat(0).toFixed(2);
             infoForm.querySelector('#quantite').value=1;
              infoForm.querySelector('#commentaire').value= '';
              infoForm.querySelector('#date_achat').value= new Date().toISOString().slice(0, 10);

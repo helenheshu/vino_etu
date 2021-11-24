@@ -43,7 +43,7 @@ class Bouteille extends Model
      * @return rows des lignes de la table bouteilles
      */
     public static function rechercheBouteillesParMotCle($motCle) {
-        $motCle = str_replace("~point~", ".",  $motCle);
+        $motCle = str_replace(["~point~", "~pourcent~", "~sharp~"], [".", "%", "#"],  $motCle);
         return DB::table('bouteilles')
         ->select('bouteilles.nom', 'bouteilles.id', 'pays', 'type', 'type_id', 'format_id', 'url_img', 'prix_saq', 'taille' )
         ->where('bouteilles.nom', "LIKE" , $motCle. "%")
@@ -55,7 +55,7 @@ class Bouteille extends Model
     }
 
     public static function rechercherCatalogue($motCle) {
-        $motCle = str_replace("~point~", ".",  $motCle);
+        $motCle = str_replace(["~point~", "~pourcent~", "~sharp~"], [".", "%", "#"],  $motCle);
         return DB::table('bouteilles')
         ->select('bouteilles.nom', 'bouteilles.id', 'pays',  'type', 'type_id', 'format_id', 'url_img', 'prix_saq', 'taille', 'code_saq', 'url_saq' )
         ->where('user_id', 1)

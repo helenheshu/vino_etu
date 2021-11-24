@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
             liste.innerHTML = "";
            
          
-                fetch("/rechercheBouteillesParMotCle/" + recherche.value.replaceAll('.', "~point~"))
+                fetch("/rechercheBouteillesParMotCle/" + recherche.value.replaceAll('.', "~point~").replaceAll('#', "~sharp~").replaceAll('%', "~pourcent~"))
                 .then(response => {
                     return (response.json())
                 })

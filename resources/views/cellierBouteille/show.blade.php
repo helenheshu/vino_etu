@@ -9,6 +9,10 @@
 <span class="modifieBouteille"></span>
 @endif
 
+<link href="{{asset('css/cellierBouteillesListe.css')}}" rel="stylesheet" />
+<link href="{{asset('css/star-rating.css')}}" rel="stylesheet" />
+<link href="{{asset('css/fiche-vin.css')}}" rel="stylesheet"  />
+
 <header>
     <div class="cellier">
         <select name ="select-cellier">
@@ -136,7 +140,7 @@
                             <p id="messageMillesime" class="nonValide"></p>
                             <div class="form-modifier-item" >
                                 <label for="prix">Prix d'achat</label>
-                                <input type="number" name="prix"  readonly="readonly" id="prix" data-js-input class="input-fiche-cercle" value="{!! $cellierBouteille->prix !!}"/>
+                                <input type="number" name="prix"  readonly="readonly" id="prix" data-js-input class="input-fiche-cercle" value="{{number_format((float)$cellierBouteille->prix, 2, '.', '')}}"/>
                             </div>
                             <p id="messagePrix" class="nonValide"></p>
                             <div class="form-modifier-item" >
@@ -208,19 +212,14 @@
     </section>
 </main>
 
-
-@endsection
-
-<!-- Script et CSS -->
 <script src="{{asset('js/cellierBouteille_show.js')}}" defer></script>
-<link href="{{asset('css/cellierBouteillesListe.css')}}" rel="stylesheet" media="print"
-    onload="this.media='all'" />
-<link href="{{asset('css/star-rating.css')}}" rel="stylesheet" media="print"
-    onload="this.media='all'" />
-<link href="{{asset('css/fiche-vin.css')}}" rel="stylesheet"  media="print"
-    onload="this.media='all'" />
+
 <script src="{{asset('js/star-rating.js')}}" defer></script>
 <script src="{{asset('js/cellier_index.js')}}" defer></script>
+@endsection
+
+
+
 
 
 

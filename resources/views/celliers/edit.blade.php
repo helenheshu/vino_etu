@@ -1,9 +1,8 @@
 @extends('layouts.app')
 @section('content')
 
-<link href="{{asset('css/celliers.css')}}" rel="stylesheet" media="print"
-    onload="this.media='all'" />
-<script src="{{asset('js/cellier_index.js')}}" defer></script>
+<link href="{{asset('css/celliers.css')}}" rel="stylesheet" />
+
 @if(isset(Auth::user()->id))
 <div class="entete-page">
     <h1>Modifier ce cellier</h1>
@@ -79,7 +78,7 @@
     </div>
 </div>
 
-
-
 @endif
+
+<script src="{{asset('js/cellier_index.js')}}" defer></script>
 @endsection

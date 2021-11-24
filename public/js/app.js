@@ -13,20 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
       footerNav.style.display = 'flex';
       
-      let timer = null;
-      document.addEventListener('scroll', ()=> {
-    
-        if(timer !== null) {
-          clearTimeout(timer);        
-      }
-
-        footerNav.style.opacity = '0';
-        timer = setTimeout(() => {
-          footerNav.style.opacity = '100';
-          }, 300)
-      }) 
-
-      
       footerNav.addEventListener('click', ()=> {
         
         if(url.split('/')[3] == 'user'){

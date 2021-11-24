@@ -22,7 +22,9 @@
     display: flex;
 }
 
-
+.disabled {
+    pointer-events: none;
+}
 
 *+*, p {
     margin: 0;

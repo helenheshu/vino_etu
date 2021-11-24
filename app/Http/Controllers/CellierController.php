@@ -54,7 +54,13 @@ class CellierController extends Controller
             'user_id' => 'required | exists:users,id',
         ]);
 
-        $post = Cellier::create($request->all());
+        $post = new Cellier();
+        $post = Cellier::create([
+            'nom' => ucfirst($request->nom),
+            'localisation' => ucfirst($request->localisation),
+            'user_id' => session('user')->id
+        ]);
+     
         return redirect('cellier/' . $post->id)->withInput()->with("nouvelleCellier", "nouvelle cellier ajoutée");
     }
 
@@ -100,8 +106,8 @@ class CellierController extends Controller
         ]);
 
         $cellier->update([
-            'nom' => $request->nom,
-            'localisation' => $request->localisation,
+            'nom' => ucfirst($request->nom),
+            'localisation' => ucfirst($request->localisation),
         ]);
         return redirect('/cellier')->withInput()->with("modifieCellier", "un cellier modifiée");
     }

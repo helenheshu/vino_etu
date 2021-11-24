@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
-<script src="{{asset('js/cellier_index.js')}}"></script>
+<link href="{{asset('css/bouteille_edit.css')}}" />
+
 
 @if(Session::get('erreur'))
 <span class="success"></span>
@@ -114,6 +115,6 @@
 </div>
 
 @endsection
-<link href="{{asset('css/bouteille_edit.css')}}" rel="stylesheet" media="print"
-    onload="this.media='all'" />
+
 <script src="{{asset('js/bouteille_edit.js')}}" defer></script>
+<script src="{{asset('js/cellier_index.js')}}" defer></script>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<script src="{{asset('js/cellier_index.js')}}" defer></script>
+<script src="{{asset('js/cellier_index.js')}}" ></script>
 
 <div class="flex-box">
   <div class="row"> 

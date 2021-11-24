@@ -2,7 +2,7 @@
 
 @section('content')
 
-
+<link href="{{asset('css/auth.css')}}" rel="stylesheet" />
 <article class="flex-box">
   
         <header class="card-content flex-center entete-login">
@@ -61,5 +61,3 @@
 
 @endsection
 
-<link href="{{asset('css/auth.css')}}" rel="stylesheet" media="print"
-    onload="this.media='all'" />
