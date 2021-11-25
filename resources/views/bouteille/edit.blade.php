@@ -103,7 +103,7 @@
 <div id="{{$bouteille->id}}" class="modal">
     <div class="modal-content">
         <h4>Supprimer ce vin</h4>
-        <p>Êtes-vous certain de vouloir le vin <span>{{ ucfirst($bouteille->nom) }}</span>? Tous les millesimes de ce vin dans le cellier seront supprimés aussi.</p>
+        <p>Êtes-vous certain de vouloir le vin <span>{{ ucfirst($bouteille->nom) }}</span>? Tous les millésimes de ce vin dans tous les celliers seront supprimés aussi.</p>
     </div>
     <div class="modal-footer">
                                                     
