@@ -66,6 +66,8 @@
     
         <div class="">
             
+              
+                <a class="btn waves-effect waves-light button btn-modifier modal-trigger" href="#modal-modifier" disabled>Modifier</a>
                 @if( $idCellier != 0)
                 <a href="{{route('ficheVin', ['idCellier'=>$idCellier,'idBouteille'=>$idBouteille])}}
                     " class="btn waves-effect waves-light button btn-annuler" name="annuler">Annuler</a>
@@ -73,7 +75,6 @@
                 <a href="javascript:window.close();
                     " class="btn waves-effect waves-light button btn-annuler" name="annuler">Annuler</a>
                 @endif
-                <a class="btn waves-effect waves-light button btn-modifier modal-trigger" href="#modal-modifier" disabled>Modifier</a>
                 <!-- Modal Structure pour modifier-->
                 <div id="modal-modifier" class="modal">
                     <div class="modal-content">
