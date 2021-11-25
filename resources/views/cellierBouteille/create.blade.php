@@ -10,7 +10,7 @@
 <link href="{{asset('css/cellierBouteilles.css')}}" rel="stylesheet"  />
 
 <div class="entete-page">
-  <h1 class="titre-formulaire">Nouveau vin</h1>
+  <h1>Nouveau vin</h1>
   <img src="{{URL::asset('/assets/icon/deux-coupe-jaune.svg')}}" alt="Icone deux coupe de vin">
 </div>
 <div class="row">

@@ -10,8 +10,10 @@
     height: 3.815rem;
 }
 
+/* j'ai enlever le "margin:0 18px" dans le css materialize */
+
 nav .sidenav-trigger{
-    margin: 0;
+    margin-right: -6px;
 }
 
 nav {
@@ -56,3 +58,5 @@ margin: unset;
 .margin-right-1 {
     margin-right: 1rem;
 }
+
+

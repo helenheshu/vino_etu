@@ -9,6 +9,8 @@ gap: 1rem;
     object-fit: contain;
 }
 .col.s12.edit-vin {
+    display: flex;
+    flex-direction: column;
     padding: 1rem;
     border-radius: 5px;
     border: none;
@@ -24,4 +26,33 @@ body main {
 .bouton-conteneur{
     display: flex;
     flex-direction: column;
+}
+
+.bouton{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.64rem;
+    padding-left: 0.64rem;
+    padding-right: 0.64rem;
+}
+
+
+
+@media screen and (min-width: 700px){
+
+    .bouton-mode-plein-ecran{
+        align-self: flex-end;
+        width: 50%;
+    }
+    .bouton{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    column-gap: 0.64rem;
+    padding-left: 0.64rem;
+    padding-right: 0.64rem;
+  
+    }
+    
+
 }
