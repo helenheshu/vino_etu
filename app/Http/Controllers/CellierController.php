@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class CellierController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Afficher la liste des celliers
      *
      * @return \Illuminate\Http\Response
      */
@@ -19,8 +19,8 @@ class CellierController extends Controller
         if (Auth::check()) {
 
             $userCelliers = Cellier::getCelliersByUser(Auth::user()->id);
-                        
-            if (Auth::user()->id <> 1 && !isset($userCelliers[0])){
+
+            if (Auth::user()->id <> 1 && !isset($userCelliers[0])) {
                 return view('celliers.create');
             }
 
@@ -31,7 +31,7 @@ class CellierController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Afficher le formulaire de création d'un cellier
      *
      * @return \Illuminate\Http\Response
      */
@@ -41,7 +41,7 @@ class CellierController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Envoi les informations du formulaire de création de cellier dans la DB après validation
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -60,12 +60,12 @@ class CellierController extends Controller
             'localisation' => ucfirst($request->localisation),
             'user_id' => session('user')->id
         ]);
-     
+
         return redirect('cellier/' . $post->id)->withInput()->with("nouvelleCellier", "nouvelle cellier ajoutée");
     }
 
     /**
-     * Display the specified resource.
+     * Affiche le contenu d'un cellier
      *
      * @param  \App\Models\Cellier  $cellier
      * @return \Illuminate\Http\Response
@@ -75,24 +75,24 @@ class CellierController extends Controller
         return CellierBouteilleController::index($cellier->id);
     }
 
-    
+
 
     /**
-     * Show the form for editing the specified resource.
+     * Afficher le formulaire de modification d'un cellier
      *
      * @param  \App\Models\Cellier  $cellier
      * @return \Illuminate\Http\Response
      */
     public function edit(Cellier $cellier)
     {
-        if(session('user')->id != $cellier->user_id) {
+        if (session('user')->id != $cellier->user_id) {
             return redirect('cellier');
         }
         return view('celliers.edit', ['cellier' => $cellier]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Envoi les informations du formulaire de modification de cellier dans la DB après validation
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Cellier  $cellier
@@ -125,13 +125,17 @@ class CellierController extends Controller
         return redirect('/cellier')->withInput()->with('deleteCellier', "un cellier supprimé");
     }
 
-    public function rechercheDansCellier($motCle, $idCellier) {
+
+    public function rechercheDansCellier($motCle, $idCellier)
+    {
         $bouteilles = Cellier::rechercheDansCellier($motCle, $idCellier);
 
         return response()->json($bouteilles);
-    } 
+    }
 
-    public function reinitialiserCellier($idCellier) {
+    
+    public function reinitialiserCellier($idCellier)
+    {
         $bouteilles = CellierBouteille::obtenirListeBouteilleCellier($idCellier);
 
         return response()->json($bouteilles);
