@@ -106,7 +106,6 @@
 
     font-size: 33px;
     color: #AA7E42;
-  
 }
 main {
     padding-bottom: 0;
@@ -119,6 +118,15 @@ main {
     margin-left: 0.64rem;
     margin-right: 0.64rem;
     margin-bottom: 1.563rem;
+}
+
+
+.bouton{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.64rem;
+    padding-left: 0.64rem;
+    padding-right: 0.64rem;
 }
 
 .bouton-ajout-vin {
