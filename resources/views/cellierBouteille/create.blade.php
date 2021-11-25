@@ -131,7 +131,7 @@
     </form>
   </div>
 
-
+  
 @endsection
 
 <script src="{{asset('js/cellierBouteille_create.js')}}" defer></script>

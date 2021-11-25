@@ -128,7 +128,7 @@
                             <div class="form-modifier-item " >
                                 <!-- Le champs millésime n'est pas modifiable -->
                                 <label for="millesime">Millésime</label>
-                                <input  name="millesime" readonly="readonly" id="millesime"  class="input-fiche-cercle" value="@if($cellierBouteille->millesime != 0){{ $cellierBouteille->millesime }} @else N/A @endif"/>
+                                <input  name="millesime" readonly id="millesime"  class="input-fiche-cercle" value="@if($cellierBouteille->millesime != 0){{ $cellierBouteille->millesime }} @else N/A @endif"/>
                                 <select name ="select-millesime" >
                                 <option value="" disabled selected></option>
                                 {{ $anneeDebut= 1700 }}
@@ -142,12 +142,12 @@
                             <p id="messageMillesime" class="nonValide"></p>
                             <div class="form-modifier-item" >
                                 <label for="prix">Prix d'achat</label>
-                                <input type="number" name="prix"  readonly="readonly" id="prix" data-js-input class="input-fiche-cercle" value="{{number_format((float)$cellierBouteille->prix, 2, '.', '')}}"/>
+                                <input type="number" name="prix"  readonly id="prix" data-js-input class="input-fiche-cercle" value="{{number_format((float)$cellierBouteille->prix, 2, '.', '')}}"/>
                             </div>
                             <p id="messagePrix" class="nonValide"></p>
                             <div class="form-modifier-item" >
                                 <label for="quantite">Qte</label>
-                                <input type="number" name="quantite" readonly="readonly" id="quantite" data-js-input class="input-fiche-cercle" value="{!! $cellierBouteille->quantite !!}"/>
+                                <input type="number" name="quantite" readonly id="quantite" data-js-input class="input-fiche-cercle" value="{!! $cellierBouteille->quantite !!}"/>
                             </div>
                             <p id="messageQuantite" class="nonValide"></p>
                         </div>
@@ -156,16 +156,16 @@
                 <div class="millesime-info-fin">
                     <div class="item-commentaire" >
                         <label for="commentaire">Commentaire</label>
-                        <input type="textarea" name="commentaire" readonly="readonly" id="commentaire" data-js-input class="textarea" placeholder="Aucun commentaire" value="{{ $cellierBouteille->commentaire }}"/>
+                        <input type="textarea" name="commentaire" readonly id="commentaire" data-js-input class="textarea" placeholder="Aucun commentaire" value="{{ $cellierBouteille->commentaire }}"/>
                         <p id="messageCommentaire" class="nonValide"></p>
                     </div>
                     <div class="item-commentaire" >
                         <label for="garde_jusqua">Garder jusqu'à</label>
-                        <input type="textarea" name="garde_jusqua" readonly="readonly" placeholder="Non disponible" id="garde_jusqua" data-js-input class="textarea" value="{!! $cellierBouteille->garde_jusqua !!}"/>
+                        <input type="textarea" name="garde_jusqua" readonly placeholder="Non disponible" id="garde_jusqua" data-js-input class="textarea" value="{!! $cellierBouteille->garde_jusqua !!}"/>
                         <p id="messageGardeJusqua" class="nonValide"></p>
                     </div>
                     <div>
-                        <divclass="item-commentaire" >
+                        <div class="item-commentaire" >
                             <div class="fiche-btn-mod-effacer">
                                 <label for="date_achat">Date d'achat :</label>
                                 <input type="text" name="date_achat" disabled tabindex="-1" autocomplete="off" class="datepicker" id="date_achat" data-js-input class="" value="{!! $cellierBouteille->date_achat !!}"/>
@@ -219,7 +219,6 @@
 <script src="{{asset('js/star-rating.js')}}" defer></script>
 <script src="{{asset('js/cellier_index.js')}}" defer></script>
 @endsection
-
 
 
 

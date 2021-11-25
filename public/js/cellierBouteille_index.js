@@ -383,16 +383,16 @@ document.addEventListener("DOMContentLoaded", function () {
     var isScrolling;
     document.addEventListener('scroll', ()=> {
         document.querySelector('body').classList.add('disabled')
+       
+	window.clearTimeout( isScrolling );
 
-    window.clearTimeout( isScrolling );
-
-    // Set a timeout to run after scrolling ends
-    isScrolling = setTimeout(function() {
-
+	// Set a timeout to run after scrolling ends
+	isScrolling = setTimeout(function() {
+   
         document.querySelector('body').classList.remove('disabled');
-
-    }, 1000);
-
+        
+	}, 1000);
+        
     })
 }, false);
 
