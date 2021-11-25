@@ -5,6 +5,10 @@
 <span class="success"></span>
 @endif
 
+<link href="{{asset('css/star-rating.css')}}" rel="stylesheet"  />
+<link href="{{asset('css/autocomplete.css')}}" rel="stylesheet"   />
+<link href="{{asset('css/cellierBouteilles.css')}}" rel="stylesheet"  />
+
 <div class="entete-page">
   <h1 class="titre-formulaire">Nouveau vin</h1>
   <img src="{{URL::asset('/assets/icon/deux-coupe-jaune.svg')}}" alt="Icone deux coupe de vin">
@@ -130,13 +134,5 @@
 
 @endsection
 
-
-
-<link href="{{asset('css/autocomplete.css')}}" rel="stylesheet"  media="print"
-    onload="this.media='all'" />
-<link href="{{asset('css/cellierBouteilles.css')}}" rel="stylesheet" media="print"
-    onload="this.media='all'" />
 <script src="{{asset('js/cellierBouteille_create.js')}}" defer></script>
-<link href="{{asset('css/star-rating.css')}}" rel="stylesheet" media="print"
-    onload="this.media='all'" />
 <script src="{{asset('js/star-rating.js')}}" defer></script>

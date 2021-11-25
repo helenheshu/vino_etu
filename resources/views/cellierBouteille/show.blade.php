@@ -9,6 +9,10 @@
 <span class="modifieBouteille"></span>
 @endif
 
+<link href="{{asset('css/cellierBouteillesListe.css')}}" rel="stylesheet" />
+<link href="{{asset('css/star-rating.css')}}" rel="stylesheet" />
+<link href="{{asset('css/fiche-vin.css')}}" rel="stylesheet"  />
+
 <header>
     <div class="cellier">
         <select name ="select-cellier">
@@ -69,24 +73,34 @@
 
     <!-- Deuxième section de la fiche d'un vin, le "Millésime -->
     <!-- Bouton millésime, via le clique pour afficher les info -->
-    <section class="millesime-conteneur">
-        @foreach($cellierBouteilleMillesime as $cellierBouteille)
-        <div data-js-bouton="{{ $cellierBouteille->millesime }}">
-            <button @if($loop->last) class="millesime-item-selected millesime-item"  @endif id="bouton-millesime"class="millesime-item" >
-                @if($cellierBouteille->millesime  != 0)
-                    <p>{{ $cellierBouteille->millesime }}</p>
-                @else
-                    <p>N/A</p>
-                @endif
-            </button>
+    <section class="millesime-conteneur-encadre">
+        <div class="nom-Millesime-Fiche">
+            <h2>Millésimes</h2>
+            <a name="ajouterMillesime" class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">add</i></a>
+            <a class="btn-floating btn-small waves-effect waves-light  modifier valider" data-js-modifier><i class="material-icons">edit</i></a>
+            <a class="btn-floating btn-small waves-effect waves-light  supprimer modal-trigger effacer"  href="#modal-suprimer"  data-js-btnEffacer><i class="material-icons">delete</i></a>
+            
+            <!-- <button class="bouton-fiche effacer non-active modal-trigger" href="#modal-suprimer"  data-js-btnEffacer >Suprimer</button> -->
         </div>
-        @endforeach
-        <a name="ajouterMillesime" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a>
-    </section>
+        <div class="millesime-conteneur">
+            @foreach($cellierBouteilleMillesime as $cellierBouteille)
+            <div data-js-bouton="{{ $cellierBouteille->millesime }}">
+                <button @if($loop->last) class="millesime-item-selected millesime-item"  @endif id="bouton-millesime"class="millesime-item" >
+                    @if($cellierBouteille->millesime  != 0)
+                        <p>{{ $cellierBouteille->millesime }}</p>
+                    @else
+                        <p>N/A</p>
+                    @endif
+                </button>
+            </div>
+            @endforeach
+            <!-- <a name="ajouterMillesime" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a> -->
+        </div>
+   
 
     <!-- Section du fomulaire -->
 
-    <section class="">
+   
         <div class="form-modifier form">
             <form id="" name="myForm" action="" method="POST" class="form-modifier" data-js-form>
                 @method('PUT')
@@ -127,7 +141,7 @@
                             <p id="messageMillesime" class="nonValide"></p>
                             <div class="form-modifier-item" >
                                 <label for="prix">Prix d'achat</label>
-                                <input type="number" name="prix"  readonly="readonly" id="prix" data-js-input class="input-fiche-cercle" value="{!! $cellierBouteille->prix !!}"/>
+                                <input type="number" name="prix"  readonly="readonly" id="prix" data-js-input class="input-fiche-cercle" value="{{number_format((float)$cellierBouteille->prix, 2, '.', '')}}"/>
                             </div>
                             <p id="messagePrix" class="nonValide"></p>
                             <div class="form-modifier-item" >
@@ -149,9 +163,13 @@
                         <input type="textarea" name="garde_jusqua" readonly="readonly" placeholder="Non disponible" id="garde_jusqua" data-js-input class="textarea" value="{!! $cellierBouteille->garde_jusqua !!}"/>
                         <p id="messageGardeJusqua" class="nonValide"></p>
                     </div>
-                    <div class="item-commentaire" >
-                        <label for="date_achat">Date d'achat :</label>
-                        <input type="text" name="date_achat" disabled tabindex="-1" autocomplete="off" class="datepicker" id="date_achat" data-js-input class="" value="{!! $cellierBouteille->date_achat !!}"/>
+                    <div>
+                        <divclass="item-commentaire" >
+                            <div class="fiche-btn-mod-effacer">
+                                <label for="date_achat">Date d'achat :</label>
+                                <input type="text" name="date_achat" disabled tabindex="-1" autocomplete="off" class="datepicker" id="date_achat" data-js-input class="" value="{!! $cellierBouteille->date_achat !!}"/>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -161,11 +179,11 @@
                 
                 <div class="bouton">
                     <button class="bouton-fiche valider hide"  data-js-ajouter>Ajouter</button>
-                    <button class="bouton-fiche valider"  data-js-modifier>Modifier</button>
+                    <!-- <button class="bouton-fiche valider"  data-js-modifier>Modifier</button> -->
                     
                     <button  class="bouton-fiche valider non-active modal-trigger" href="#modal-valider" data-js-btnValider >Valider</button>
                     <button class="bouton-fiche non-active" data-js-btnAnnuler>Annuler</button>
-                    <button class="bouton-fiche effacer non-active modal-trigger" href="#modal-suprimer"  data-js-btnEffacer >Suprimer</button>
+                    <!-- <button class="bouton-fiche effacer non-active modal-trigger" href="#modal-suprimer"  data-js-btnEffacer >Suprimer</button> -->
                 </div>
 
                 <!-- Modal bouton suprimer -->
@@ -195,19 +213,14 @@
     </section>
 </main>
 
-
-@endsection
-
-<!-- Script et CSS -->
 <script src="{{asset('js/cellierBouteille_show.js')}}" defer></script>
-<link href="{{asset('css/cellierBouteillesListe.css')}}" rel="stylesheet" media="print"
-    onload="this.media='all'" />
-<link href="{{asset('css/star-rating.css')}}" rel="stylesheet" media="print"
-    onload="this.media='all'" />
-<link href="{{asset('css/fiche-vin.css')}}" rel="stylesheet"  media="print"
-    onload="this.media='all'" />
+
 <script src="{{asset('js/star-rating.js')}}" defer></script>
 <script src="{{asset('js/cellier_index.js')}}" defer></script>
+@endsection
+
+
+
 
 
 

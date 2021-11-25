@@ -1,8 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<link href="{{asset('css/celliers.css')}}" rel="stylesheet" media="print"
-    onload="this.media='all'" />
+<link href="{{asset('css/celliers.css')}}" rel="stylesheet" />
 
 @if(isset(Auth::user()->id))
 <div class="entete-page">
