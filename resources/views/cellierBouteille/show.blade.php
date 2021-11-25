@@ -41,6 +41,7 @@
                 <p>{{  $bouteille->taille }} cl</p>
                 <p class="prixSaq">Prix Saq | @if($bouteille->prix_saq)<span class="bold-20px">{{ $bouteille->prix_saq  }} $</span> @else N/A @endif</p>
             </div>
+            
             <div>
                 <div class="bouteilleSAQConteneur-fiche">
                     @if($bouteille->url_saq)
