@@ -150,7 +150,9 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         wrapper.classList.add('hide');
         ajouterMillesime.removeAttribute('disabled');
-
+        boutonModifier.removeAttribute('disabled');
+        btnEffacerActive.removeAttribute('disabled');
+        
         for (let i = 0; i < inputs.length; i++){
             inputs[i].readOnly = true;
             inputs[i].classList.remove("input-active");
@@ -165,6 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
          btnValideActive.classList.add("non-active");
          btnAnnuleActive.classList.add("non-active")
          btnAjouterMillesime.classList.add('hide')
+         
         btnMillesime = boutonMillesime[i];
         document.querySelectorAll('button').forEach(button => {
             button.classList.remove('millesime-item-selected');
@@ -267,6 +270,9 @@ document.addEventListener('DOMContentLoaded', function() {
         estValide();
         // boutonModifier.classList.remove("non-active");
         // btnEffacerActive.classList.add("non-active");
+        btnAjouterMillesime.removeAttribute('disabled');
+        boutonModifier.removeAttribute('disabled');
+        btnEffacerActive.removeAttribute('disabled');
         btnValideActive.classList.add("non-active");
         btnAnnuleActive.classList.add("non-active");
         wrapper.classList.add('hide');

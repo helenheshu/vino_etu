@@ -75,9 +75,9 @@
     <section class="millesime-conteneur-encadre">
         <div class="nom-Millesime-Fiche">
             <h2>Millésimes</h2>
-            <a name="ajouterMillesime" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a>
-            <a class="waves-effect waves-light  modifier valider" data-js-modifier><i class="material-icons">edit</i></a>
-            <a class="waves-effect waves-light  supprimer modal-trigger effacer"  href="#modal-suprimer"  data-js-btnEffacer><i class="material-icons">delete</i></a>
+            <a name="ajouterMillesime" class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">add</i></a>
+            <a class="btn-floating btn-small waves-effect waves-light  modifier valider" data-js-modifier><i class="material-icons">edit</i></a>
+            <a class="btn-floating btn-small waves-effect waves-light  supprimer modal-trigger effacer"  href="#modal-suprimer"  data-js-btnEffacer><i class="material-icons">delete</i></a>
             
             <!-- <button class="bouton-fiche effacer non-active modal-trigger" href="#modal-suprimer"  data-js-btnEffacer >Suprimer</button> -->
         </div>
