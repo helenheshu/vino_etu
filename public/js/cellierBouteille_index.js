@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         btnAjouter.addEventListener("click", (e) => {
             e.preventDefault();
-
+            
             fetch(btnAjouter.href)
                 .then((response) => {
                     return response.json();
@@ -95,7 +95,16 @@ document.addEventListener("DOMContentLoaded", function () {
             
             fetch(
                 `/ajouterNote/${idCellier}/${idBouteille}/${millesime}/${uneNote}`
-            ).catch((error) => console.log(error));
+            )
+            .then((response) => {
+                return response.json();
+            })
+            .then((response) => {
+              if(response.errors){
+                  console.log(response)
+              }
+            })
+            .catch((error) => console.log(error));
         });
     });
 
