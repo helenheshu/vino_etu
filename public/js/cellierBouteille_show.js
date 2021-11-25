@@ -86,7 +86,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
+         datepicker.addEventListener('click', () => {
+             // https://stackoverflow.com/questions/5619202/parsing-a-string-to-a-date-in-javascript
+            var parts = datepicker.value.split('-');
+            var mydate = new Date(parts[0], parts[1] - 1, parts[2]); 
+          
+            M.Datepicker.getInstance(datepicker).setDate(mydate);
+             document.querySelector('.modal-overlay').addEventListener('click', ()=> {
+                M.Datepicker.getInstance(datepicker).close()
+             })
+         })
 
 
 
@@ -150,9 +159,9 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         wrapper.classList.add('hide');
         ajouterMillesime.removeAttribute('disabled');
-        boutonModifier.removeAttribute('disabled');
-        btnEffacerActive.removeAttribute('disabled');
-        
+        boutonModifier.classList.remove("boutonNonValide");
+        btnEffacerActive.classList.remove("boutonNonValide");
+
         for (let i = 0; i < inputs.length; i++){
             inputs[i].readOnly = true;
             inputs[i].classList.remove("input-active");
@@ -193,6 +202,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 infoForm.querySelector('#millesime').value = 'N/A';
             }
              infoForm.querySelector('#quantite').value=response[0].quantite;
+
+
              infoForm.querySelectorAll('[data-value]').forEach(etoile => {
                
                 if(etoile.dataset.value < response[0].note ){
@@ -202,10 +213,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 }else {
                     etoile.classList.remove('gl-active', 'gl-selected')
                 }
+                
              }
 
              )
-             infoForm.querySelector('#prix').value=response[0].prix;
+             infoForm.querySelector('#prix').value= parseFloat(response[0].prix).toFixed(2);
+
              infoForm.querySelector('#commentaire').value=response[0].commentaire;
              infoForm.querySelector('#date_achat').value=response[0].date_achat;
              infoForm.querySelector('#garde_jusqua').value=response[0].garde_jusqua;
@@ -270,9 +283,9 @@ document.addEventListener('DOMContentLoaded', function() {
         estValide();
         // boutonModifier.classList.remove("non-active");
         // btnEffacerActive.classList.add("non-active");
-        btnAjouterMillesime.removeAttribute('disabled');
-        boutonModifier.removeAttribute('disabled');
-        btnEffacerActive.removeAttribute('disabled');
+        btnAjouterMillesime.removeAttribute('disabled');        
+        boutonModifier.classList.remove("boutonNonValide");
+        btnEffacerActive.classList.remove("boutonNonValide");
         btnValideActive.classList.add("non-active");
         btnAnnuleActive.classList.add("non-active");
         wrapper.classList.add('hide');
@@ -475,8 +488,8 @@ document.addEventListener('DOMContentLoaded', function() {
             })
              
 
-         
-             boutonModifier.setAttribute("disabled","true");
+            boutonModifier.classList.add("boutonNonValide");
+            
             for (let i = 0; i < inputs.length; i++){
                     inputs[i].readOnly = false;
                     inputs[i].classList.add("input-active");
@@ -489,13 +502,14 @@ document.addEventListener('DOMContentLoaded', function() {
             infoForm.querySelector('#quantite').value=1;
              infoForm.querySelector('#commentaire').value= '';
              infoForm.querySelector('#date_achat').value= new Date().toISOString().slice(0, 10);
+             
              infoForm.querySelector('#garde_jusqua').value= '';
       
             datepicker.disabled = false;
             wrapper.classList.remove('hide');
             btnAjouterMillesime.classList.remove('hide');
-            // btnValideActive.classList.add("non-active");
-            btnEffacerActive.setAttribute("disabled","true");
+            btnValideActive.classList.add("non-active");
+            btnEffacerActive.classList.add("boutonNonValide");
             btnAnnuleActive.classList.remove("non-active");
            
         })
