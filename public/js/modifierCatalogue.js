@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
                       
                         document.querySelector('#table').innerHTML = response.table;
                         paginationApresRecherche();
+                        modifierBouteille();
                         window.scrollTo(0, 0);
                     })
                 })
@@ -91,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     html.innerHTML = response;
                     document.querySelector('#table').innerHTML = html.querySelector('#table').innerHTML;
                     paginationDepart();
+                    modifierBouteille();
                     window.scrollTo(0, 0);
                 })
             })

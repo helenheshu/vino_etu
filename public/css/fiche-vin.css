@@ -96,6 +96,7 @@ input[type=number]{
 
 .item-commentaire label{
      font-size: 1.25rem;
+     color: #343B41;
 }
 
 .form-modifier-item label{
@@ -350,3 +351,15 @@ label .item-commentaire.millesime-info-fin .form{
 .modal {
     overflow-y: unset;
 }
+
+
+.btn-floating i {
+    width: inherit;
+    display: inline-block;
+    text-align: center;
+    color: #343B41;
+    font-size: 2rem;
+    line-height: 40px;
+}
+
+

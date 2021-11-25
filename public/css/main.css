@@ -1,7 +1,17 @@
+/************ Dev tools ************/
+
+/* *{
+	outline: 1px dashed rgb(54, 29, 34);
+} */
+
+
+
 * {
     margin: 0;
     padding: 0;
 }
+
+input { border-radius: 0; }
 
 html {
     font-family: 'Raleway', sans-serif;
@@ -165,6 +175,14 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
     padding-bottom: 0.64rem;
 }
 
+
+
+
+
+.row .col .s12 {
+    column-gap: 1rem;
+}
+
 .button {
     border-radius: 5px;
     flex-grow: 1;
@@ -219,6 +237,8 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
     justify-content: center;
     text-align: center;
 }
+
+
 
 /*** Bouton ajout principale (cercle) ***/
 
@@ -290,7 +310,7 @@ input[type=number] {
 }
 
 .select-wrapper .caret {
-    /* right: -25px; */
+    right: -2.76px;
     z-index: 99;
 }
 
@@ -326,3 +346,6 @@ input[type=number] {
 .couleur-noire {
     color: #343B41;
 }
+
+.input-field>label {
+    color: #343B41;

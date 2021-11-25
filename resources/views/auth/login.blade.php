@@ -3,7 +3,7 @@
 @section('content')
 <article class="flex-box">
   <header class="card-content flex-center entete-login">
-    <h1 class="titre-formulaire">Connexion</h1>
+    <h1>Connexion</h1>
     <img src="{{asset('assets/icon/coupe-verte.svg')}}" class="center" alt="icone coupe verte"></a>
   </header>
     <form action="{{ route('login.custom') }}" method="POST">
