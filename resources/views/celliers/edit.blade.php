@@ -33,15 +33,15 @@
         <div>
             <label hidden for="user_id">user_id :</label>
             <input hidden type="text" name="user_id" id="user_id" value="{{Auth::user()->id}}" />
-        
-
         </div>
         <div class="btn-space-col">
-        <a class="btn waves-effect waves-light button btn-modifier modal-trigger" href="#modal-modifier">Modifier</a>
+            <div class="bouton">
+                <a class="btn waves-effect waves-light button btn-modifier modal-trigger" href="#modal-modifier">Modifier</a>
+                <a class="btn waves-effect waves-light button btn-annuler" href="{{route('cellier')}}">Annuler</a>
+                <a class="btn waves-effect waves-light button btn-supprimer modal-trigger" href="#{{$cellier->id}}">Supprimer</a>
+            </div>
         </div>
         <div class="btn-space">
-            <a class="btn waves-effect waves-light button btn-annuler" href="{{route('cellier')}}">Annuler</a>
-            <a class="btn waves-effect waves-light button btn-supprimer modal-trigger" href="#{{$cellier->id}}">Supprimer</a>
             <!-- Modal Structure modal-modifier-->
             <div id="modal-modifier" class="modal">
                 <div class="modal-content">
