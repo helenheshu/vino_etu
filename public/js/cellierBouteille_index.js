@@ -396,7 +396,7 @@ document.addEventListener("DOMContentLoaded", function () {
             bouteille.classList.remove('disabled');
         })
 
-	}, 66);
+	}, 1000);
         
     })
 }, false);
