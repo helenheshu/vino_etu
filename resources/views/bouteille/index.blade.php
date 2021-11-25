@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<link href="{{asset('css/bouteilles.css')}}" rel="stylesheet"/>
 
 <h1 class="titre">Mettre à jour le catalogue de bouteilles</h1>
 <div class=" flex-center">
@@ -41,6 +42,4 @@
 <span class="message"></span>
 @endsection
 
-<link href="{{asset('css/bouteilles.css')}}" rel="stylesheet" media="print"
-    onload="this.media='all'" />
 <script src="{{asset('js/bouteille_index.js')}}" defer></script>

@@ -1,9 +1,8 @@
 @extends('layouts.app')
 @section('content')
 
-<link href="{{asset('css/celliers.css')}}" rel="stylesheet" media="print"
-    onload="this.media='all'" />
-<script src="{{asset('js/cellier_index.js')}}" defer></script>
+<link href="{{asset('css/celliers.css')}}" rel="stylesheet" />
+
 @if(isset(Auth::user()->id))
 <div class="entete-page">
     <h1>Modifier ce cellier</h1>
@@ -34,15 +33,15 @@
         <div>
             <label hidden for="user_id">user_id :</label>
             <input hidden type="text" name="user_id" id="user_id" value="{{Auth::user()->id}}" />
-        
-
         </div>
         <div class="btn-space-col">
-        <a class="btn waves-effect waves-light button btn-modifier modal-trigger" href="#modal-modifier">Modifier</a>
+            <div class="bouton">
+                <a class="btn waves-effect waves-light button btn-modifier modal-trigger" href="#modal-modifier">Modifier</a>
+                <a class="btn waves-effect waves-light button btn-annuler" href="{{route('cellier')}}">Annuler</a>
+                <a class="btn waves-effect waves-light button btn-supprimer modal-trigger" href="#{{$cellier->id}}">Supprimer</a>
+            </div>
         </div>
         <div class="btn-space">
-            <a class="btn waves-effect waves-light button btn-annuler" href="{{route('cellier')}}">Annuler</a>
-            <a class="btn waves-effect waves-light button btn-supprimer modal-trigger" href="#{{$cellier->id}}">Supprimer</a>
             <!-- Modal Structure modal-modifier-->
             <div id="modal-modifier" class="modal">
                 <div class="modal-content">
@@ -79,7 +78,7 @@
     </div>
 </div>
 
-
-
 @endif
+
+<script src="{{asset('js/cellier_index.js')}}" defer></script>
 @endsection

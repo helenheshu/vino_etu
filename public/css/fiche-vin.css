@@ -28,7 +28,7 @@
     flex-wrap: wrap;
     row-gap: 0.64rem;
     column-gap: 0.64rem;
-    padding-left:0.64rem;
+    padding:0.64rem;
 }
 
 .millesime-item{
@@ -100,7 +100,7 @@ input[type=number]{
 
 .form-modifier-item label{
     display: flex;
-    padding: 1rem;
+     padding: 1rem; 
     align-items: center;
     font-size: 1rem;
     color: #343B41;
@@ -149,7 +149,7 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     column-gap: 1rem;
     justify-content: space-evenly;
-    padding: 1.563rem;
+    padding: 1rem;
 }
 
 .millesime-info-fin{
@@ -181,8 +181,8 @@ input:focus-visible{
 
 .bouton-fiche{
     text-align: center;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 0.64rem;
+    padding-bottom: 0.64rem;
     font-weight: 700;
     font-size: 1.953rem;
     background-color: #E0CFA0;
@@ -197,9 +197,30 @@ input:focus-visible{
     color: #343B41;
 }
 
+
 .effacer{
     background-color: #7A5958;
     color: white;
+} 
+
+
+.icon-millesime-action{
+    display: flex;
+    justify-content: space-between;
+    column-gap: 0.64rem;
+}
+
+.supprimer .material-icons {
+    font-size: 1.5rem;
+    color: white;
+    background-color: #7A5958;
+}
+
+.modifier .material-icons {
+
+    font-size: 1.5rem;
+    color: white;
+    background-color: #AA7E42;
 }
 
 .non-active{
@@ -209,6 +230,7 @@ input:focus-visible{
 .input-active{
     border-style:solid;
     border-color: #99AAA2;
+    padding: 0.64rem;
 }
 
 .icon-modifier-bouteille{
@@ -259,6 +281,31 @@ input:focus-visible{
     justify-content: space-between;
 }
 
+.millesime-conteneur-encadre{
+    border-style: solid;
+    border-color:#CDCED1;
+    border-radius: 3px;
+    padding-bottom: 0.64rem;
+    margin: 0 0.64rem;
+}
+
+.nom-Millesime-Fiche {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.64rem;
+    color: white;
+    background-color: #CDCED1;
+    transition: all 0.3s ease;
+}
+
+.nom-Millesime-Fiche>h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #343B41;
+}
+
+
 
 /**** infographie, texture, police etc....***/
 
@@ -296,3 +343,10 @@ label .item-commentaire.millesime-info-fin .form{
     color: #707070;
 }
 
+.fiche-btn-mod-effacer{
+    display: flex;
+}
+
+.modal {
+    overflow-y: unset;
+}

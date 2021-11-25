@@ -40,7 +40,7 @@ class Cellier extends Model
      * @return rows une jointure de tous les tables contenant le mot clé
      */
     public static function rechercheDansCellier($motCle, $idCellier){
-        $motCle = str_replace("~point~", ".",  $motCle);
+        $motCle = str_replace(["~point~", "~pourcent~", "~sharp~"], [".", "%", "#"],  $motCle);
 
         if(strtolower($motCle) == 'non millésimé')
         {

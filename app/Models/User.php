@@ -51,7 +51,7 @@ class User extends Authenticatable
      * @return rows des lignes de la table users
      */
     public static function rechercheUsersParMotCle($motCle) {
-        $motCle = str_replace("~point~", ".",  $motCle);
+        $motCle = str_replace(["~point~", "~pourcent~", "~sharp~"], [".", "%", "#"],  $motCle);
         return DB::table('users')
         ->select('id','nom','courriel','date_naissance','admin')
         ->where('users.nom', "LIKE" , $motCle. "%")

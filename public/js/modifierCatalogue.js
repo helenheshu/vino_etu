@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
    
-   
+    M.Toast.dismissAll();
      window.addEventListener('storage', () => {
         
         if (localStorage.getItem('modifieBouteille')) {
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const recherche = document.querySelector("#search");
    
     const rechercherBouteilles = () => {
-        fetch(`/rechercherCatalogue/${recherche.value.trim().replaceAll('.', "~point~")}`)
+        fetch(`/rechercherCatalogue/${recherche.value.trim().replaceAll('.', "~point~").replaceAll('#', "~sharp~").replaceAll('%', "~pourcent~")}`)
         .then(response => {
             return (response.json())
         })

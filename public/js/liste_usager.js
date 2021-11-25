@@ -46,6 +46,13 @@ document.addEventListener('DOMContentLoaded', function() {
     //    });
 
 
+    const supprimerRecherche = document.querySelector('#close');
+
+    supprimerRecherche.addEventListener('click', () => {
+        recherche.value = '';
+        showListeUsager();
+    })
+
 
 
     /**
@@ -55,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
        const recherche = document.querySelector("#search");
    
        const rechercherUsagers = () => {
-           fetch(`/rechercherUsager/${recherche.value.trim().replaceAll('.', "~point~")}`)
+           fetch(`/rechercherUsager/${recherche.value.trim().replaceAll('.', "~point~").replaceAll('#', "~sharp~").replaceAll('%', "~pourcent~")}`)
            .then(response => {
                return (response.json())
            })
