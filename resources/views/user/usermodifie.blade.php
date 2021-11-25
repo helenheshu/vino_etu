@@ -10,7 +10,7 @@
     <div class="col s12 m12">
       <div class="card">
         <div class="card-content flex-center entete-login">
-          <h1 class="titre-formulaire">Gérer mon compte</h1>
+          <h1>Gérer mon compte</h1>
           <!-- <img src="{{asset('assets/icon/bouteille-diagonale.svg')}}" class="center" alt="icone bouteille diagonale"></a> -->
         </div>
 
@@ -52,9 +52,8 @@
               </div>
             
               <div class="input-field col s12 flex-row">  
-                <a href="{{ route('dashboard') }}" class="btn waves-effect waves-light button btn-annuler"  name="annuler">Annuler</a>
-                <a class="btn waves-effect waves-light button btn-modifier modal-trigger" href="#modal-modifier">Modifier</a>
-
+                    <a href="{{ route('dashboard') }}" class="btn waves-effect waves-light button btn-annuler"  name="annuler">Annuler</a>
+                    <a class="btn waves-effect waves-light button btn-modifier modal-trigger" href="#modal-modifier">Modifier</a>
                 <!-- Modal Structure pour modifier-->
                 <div id="modal-modifier" class="modal">
                 <div class="modal-content">
