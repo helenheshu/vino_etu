@@ -165,14 +165,14 @@
                         <input type="textarea" name="garde_jusqua" readonly placeholder="Non disponible" id="garde_jusqua" data-js-input class="textarea" value="{!! $cellierBouteille->garde_jusqua !!}"/>
                         <p id="messageGardeJusqua" class="nonValide"></p>
                     </div>
-                    <div>
+                    
                         <div class="item-commentaire" >
-                            <div class="fiche-btn-mod-effacer">
-                                <label for="date_achat">Date d'achat :</label>
+                            <div>
+                                <label for="date_achat">Date d'achat</label>
                                 <input type="text" name="date_achat" disabled tabindex="-1" autocomplete="off" class="datepicker" id="date_achat" data-js-input class="" value="{!! $cellierBouteille->date_achat !!}"/>
                             </div>
                         </div>
-                    </div>
+                    
                 </div>
 
                 <!-- Validation non fonctionnelle, à terminer dans le sprint 3 -->
