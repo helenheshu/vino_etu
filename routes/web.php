@@ -28,7 +28,7 @@ Route::get('/', function () {
 
 /* Page d'accueil : Liste des celliers */
 
-Route::get('/cellier', [CellierController::class, 'index'])->name('cellier')->middleware('auth')->middleware('prevent-back-history');
+Route::get('/cellier', [CellierController::class, 'index'])->name('cellier')->middleware('auth')->middleware('isUser')->middleware('prevent-back-history');
 
 /* Page d'un cellier avec les vins correspondants, leur quantité et millesime */
 Route::get('/cellier/{cellier}', [CellierController::class, 'show'])->name('cellier.show')->middleware('auth')->middleware('prevent-back-history');
