@@ -313,8 +313,9 @@ class CustomAuthController extends Controller
 	}
 
 	/**
-	 * @param motCle
 	 * Rechercher dans la table users les noms qui contiennent le motCle
+	 *
+	 * @param motCle
 	 * @return response une listes des usagers qui contiennent le motCle dans leur nom
 	 */
 	public function rechercheUsersParMotCle($motCle)
@@ -325,11 +326,15 @@ class CustomAuthController extends Controller
 			$users = User::all();
 		}
 
-
-		// return response()->json($listeUsers);
 		return response()->json(['table' => view('user.table', compact('users'))->render()]);
 	}
 
+
+	/**
+	 * Afficher une vue blade en JSON 
+	 *
+	 * @return response une listes des usagers qui contiennent le motCle dans leur nom
+	 */
 	public function affichelisteUsager()
 	{
 
