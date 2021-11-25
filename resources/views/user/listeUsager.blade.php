@@ -28,7 +28,7 @@
           <tr>
               <th>Nom</th>
               <th>Courriel</th>
-              <th>Date d'naissance</th>
+              <th>Date de naissance</th>
               <th>Admin</th>
               <th></th>
           </tr>
