@@ -382,22 +382,18 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     var isScrolling;
     document.addEventListener('scroll', ()=> {
-        let bouteilles = document.querySelectorAll('.infoCellierBouteille');
-        bouteilles.forEach(bouteille => {
-            bouteille.classList.add('disabled');
-        })
-        // Clear our timeout throughout the scroll
-	window.clearTimeout( isScrolling );
+        document.querySelector('body').classList.add('disabled')
 
-	// Set a timeout to run after scrolling ends
-	isScrolling = setTimeout(function() {
+    window.clearTimeout( isScrolling );
 
-        bouteilles.forEach(bouteille => {
-            bouteille.classList.remove('disabled');
-        })
+    // Set a timeout to run after scrolling ends
+    isScrolling = setTimeout(function() {
 
-	}, 1000);
-        
+        document.querySelector('body').classList.remove('disabled');
+
+    }, 1000);
+
     })
 }, false);
+
 
