@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
    
-   
+    M.Toast.dismissAll();
      window.addEventListener('storage', () => {
         
         if (localStorage.getItem('modifieBouteille')) {

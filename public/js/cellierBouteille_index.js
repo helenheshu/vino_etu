@@ -382,21 +382,16 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     var isScrolling;
     document.addEventListener('scroll', ()=> {
-        let bouteilles = document.querySelectorAll('.infoCellierBouteille');
-        bouteilles.forEach(bouteille => {
-            bouteille.classList.add('disabled');
-        })
-        // Clear our timeout throughout the scroll
+        document.querySelector('body').classList.add('disabled')
+       
 	window.clearTimeout( isScrolling );
 
 	// Set a timeout to run after scrolling ends
 	isScrolling = setTimeout(function() {
-
-        bouteilles.forEach(bouteille => {
-            bouteille.classList.remove('disabled');
-        })
-
-	}, 66);
+   
+        document.querySelector('body').classList.remove('disabled');
+        
+	}, 1000);
         
     })
 }, false);

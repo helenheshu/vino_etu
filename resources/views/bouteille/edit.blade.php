@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<link href="{{asset('css/bouteille_edit.css')}}" />
+<link href="{{asset('css/bouteille_edit.css')}}" rel="stylesheet" />
 
 
 @if(Session::get('erreur'))
