@@ -20,3 +20,8 @@ gap: 1rem;
 body main {
     padding-bottom: 4em;
 }
+
+.bouton-conteneur{
+    display: flex;
+    flex-direction: column;
+}

@@ -64,34 +64,35 @@
             </div>
         </div>
     
-    <div class="col s12 btn-space">
-        @if( $idCellier != 0)
-        <a href="{{route('ficheVin', ['idCellier'=>$idCellier,'idBouteille'=>$idBouteille])}}
-         " class="btn waves-effect waves-light button btn-annuler" name="annuler">Annuler</a>
-        @else 
-        <a href="javascript:window.close();
-         " class="btn waves-effect waves-light button btn-annuler" name="annuler">Annuler</a>
-        @endif
-        <a class="btn waves-effect waves-light button btn-modifier modal-trigger" href="#modal-modifier" disabled>Modifier</a>
-
-        <!-- Modal Structure pour modifier-->
-        <div id="modal-modifier" class="modal">
-            <div class="modal-content">
-                <h4>Modifier ce vin</h4>
-                <p>Êtes-vous certain de vouloir modifier le vin <span>{{ ucfirst($bouteille->nom) }}</span>? Les informations de ce vin seront modifiés dans les autres celliers aussi.</p>
-            </div>
-            <div class="modal-footer">
-                                                            
+        <div class="">
+            
+                @if( $idCellier != 0)
+                <a href="{{route('ficheVin', ['idCellier'=>$idCellier,'idBouteille'=>$idBouteille])}}
+                    " class="btn waves-effect waves-light button btn-annuler" name="annuler">Annuler</a>
+                @else
+                <a href="javascript:window.close();
+                    " class="btn waves-effect waves-light button btn-annuler" name="annuler">Annuler</a>
+                @endif
+                <a class="btn waves-effect waves-light button btn-modifier modal-trigger" href="#modal-modifier" disabled>Modifier</a>
+                <!-- Modal Structure pour modifier-->
+                <div id="modal-modifier" class="modal">
+                    <div class="modal-content">
+                        <h4>Modifier ce vin</h4>
+                        <p>Êtes-vous certain de vouloir modifier le vin <span>{{ ucfirst($bouteille->nom) }}</span>? Les informations de ce vin seront modifiés dans les autres celliers aussi.</p>
+                    </div>
+                    <div class="modal-footer">
                 
-                    <button class="waves-effect waves-green btn-flat" type="submit" name="submit">Modifier</button>
                 
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Annuler</a>
-            </div>
+                            <button class="waves-effect waves-green btn-flat" type="submit" name="submit">Modifier</button>
+                
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Annuler</a>
+                    </div>
+                </div>
+                <input type="hidden" name="url_img" value="{{$bouteille->url_img}}">
+                
+                <a class="btn waves-effect waves-light button btn-supprimer modal-trigger" href="#{{$bouteille->id}}"><i class="material-icons">delete</i></a>
+           
         </div>
-        <input type="hidden" name="url_img" value="{{$bouteille->url_img}}">
-        
-        <a class="btn waves-effect waves-light button btn-supprimer modal-trigger" href="#{{$bouteille->id}}"><i class="material-icons">delete</i></a>
-
     </form>
 </div>
 

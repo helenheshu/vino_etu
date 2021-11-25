@@ -159,8 +159,8 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         wrapper.classList.add('hide');
         ajouterMillesime.removeAttribute('disabled');
-        boutonModifier.removeAttribute('disabled');
-        btnEffacerActive.removeAttribute('disabled');
+        boutonModifier.classList.remove("boutonNonValide");
+        btnEffacerActive.classList.remove("boutonNonValide");
 
         for (let i = 0; i < inputs.length; i++){
             inputs[i].readOnly = true;
@@ -283,9 +283,9 @@ document.addEventListener('DOMContentLoaded', function() {
         estValide();
         // boutonModifier.classList.remove("non-active");
         // btnEffacerActive.classList.add("non-active");
-        btnAjouterMillesime.removeAttribute('disabled');
-        boutonModifier.removeAttribute('disabled');
-        btnEffacerActive.removeAttribute('disabled');
+        btnAjouterMillesime.removeAttribute('disabled');        
+        boutonModifier.classList.remove("boutonNonValide");
+        btnEffacerActive.classList.remove("boutonNonValide");
         btnValideActive.classList.add("non-active");
         btnAnnuleActive.classList.add("non-active");
         wrapper.classList.add('hide');
@@ -488,8 +488,8 @@ document.addEventListener('DOMContentLoaded', function() {
             })
              
 
-         
-             boutonModifier.setAttribute("disabled","true");
+            boutonModifier.classList.add("boutonNonValide");
+            
             for (let i = 0; i < inputs.length; i++){
                     inputs[i].readOnly = false;
                     inputs[i].classList.add("input-active");
@@ -509,7 +509,7 @@ document.addEventListener('DOMContentLoaded', function() {
             wrapper.classList.remove('hide');
             btnAjouterMillesime.classList.remove('hide');
             btnValideActive.classList.add("non-active");
-            btnEffacerActive.setAttribute("disabled","true");
+            btnEffacerActive.classList.add("boutonNonValide");
             btnAnnuleActive.classList.remove("non-active");
            
         })

@@ -17,7 +17,7 @@
     <div class="cellier">
         <select name ="select-cellier">
             @foreach($celliers as $unCellier)
-            <option value="{{ $unCellier->id }}" @if( $unCellier->id == $cellier->id) selected @endif>{{ $unCellier->nom}} </option>
+            <option value="{{ $unCellier->id }}" @if( $unCellier->id == $cellier->id) selected @endif> Cellier | {{ $unCellier->nom}} </option>
             @endforeach
         </select>
     </div>
@@ -27,7 +27,7 @@
     <div class="bouteille-nom">
         <select  name ="select-bouteille">
             @foreach($cellierBouteillesByIDs as $vin)
-            <option value="{{ $vin['id'] }}" @if( $vin['id'] == $bouteille->id) selected @endif>{{ $vin['bouteille']->nom}} </option>
+            <option value="{{ $vin['id'] }}" @if( $vin['id'] == $bouteille->id) selected @endif>Vin | {{ $vin['bouteille']->nom}} </option>
             @endforeach
         </select>
     </div>
@@ -75,9 +75,11 @@
     <section class="millesime-conteneur-encadre">
         <div class="nom-Millesime-Fiche">
             <h2>Millésimes</h2>
-            <a name="ajouterMillesime" class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">add</i></a>
-            <a class="btn-floating btn-small waves-effect waves-light  modifier valider" data-js-modifier><i class="material-icons">edit</i></a>
-            <a class="btn-floating btn-small waves-effect waves-light  supprimer modal-trigger effacer"  href="#modal-suprimer"  data-js-btnEffacer><i class="material-icons">delete</i></a>
+            <div class="icon-millesime-action">
+                <a name="ajouterMillesime" class="btn-floating btn-big waves-effect waves-light valider"><i class="material-icons">add</i></a>
+                <a class="btn-floating btn-big waves-effect waves-light  modifier  " data-js-modifier><i class="material-icons">edit</i></a>
+                <a class="btn-floating btn-big waves-effect waves-light  supprimer modal-trigger "  href="#modal-suprimer"  data-js-btnEffacer><i class="material-icons">delete</i></a>
+            </div> 
             
             <!-- <button class="bouton-fiche effacer non-active modal-trigger" href="#modal-suprimer"  data-js-btnEffacer >Suprimer</button> -->
         </div>
@@ -163,7 +165,7 @@
                         <p id="messageGardeJusqua" class="nonValide"></p>
                     </div>
                     <div>
-                        <divclass="item-commentaire" >
+                        <div class="item-commentaire" >
                             <div class="fiche-btn-mod-effacer">
                                 <label for="date_achat">Date d'achat :</label>
                                 <input type="text" name="date_achat" disabled tabindex="-1" autocomplete="off" class="datepicker" id="date_achat" data-js-input class="" value="{!! $cellierBouteille->date_achat !!}"/>
