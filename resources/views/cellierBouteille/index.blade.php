@@ -19,7 +19,11 @@
         <select name ="select-cellier">
             
             @foreach($celliers as $unCellier)
+<<<<<<< HEAD
             <option value="{{ $unCellier->id }}" @if( $unCellier->id == $cellier->id) selected @endif> Cellier | {{ $unCellier->nom}} </option>
+=======
+            <option value="{{ $unCellier->id }}" @if( $unCellier->id == $cellier->id) selected @endif>Cellier | {{ $unCellier->nom}} </option>
+>>>>>>> 314fdf706d79fc0e52fd83bd405c6c04df081dd4
             @endforeach
           </select>
     </div>

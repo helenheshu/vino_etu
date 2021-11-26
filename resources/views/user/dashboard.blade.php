@@ -74,15 +74,17 @@
                 </div>
             </div>
 
+            @if(session('user')!== null && session('user')->admin !== 1)
             <div class="card">
                 <div class="card-content hoverclass">
                     <a href="{{ route('cellier')}}">
                     <div class="flex-row">
                     <i class="small material-icons black-text">chevron_left</i>
-                    <h6>Vos celliers</h6>  
-                    </div> </a>     
+                    <h6>Vos celliers</h6>
+                    </div> </a>
                 </div>
             </div>
+            @endif
 
 
         </div>

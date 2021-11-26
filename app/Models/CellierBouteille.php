@@ -157,7 +157,7 @@ class CellierBouteille extends Model
      */
     public static function modifierCellierBouteille($idCellier, $idBouteille, $millesime, $prix, $quantite, $date_achat, $commentaire=null, $garde_jusqua=null)
     {
-        $prix = str_replace("~point~", ".",  $prix);
+       
          DB::table('cellier_bouteilles')
         ->where('cellier_id', $idCellier)
         ->where('bouteille_id', $idBouteille)

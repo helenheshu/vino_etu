@@ -141,7 +141,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
                 fetch(
                     `/ajouterNote/${idCellier}/${idBouteille}/${millesime}/${note}`
-                ).catch((error) => console.log(error));
+                )
+                .then((response) => {
+                    return response.json();
+                })
+                .then((response) => {
+                  if(response.errors){
+                      console.log(response)
+                  }
+                }).catch((error) => console.log(error));
             }
          });
          
@@ -281,8 +289,7 @@ document.addEventListener('DOMContentLoaded', function() {
         infoForm.reset();
         
         estValide();
-        // boutonModifier.classList.remove("non-active");
-        // btnEffacerActive.classList.add("non-active");
+     
         btnAjouterMillesime.removeAttribute('disabled');        
         boutonModifier.classList.remove("boutonNonValide");
         btnEffacerActive.classList.remove("boutonNonValide");
@@ -321,35 +328,43 @@ document.addEventListener('DOMContentLoaded', function() {
             }   
 
             fetch(`/modifierCellierBouteille/${idCellier}/${idBouteille}/${annee}/${prix.value.trim().replaceAll('.', "~point~")}/${quantite.value}/${date_achat.value}/${commentaire.value}/${garde_jusqua.value}`)
-            .then(() => {
-                commentaire.value = commentaire.value.trim()
+            .then((response) => {
+                return response.json();
+            })
+            .then((response) => {
+               
+                if(response.errors){
+                    console.log(response);
+                }else {
+                    commentaire.value = commentaire.value.trim();
+                    if(estValide()){
+
+                        for (let i = 0; i < inputs.length; i++){
+                            inputs[i].readOnly = true;
+                            inputs[i].classList.remove("input-active");
+                            inputs[i].classList.add("input-fiche-cercle");
+                        }
+    
+                         boutonModifier.classList.remove("non-active");
+                        btnAnnuleActive.classList.add("non-active");
+                        btnValideActive.classList.add("non-active");
+                       
+                        infoForm.querySelector('#quantite').value = parseInt(infoForm.querySelector('#quantite').value, 10);
+                        infoForm.querySelector('#prix').value = parseFloat(infoForm.querySelector('#prix').value.replace(/^0+/, '')).toFixed(2);
+                        var toastHTML =
+                        '<span>Une bouteille a été modifié</span><button class="btn-flat toast-action">Fermer</button>';
+                    M.toast({ html: toastHTML, displayLength: 5000 });
+            
+                    const message = document.querySelector(".toast-action");
+            
+                    message.addEventListener("click", () => {
+                        M.Toast.dismissAll();
+                    });
+                }
+                }
             })
               .catch(error => console.log('Le fetch ne fonctionne toujours pas',error))
 
-            if(estValide()){
-
-                    for (let i = 0; i < inputs.length; i++){
-                        inputs[i].readOnly = true;
-                        inputs[i].classList.remove("input-active");
-                        inputs[i].classList.add("input-fiche-cercle");
-                    }
-
-                    // boutonModifier.classList.remove("non-active");
-                    btnAnnuleActive.classList.add("non-active");
-                    btnValideActive.classList.add("non-active");
-                    // btnEffacerActive.classList.add("non-active");
-                    infoForm.querySelector('#quantite').value = parseInt(infoForm.querySelector('#quantite').value, 10);
-                    infoForm.querySelector('#prix').value = parseFloat(infoForm.querySelector('#prix').value.replace(/^0+/, '')).toFixed(2);
-                    var toastHTML =
-                    '<span>Une bouteille a été modifié</span><button class="btn-flat toast-action">Fermer</button>';
-                M.toast({ html: toastHTML, displayLength: 5000 });
-        
-                const message = document.querySelector(".toast-action");
-        
-                message.addEventListener("click", () => {
-                    M.Toast.dismissAll();
-                });
-            }
         });
 
 
@@ -485,7 +500,7 @@ document.addEventListener('DOMContentLoaded', function() {
             infoForm.querySelectorAll('[data-value]').forEach(etoile => {
                 etoile.classList.remove('gl-active', 'gl-selected');
             })
-             
+            document.querySelector("[data-rating]").dataset.rating = 0; 
 
             boutonModifier.classList.add("boutonNonValide");
             
@@ -519,33 +534,27 @@ document.addEventListener('DOMContentLoaded', function() {
             if(commentaire.value.trim()==""){
                 commentaire.value=" ";
              }        
+
+            const note = document.querySelector("[data-rating]").dataset.rating;
             
-            wrapper.classList.add('hide');
-            btnAjouterMillesime.classList.add('hide');
-            infoForm.querySelector('#millesime').classList.remove('hide');
-
-            const note = document.querySelector("[data-rating]").dataset.rating
-            fetch(`/ajouterCellierBouteille/${idCellier}/${idBouteille}/${selectMillesime.value}/${note}/${prix.value.trim().replaceAll('.', "~point~")}/${quantite.value}/${date_achat.value}/${commentaire.value}/${garde_jusqua.value}`)
-            .then(() => {
-                commentaire.value = commentaire.value.trim()
+             fetch(`/ajouterCellierBouteille/${idCellier}/${idBouteille}/${selectMillesime.value}/${note}/${prix.value.trim().replaceAll('.', "~point~")}/${quantite.value}/${date_achat.value}/${commentaire.value}/${garde_jusqua.value}`)
+            .then((response) => {
+                return response.json();
             })
-              .catch(error => console.log('Le fetch ne fonctionne toujours pas',error))
+            .then((response) => {
+         
+                if(response.errors){
+                    console.log(response);
+                }else {
+                    commentaire.value = commentaire.value.trim();
+                    localStorage.setItem("millesime", selectMillesime.value);
+                    location.reload();
+                }
+                
+            })
+              .catch(error => console.log('Le fetch ne fonctionne toujours pas',error)) 
 
-            if(estValide()){
-
-                    for (let i = 0; i < inputs.length; i++){
-                        inputs[i].readOnly = true;
-                        inputs[i].classList.remove("input-active");
-                        inputs[i].classList.add("input-fiche-cercle");
-                    }
-
-                    boutonModifier.classList.remove("non-active");
-                    btnAnnuleActive.classList.add("non-active");
-                    btnValideActive.classList.add("non-active");
-                    btnEffacerActive.classList.add("non-active");
-            }
-            localStorage.setItem("millesime", selectMillesime.value);
-            location.reload();
+      
         })
 
         selectMillesime.addEventListener('change', () => {

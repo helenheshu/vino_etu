@@ -7,9 +7,10 @@ use App\Models\Type;
 use App\Models\CellierBouteille;
 use App\Models\Format;
 use App\Models\Cellier;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
-use Share;
+use Illuminate\Support\Facades\Validator;
 
 class CellierBouteilleController extends Controller
 {
@@ -91,7 +92,8 @@ class CellierBouteilleController extends Controller
         $request->validate([
             'quantite' => 'integer|gte:0',
             'prix' => 'numeric|regex:/[0-9]+(\.[0-9][0-9]?)?/|gte:0|max:100000',
-          
+            'commentaire' => 'string|max:50|nullable',
+            'garde_jusqua' => 'string|max:50|nullable',
         ]);
 
         /**
@@ -209,7 +211,30 @@ class CellierBouteilleController extends Controller
      */
     public function ajouterNote($idCellier, $idBouteille, $millesime, $note)
     {
-        CellierBouteille::ajouterNote($idCellier, $idBouteille, $millesime, $note);
+        $validator = Validator::make(['note' => $note], [
+            'note' => 'required|integer|min:0|max:5'
+        ]);
+        
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()]);
+        } else {
+            CellierBouteille::ajouterNote($idCellier, $idBouteille, $millesime, $note);
+            return response()->json();
+
+        }
+     /*    $validator = Validator::make(['note' => $note], [
+            'note' => 'require|integer|min:0|max:5'
+        ]);
+        
+        if ($validator->fails()) {
+            return response()->json($validator->errors());
+        } else {
+            CellierBouteille::ajouterNote($idCellier, $idBouteille, $millesime, $note);
+            return response()->json();
+
+        }
+        
+        CellierBouteille::ajouterNote($idCellier, $idBouteille, $millesime, $note); */
     }
 
 
@@ -264,24 +289,31 @@ class CellierBouteilleController extends Controller
      * @param  \App\Models\CellierBouteille  $cellierBouteille
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $idCellier, $idBouteille, $millesime)
+    public function update(Request $request)
     {   
-        CellierBouteille::updateCellierBouteille($idCellier, $idBouteille, $millesime, $request);
-        // $cellierBouteille->update([
-        //     'millesime' => $request->millesime,
-        //     'prix' => $request->prix,
-        //     'quantite' => $request->quantite,
-        //     'commentaire' => $request->commentaire,
-        //     'garde_jusqua' => $request->garde_jusqua,
-        //     'date_achat' => $request->date_achat,
-        // ]);
-         return redirect('/cellier/'.$idCellier."/".$idBouteille);
+     
 
     }
 
     public function  modifierCellierBouteille($idCellier, $idBouteille, $millesime, $prix, $quantite, $date_achat, $commentaire=null, $garde_jusqua=null)
     {   
-        CellierBouteille::modifierCellierBouteille($idCellier, $idBouteille, $millesime, $prix, $quantite, $date_achat, trim($commentaire), $garde_jusqua);
+        $prix = str_replace("~point~", ".",  $prix);
+        $validator = Validator::make(['prix' => $prix, 'quantite' => $quantite, 'date_achat' => $date_achat, 'commentaire' => $commentaire, 'garde_jusqua' => $garde_jusqua], [
+            'quantite' => 'required|integer|gte:0',
+            'prix' => 'required|numeric|regex:/[0-9]+(\.[0-9][0-9]?)?/|gte:0|max:100000',
+            'commentaire' => 'string|max:50|nullable',
+            'garde_jusqua' => 'string|max:50|nullable',
+            'date_achat' => 'date_format:Y-m-d|date|required'
+        ]);
+        
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()]);
+        } else {
+            CellierBouteille::modifierCellierBouteille($idCellier, $idBouteille, $millesime, $prix, $quantite, $date_achat, trim($commentaire), $garde_jusqua);
+            return response()->json();
+
+        }
+        
 
 
      }
@@ -289,9 +321,22 @@ class CellierBouteilleController extends Controller
      
     public function  ajouterCellierBouteille($idCellier, $idBouteille, $millesime,$note, $prix, $quantite, $date_achat, $commentaire=null, $garde_jusqua=null)
     {   
-        CellierBouteille::ajouterCellierBouteille($idCellier, $idBouteille, $millesime, $note, $prix, $quantite, $date_achat, trim($commentaire), $garde_jusqua);
+        $prix = str_replace("~point~", ".",  $prix);
+        $validator = Validator::make(['prix' => $prix, 'quantite' => $quantite, 'date_achat' => $date_achat, 'commentaire' => $commentaire, 'garde_jusqua' => $garde_jusqua], [
+            'quantite' => 'required|integer|gte:0',
+            'prix' => 'required|numeric|regex:/[0-9]+(\.[0-9][0-9]?)?/|gte:0|max:100000',
+            'commentaire' => 'string|max:50|nullable',
+            'garde_jusqua' => 'string|max:50|nullable',
+            'date_achat' => 'date_format:Y-m-d|date|required'
+        ]);
+        
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()]);
+        } else {
+            CellierBouteille::ajouterCellierBouteille($idCellier, $idBouteille, $millesime, $note, $prix, $quantite, $date_achat, trim($commentaire), $garde_jusqua);
+            return response()->json();
 
-
+        }
      }
 
 
