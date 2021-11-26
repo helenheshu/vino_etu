@@ -104,7 +104,7 @@ return [
     'prohibits'            => 'Le champ :attribute interdit :other d\'être présent.',
     'regex'                => 'Le format du champ :attribute est invalide.',
     'relatable'            => ':attribute n\'est sans doute pas associé(e) avec cette donnée.',
-    'required'             => 'Le champ :attribute est obligatoire.',
+    'required'             => 'Le champ est obligatoire.',
     'required_if'          => 'Le champ :attribute est obligatoire quand la valeur de :other est :value.',
     'required_unless'      => 'Le champ :attribute est obligatoire sauf si :other est :values.',
     'required_with'        => 'Le champ :attribute est obligatoire quand :values est présent.',
