@@ -19,7 +19,7 @@
         <select name ="select-cellier">
             
             @foreach($celliers as $unCellier)
-            <option value="{{ $unCellier->id }}" @if( $unCellier->id == $cellier->id) selected @endif>{{ $unCellier->nom}} </option>
+            <option value="{{ $unCellier->id }}" @if( $unCellier->id == $cellier->id) selected @endif> Cellier | {{ $unCellier->nom}} </option>
             @endforeach
           </select>
     </div>
@@ -33,7 +33,7 @@
 <main>
     <div class="bouton-ajout-vin-conteneur">
         
-        <a class="modal-trigger black-text" href="#tri"><i class="tri material-icon">filter_list</i></a>
+        <a class="modal-trigger black-text " href="#tri"><i class="tri material-icon">filter_list</i></a>
         <a class="bouton-ajout-vin" href="{{ route('ajouterVin', $cellier->id) }}"><i class="material-icon">add</i> Ajouter un vin</a>
 
         <div class="search-container">
@@ -42,7 +42,7 @@
                 <label class="button searchbutton" for="searchright"><span class="mglass">&#9906;</span></label>
             </form>
         </div>
-        
+
     </div>
     <div id="tri" class="modal">
         <div class="modal-content">
@@ -178,7 +178,7 @@
                             </a>
                         </div>
                         <div class="cercle bouton-cercle-add">
-                            <a class="btn-floating btn-large waves-effect waves-light" name="btnAjouterBouteille" href="{{ route('ajouterBouteille',[
+                            <a class="btn-floating btn-large waves-effect " name="btnAjouterBouteille" href="{{ route('ajouterBouteille',[
                             'idCellier'=>$cellier->id,
                             'idBouteille'=>$vin['id'],
                             'millesime'=> $bouteille->millesime,
@@ -186,7 +186,6 @@
                                 <i class="material-icon">add</i>
                             </a>
                         </div>
-                        
                     </div>
                 </section>
                 @endforeach

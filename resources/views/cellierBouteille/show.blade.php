@@ -155,16 +155,17 @@
                     </div>
                 </div>
                 <div class="millesime-info-fin">
-                    <div class="item-commentaire" >
-                        <label for="commentaire">Commentaire</label>
-                        <input type="textarea" name="commentaire" readonly id="commentaire" data-js-input class="textarea" placeholder="Aucun commentaire" value="{{ $cellierBouteille->commentaire }}"/>
-                        <p id="messageCommentaire" class="nonValide"></p>
-                    </div>
-                    <div class="item-commentaire" >
-                        <label for="garde_jusqua">Garder jusqu'à</label>
-                        <input type="textarea" name="garde_jusqua" readonly placeholder="Non disponible" id="garde_jusqua" data-js-input class="textarea" value="{!! $cellierBouteille->garde_jusqua !!}"/>
-                        <p id="messageGardeJusqua" class="nonValide"></p>
-                    </div>
+                        <div class="item-commentaire" >
+                            <label for="commentaire">Commentaire</label>
+                            <input type="textarea" name="commentaire" readonly id="commentaire" data-js-input class="textarea" placeholder="Aucun commentaire" value="{{ $cellierBouteille->commentaire }}"/>
+
+                            <p id="messageCommentaire" class="nonValide"></p>
+                        </div>
+                        <div class="item-commentaire" >
+                            <label for="garde_jusqua">Garder jusqu'à</label>
+                            <input type="textarea" name="garde_jusqua" readonly placeholder="Non disponible" id="garde_jusqua" data-js-input class="textarea" value="{!! $cellierBouteille->garde_jusqua !!}"/>
+                            <p id="messageGardeJusqua" class="nonValide"></p>
+                        </div>
                     
                         <div class="item-commentaire" >
                             <div>
