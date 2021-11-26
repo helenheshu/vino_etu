@@ -202,7 +202,7 @@ class CustomAuthController extends Controller
 
 
 	/**
-	 * Mettre à jour lemot de passe de l'usager dans la base après validation
+	 * Mettre à jour le mot de passe d'usager dans la base après la validation
 	 *
 	 * @param  \App\Models\user  $user
 	 * @return \Illuminate\Http\Response
@@ -232,7 +232,7 @@ class CustomAuthController extends Controller
 	}
 
 	/**
-	 * Afficher le formulaire de modification de informations de l'utilisateur
+	 * Afficher le formulaire de la modification d'informations de l'utilisateur
 	 *
 	 * @param  \App\Models\user  $user
 	 * @return \Illuminate\Http\Response
@@ -254,7 +254,7 @@ class CustomAuthController extends Controller
 	}
 
 	/**
-	 * Update the specified resource in storage.
+	 * Mettez à jour la ressource spécifiée dans le stockage. 
 	 *
 	 * @param  \Illuminate\Http\Request  $request
 	 * @param  \App\Models\user  $user
