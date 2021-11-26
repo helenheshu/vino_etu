@@ -477,7 +477,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         btnAjouterMillesime.removeAttribute('disabled');
                     }
                   }
-                
              });
          });
 

@@ -8,13 +8,7 @@
     color: white;
     font-size: 1.25rem;
     font-weight: 700;
-    /* padding-right: 0.64rem;
-    padding-left: 0.64rem; */
 }
-
-
-
-
 
 .description-titre{
     font-size: 1.25rem;
@@ -94,6 +88,7 @@ input[type=number]{
     margin: 0;
 }
 
+
 .item-commentaire label{
      font-size: 1.25rem;
      color: #343B41;
@@ -161,12 +156,13 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .textarea {
-    max-width: 100%;
+    max-width:100%;
     line-height: 1.5;
     border-radius: 5px;
     border-style: none;
     resize:both;
 }
+
 
 input:focus-visible{
     outline: 0;
@@ -334,7 +330,6 @@ input:focus-visible{
     opacity: 50%;
 }
 
-
 .prixSaq{
     padding-top: 0.512rem;
 }
@@ -351,7 +346,6 @@ label .item-commentaire.millesime-info-fin .form{
 .modal {
     overflow-y: unset;
 }
-
 
 .btn-floating i {
     width: inherit;

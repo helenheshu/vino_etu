@@ -21,13 +21,11 @@
       <div class="autocomplete z-depth-2"></div>
     </div>
   </div>
-      
   <div class="row">
     <div class="image">
       <img name="img-bouteille" src="{{ old('url_img') }}" alt="{{ old('nom') }}">
     </div>
     <form class="col s12 ajout-vin" action="{{route('cellierBouteille.store')}}" method="POST" enctype="multipart/form-data" >
-    
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="input-field col s12">
           <input id="nom" name="nom" max="111" type="text" class="@if($errors->first('nom')) invalid @endif validate" value="{{ old('nom') }}" required />
@@ -43,7 +41,6 @@
           </select>
           <label>Type</label>
           @if($errors->first('type_id')) <span class="helper-text erreur" data-error="Format invalid">Champ obligatoire</span> @endif
-          
         </div>
         <div class="input-field col s12">
           <select name ="format_id">
@@ -65,7 +62,6 @@
             <option value="" disabled selected></option>
             {{ $anneeDebut= 1700 }}
             {{ $anneePresent = date('Y') }}
-
             @for ($i = $anneePresent; $i >= $anneeDebut; $i--)
                 <option value="{{ $i }}" @if( old('millesime') == $i) selected @endif>{{ $i }}</option>
             @endfor
@@ -127,11 +123,9 @@
           </button>
         </div>
       </button>
-
     </form>
   </div>
 
-  
 @endsection
 
 <script src="{{asset('js/cellierBouteille_create.js')}}" defer></script>

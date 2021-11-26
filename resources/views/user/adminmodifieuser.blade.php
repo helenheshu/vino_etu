@@ -78,6 +78,7 @@
                   </div>
                 </div>
 
+
                 <!-- Modal Structure pour modifier-->
                 <div id="modal-modifier" class="modal">
                 <div class="modal-content">
