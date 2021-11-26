@@ -345,10 +345,10 @@ document.addEventListener('DOMContentLoaded', function() {
                             inputs[i].classList.add("input-fiche-cercle");
                         }
     
-                        // boutonModifier.classList.remove("non-active");
+                         boutonModifier.classList.remove("non-active");
                         btnAnnuleActive.classList.add("non-active");
                         btnValideActive.classList.add("non-active");
-                        // btnEffacerActive.classList.add("non-active");
+                       
                         infoForm.querySelector('#quantite').value = parseInt(infoForm.querySelector('#quantite').value, 10);
                         infoForm.querySelector('#prix').value = parseFloat(infoForm.querySelector('#prix').value.replace(/^0+/, '')).toFixed(2);
                         var toastHTML =
@@ -477,7 +477,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         btnAjouterMillesime.removeAttribute('disabled');
                     }
                   }
-                
              });
          });
 
@@ -501,7 +500,7 @@ document.addEventListener('DOMContentLoaded', function() {
             infoForm.querySelectorAll('[data-value]').forEach(etoile => {
                 etoile.classList.remove('gl-active', 'gl-selected');
             })
-             
+            document.querySelector("[data-rating]").dataset.rating = 0; 
 
             boutonModifier.classList.add("boutonNonValide");
             
@@ -538,7 +537,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const note = document.querySelector("[data-rating]").dataset.rating;
             
-            fetch(`/ajouterCellierBouteille/${idCellier}/${idBouteille}/${selectMillesime.value}/${note}/${prix.value.trim().replaceAll('.', "~point~")}/${quantite.value}/${date_achat.value}/${commentaire.value}/${garde_jusqua.value}`)
+             fetch(`/ajouterCellierBouteille/${idCellier}/${idBouteille}/${selectMillesime.value}/${note}/${prix.value.trim().replaceAll('.', "~point~")}/${quantite.value}/${date_achat.value}/${commentaire.value}/${garde_jusqua.value}`)
             .then((response) => {
                 return response.json();
             })
@@ -553,7 +552,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
             })
-              .catch(error => console.log('Le fetch ne fonctionne toujours pas',error))
+              .catch(error => console.log('Le fetch ne fonctionne toujours pas',error)) 
 
       
         })
