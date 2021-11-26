@@ -77,7 +77,7 @@
         <div class="nom-Millesime-Fiche">
             <h2>Millésimes</h2>
             <div class="icon-millesime-action">
-                <a name="ajouterMillesime" class="btn-floating btn-big waves-effect waves-light valider" ><i class="material-icons">add</i></a>
+                <a name="ajouterMillesime" class="btn-floating btn-big waves-effect waves-light valider"  ><i class="material-icons">add</i></a>
                 <a class="btn-floating btn-big waves-effect waves-light  modifier "  data-js-modifier ><i class="material-icons">edit</i></a>
                 <a class="btn-floating btn-big waves-effect waves-light  supprimer modal-trigger "  href="#modal-suprimer"  data-js-btnEffacer><i class="material-icons">delete</i></a>
             </div> 

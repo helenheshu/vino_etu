@@ -317,7 +317,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             }
 
                             note = `  <div class="select">
-                                            <select class="star-rating" data-id-bouteille="${key}" data-millesime="${cellierBouteille.millesime}" name="note">
+                                            <select class="star-rating" data-id-bouteille="${key.replace('_', '')}" data-millesime="${cellierBouteille.millesime}" name="note">
                                                 <option value="">Choisir une note</option>
                                                 <option value="5"`; if(cellierBouteille.note == 5) {note += `selected`} note +=`>Excellent</option>
                                                 <option value="4"`; if(cellierBouteille.note == 4) {note += `selected`} note +=`>Très bon</option>
@@ -335,12 +335,12 @@ document.addEventListener("DOMContentLoaded", function () {
                                                                     </div>
                                                                     <div class=" flex bouton-conteneur">
                                                                         <div class="cercle bouton-cercle-remove">
-                                                                            <a class="btn-floating btn-large waves-effect waves-light " name="btnRetirerBouteille" href="/boireBouteille/${idCellier}/${key}/${cellierBouteille.millesime}">
+                                                                            <a class="btn-floating btn-large waves-effect waves-light " name="btnRetirerBouteille" href="/boireBouteille/${idCellier}/${key.replace('_', '')}/${cellierBouteille.millesime}">
                                                                                 <i class="material-icon">remove</i>
                                                                             </a>
                                                                         </div>
                                                                         <div class="cercle bouton-cercle-add">
-                                                                            <a class="btn-floating btn-large waves-effect waves-light" name="btnAjouterBouteille" href="/ajouterBouteille/${idCellier}/${key}/${cellierBouteille.millesime}">
+                                                                            <a class="btn-floating btn-large waves-effect waves-light" name="btnAjouterBouteille" href="/ajouterBouteille/${idCellier}/${key.replace('_', '')}/${cellierBouteille.millesime}">
                                                                                 <i class="material-icon">add</i>
                                                                             </a>
                                                                         </div>

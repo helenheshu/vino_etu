@@ -19,7 +19,7 @@
         <select name ="select-cellier">
             
             @foreach($celliers as $unCellier)
-            <option value="{{ $unCellier->id }}" @if( $unCellier->id == $cellier->id) selected @endif>{{ $unCellier->nom}} </option>
+            <option value="{{ $unCellier->id }}" @if( $unCellier->id == $cellier->id) selected @endif>Cellier | {{ $unCellier->nom}} </option>
             @endforeach
           </select>
     </div>
