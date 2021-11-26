@@ -72,11 +72,12 @@
             
               <div class="input-field col s12 ">  
                 <div class="btn-space">
-                  <div class="bouton">
+                  <div class="bouton btn-space">
                     <a href="{{ route('gererUsagers') }}" class="btn waves-effect waves-light button btn-annuler"  name="annuler">Annuler</a>
                     <a class="btn waves-effect waves-light button btn-modifier modal-trigger" href="#modal-modifier">Modifier</a>
                   </div>
                 </div>
+
 
                 <!-- Modal Structure pour modifier-->
                 <div id="modal-modifier" class="modal">

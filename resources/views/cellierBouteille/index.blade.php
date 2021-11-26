@@ -17,32 +17,23 @@
 <header>
     <div class="cellier">
         <select name ="select-cellier">
-            
             @foreach($celliers as $unCellier)
-            <option value="{{ $unCellier->id }}" @if( $unCellier->id == $cellier->id) selected @endif>{{ $unCellier->nom}} </option>
+            <option value="{{ $unCellier->id }}" @if( $unCellier->id == $cellier->id) selected @endif>Cellier | {{ $unCellier->nom}} </option>
             @endforeach
-          </select>
+        </select>
     </div>
-    <!-- <div class="localisation">
-        <span><img class="map-icone" src="{{URL::asset('/assets/icon/map-marker-rouge.svg')}}" alt="icone map"> {{ $cellier->localisation }}</span>
-    </div> -->
-
-
 </header>
-
 <main>
+    <!-- Tri, bouton ajouter un vin, et recherche -->
     <div class="bouton-ajout-vin-conteneur">
-        
-        <a class="modal-trigger black-text" href="#tri"><i class="tri material-icon">filter_list</i></a>
+        <a class="modal-trigger black-text " href="#tri"><i class="tri material-icon">filter_list</i></a>
         <a class="bouton-ajout-vin" href="{{ route('ajouterVin', $cellier->id) }}"><i class="material-icon">add</i> Ajouter un vin</a>
-
         <div class="search-container">
             <form >
                 <input class="search expandright" id="searchright" type="search" name="q" placeholder="Rechercher une bouteille" autocomplete="off">
                 <label class="button searchbutton" for="searchright"><span class="mglass">&#9906;</span></label>
             </form>
         </div>
-        
     </div>
     <div id="tri" class="modal">
         <div class="modal-content">
@@ -85,8 +76,8 @@
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Annuler</a>
         </div>
     </div>
-
     <div id="table">
+    <!-- Carte d'un vin avec son millésime -->
     <div class="articlesConteneur">
         @forelse ($cellierBouteillesByIDs as $vin)
         <article class="articleVin">
@@ -98,62 +89,42 @@
                     <h2 class="underline">{{$vin['bouteille']->nom}}</h2>
                 </div>
             </a>
-
-           
             <div class="infoBouteilleConteneur">
                 <div class="infoEtSaq">
                     @if(isset($vin['bouteille']->url_img))
-                        <img class="image" src="{{$vin['bouteille']->url_img}}" alt="{{$vin['bouteille']->nom}}">
+                    <img class="image" src="{{$vin['bouteille']->url_img}}" alt="{{$vin['bouteille']->nom}}">
                     @else
-                        <img class="image" src="{{asset('assets/icon/bouteille-fiche-vin.svg')}}" alt="Image {{$vin['bouteille']->nom}}">
+                    <img class="image" src="{{asset('assets/icon/bouteille-fiche-vin.svg')}}" alt="Image {{$vin['bouteille']->nom}}">
                     @endif               
-
-                        <div class="info">
-                            <div>
-                            @if(isset($vin['bouteille']->pays))
-                                <p>{{$vin['bouteille']->pays}}</p>
-                            @else
-                                <p>N/A</p>
-                            @endif
-                            <p>{{$vin['bouteille']->type}}</p>
-                            </div>
-                            <p class="formatPadding">{{$vin['bouteille']->taille}} cl</p>
-                        
-                            
+                    <div class="info">
+                        <div>
+                        @if(isset($vin['bouteille']->pays))
+                            <p>{{$vin['bouteille']->pays}}</p>
+                        @else
+                            <p>N/A</p>
+                        @endif
+                        <p>{{$vin['bouteille']->type}}</p>
                         </div>
+                        <p class="formatPadding">{{$vin['bouteille']->taille}} cl</p>
+                    </div>
                 </div>
                 <div class="bouteilleSAQConteneur">
                     @if($vin['bouteille']->url_saq)
                     <a class="lienSAQ underline" href="{{$vin['bouteille']->url_saq}}">SAQ</a>
-                    <!-- <div class="cercle ">
-                        <i class="material-icon check">check</i>
-                    </div> -->
-                    @else
-                    <!-- Ajouter boutons modifier et suprimer bouteille ici à la place des infos SAQ !!! -->
-                    <!-- <p class="nonlienSAQ">SAQ</p> -->
-                    <!-- <div class="cercle ">
-                        <i class="material-icon check">close</i>
-                    </div> -->
-                    <!-- <div class="cercle nonborder">
-                        <i class="material-icon">edit</i>
-                    </div>
-                    <div class="cercle nonborder">
-                        <i class="material-icon">delete</i>
-                    </div> -->
                     @endif
                 </div>
             </div>
-
             <div class="infoCellierBouteilleConteneur">
                 @foreach ($vin['dataCellier'] as $bouteille)
                 <section class="infoCellierBouteille">
                     <div class="infoUnitaires">
-                    
                         @if($bouteille->millesime > 0)
                         <p>{{$bouteille->millesime }}</p>
                         @else
                         <p>Non millésimé</p>
                         @endif
+
+                        <!-- La note d'un millésime avec un système de notation en étoile -->
                         <div class="select">
                             <select class="star-rating" data-id-bouteille="{{$vin['id']}}" data-millesime="{{$bouteille->millesime}}" name="note">
                                 <option value="">Choisir une note</option>
@@ -164,7 +135,6 @@
                                 <option value="1" @if( $bouteille->note == 1) selected @endif>Terrible</option>
                             </select>
                         </div>
-
                         <p class="quantite">Quantité : <span>{{$bouteille->quantite}}</span></p>
                     </div>
                     <div class=" flex bouton-conteneur">
@@ -178,15 +148,14 @@
                             </a>
                         </div>
                         <div class="cercle bouton-cercle-add">
-                            <a class="btn-floating btn-large waves-effect waves-light" name="btnAjouterBouteille" href="{{ route('ajouterBouteille',[
+                            <a class="btn-floating btn-large waves-effect " name="btnAjouterBouteille" href="{{ route('ajouterBouteille',[
                             'idCellier'=>$cellier->id,
                             'idBouteille'=>$vin['id'],
                             'millesime'=> $bouteille->millesime,
                             ])}}">
-                                <i class="material-icon">add</i>
+                            <i class="material-icon">add</i>
                             </a>
                         </div>
-                        
                     </div>
                 </section>
                 @endforeach
@@ -199,13 +168,7 @@
         <div class="conteneurManqueVin"  ><img class="logoManqueDeVin" src="{{asset('assets/icon/manqueDeVin.svg')}}" alt="logo manque de vin"></a></div>
     </div>
         </div>
-            
         @endforelse
-    
-
-
-
-
 </main>
 @endsection
 
