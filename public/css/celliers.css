@@ -114,7 +114,6 @@ main {
 .bouton-ajout-vin-conteneur {
     display: flex;
     justify-content: center;
-    /* margin-top: 1.563rem; */
     margin-left: 0.64rem;
     margin-right: 0.64rem;
     margin-bottom: 1.563rem;
@@ -137,8 +136,6 @@ main {
     padding-bottom: 0.512rem;
     padding-right: 1.953rem;
     padding-left: 1.953rem;
-    /* border-style: solid;
-    border-color: #707070; */
     border-radius: 30px;
     color: #343B41;
     font-weight: 700;
@@ -168,7 +165,6 @@ main {
     font-size: 1.25rem;
     font-weight: 700;
     color: #7A5958;
-    /* background-color: #E0CFA0; */
 }
 
 .material-icon {

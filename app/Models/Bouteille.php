@@ -28,6 +28,10 @@ class Bouteille extends Model
         return $this->belongsTo(Format::class);
     }
 
+    /** 
+     * Récupérer toute la table bouteilles avec une pagination
+     * @return rows des lignes de la table bouteilles
+     */
     public static function obtenirBouteilles(){
         return DB::table('bouteilles')
         ->select('bouteilles.nom', 'bouteilles.id', 'pays', 'type', 'code_saq', 'url_saq', 'url_img', 'prix_saq', 'taille' )
@@ -54,6 +58,11 @@ class Bouteille extends Model
         ->get();
     }
 
+        /**
+     * @param motCle
+     * Rechercher dans la table bouteilles tous les colonnes qui contiennent le motCle - fonctionnalité du l'admin
+     * @return rows des lignes de la table bouteilles
+     */
     public static function rechercherCatalogue($motCle) {
         $motCle = str_replace(["~point~", "~pourcent~", "~sharp~"], [".", "%", "#"],  $motCle);
         return DB::table('bouteilles')

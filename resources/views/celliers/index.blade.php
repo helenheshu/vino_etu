@@ -18,10 +18,6 @@
     <h1>Vos celliers</h1>
 </div>
 
-<!-- <div class="bouton-ajout-conteneur">
-    <a class="bouton-cercle-ajout" href="{{route('cellier.create')}}"><i class="material-icons">add</i></a>
-</div> -->
-
 <div class="bouton-ajout-vin-conteneur">
     <a class="bouton-ajout-vin" href="{{ route('cellier.create') }}"><i class="material-icon">add</i> Ajouter un cellier</a>
 </div>
@@ -39,12 +35,9 @@
             </div>
             
             <div class="droite-container">
-                <!-- <p class="nb-vins-cellier">42</p> -->
-                <!-- !!! insérer nb vins dans cellier ici  -->
-
                 <div class="btn-space">
                     <a class="waves-effect waves-light button modifier" href="{{ route('cellier.edit', $cellier->id)}}"><i class="material-icons">edit</i></a>
-                    <!-- <a class="btn waves-effect waves-light button btn-supprimer" href="#"><i class="material-icons">delete</i></a> -->
+   
                     <a class="waves-effect waves-light button supprimer modal-trigger" href="#{{$cellier->id}}"><i class="material-icons">delete</i></a>
                     <!-- Modal Structure -->
                     <div id="{{$cellier->id}}" class="modal">

@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    
     var modals = document.querySelectorAll('.modal');
     M.Modal.init(modals);
 
@@ -20,30 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
              M.Toast.dismissAll();
          });
      }
-
-    /**
-    * function pour search les usagers
-    */ 
-
-    //    var search_input = document.querySelector("#search");
-
-    //    search_input.addEventListener("keyup", function(e){
-    //       var noms = document.querySelectorAll(".nom");
-    //       var courriels = document.querySelectorAll(".courriel");
-    //       var date_naissances = document.querySelectorAll(".date_naissance");
-    //       var search_item = e.target.value.toLowerCase();
-  
-    //       noms.forEach(function(item){
-    //           console.log(item.textContent);
-    //           if(item.textContent.toLowerCase().indexOf(search_item) != -1){
-    //              item.closest("tr").style.display = "table-row";
-    //           }
-    //           else{
-    //             item.closest("tr").style.display = "none";
-    //             }
-    //         })
-  
-    //    });
 
 
     const supprimerRecherche = document.querySelector('#close');
@@ -93,8 +70,10 @@ document.addEventListener('DOMContentLoaded', function() {
            else{
                showListeUsager();
            }
+
+           console.log(document.querySelector('.supprimer'))
            
        })
-   
+     
   
   });

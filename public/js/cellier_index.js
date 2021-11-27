@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const celliers = document.querySelectorAll('.cellier');
 
+    /**
+     * Amener à l'intérieur d'un cellier lorsqu'on clique sur un cellier
+     */
     celliers.forEach(cellier => {
 
       cellier.addEventListener('click', (e) => {

@@ -8,7 +8,7 @@ use App\Models\Type;
 use App\Models\Format;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\File;
-/* use Symfony\Component\VarDumper\Cloner\Data; */
+
 
 class BouteilleController extends Controller
 {
