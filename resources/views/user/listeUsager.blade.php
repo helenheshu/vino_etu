@@ -5,8 +5,16 @@
 <span class="modifie"></span>
 @endif
 
+
 <script src="{{asset('js/liste_usager.js')}}" defer></script>
 
+<script>
+  // document.addEventListener('DOMContentLoaded', function() {
+  console.log("test");
+  // var modals = document.querySelectorAll('.modal');
+  // M.Modal.init(modals);
+  // });
+</script>
 
 <h1 class="titre">Liste d'usager</h1>
 
