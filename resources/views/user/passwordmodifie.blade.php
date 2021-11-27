@@ -10,7 +10,6 @@
       <div class="card">
         <div class="card-content flex-center entete-login">
           <h1>Gérer mon mot de passe</h1>
-          <!-- <img src="{{asset('assets/icon/bouteille-diagonale.svg')}}" class="center" alt="icone bouteille diagonale"></a> -->
         </div>
 
         <div class="card-content">

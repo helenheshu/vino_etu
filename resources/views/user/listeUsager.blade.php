@@ -52,10 +52,8 @@
               <td>
                 
                 @if($user->admin === 1)
-                <!-- <i class="material-icons small black-text">check</i> -->
                 <span>Oui</span>
                 @else
-                <!-- <i class="material-icons small black-text">close</i> -->
                 <span>Non</span>
                 @endif
                 </form>

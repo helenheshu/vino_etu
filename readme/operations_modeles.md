@@ -17,7 +17,11 @@
     - dans les vins de la SAQ et les vins du user connecté
 - rechercheBouteilleExistante()
     - vérifier si une bouteille existe déjà avant de la créer
-
+- rechercherCatalogue()
+    - fonction de recherche de l'admin pour modifier le catalogue 
+- obtenirBouteilles()
+    - afficher toutes les bouteilles du catalogue avec une pagination
+    
 ###CellierBouteille
 
 - ajouterQuantiteBouteille()    

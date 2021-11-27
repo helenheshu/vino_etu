@@ -153,7 +153,8 @@ class CellierBouteille extends Model
      * @param date_achat
      * @param commentaire
      * @param garde_jusqua
-     * modifier les informtions dans la table cellier_bouteilles
+     * @param prix
+     * modifier les informations dans la table cellier_bouteilles
      */
     public static function modifierCellierBouteille($idCellier, $idBouteille, $millesime, $prix, $quantite, $date_achat, $commentaire=null, $garde_jusqua=null)
     {
@@ -171,6 +172,12 @@ class CellierBouteille extends Model
 
     }
 
+    /**
+     *@param idCellier
+     * @param idBouteille
+     * @param millesime
+     * Supprimer un ligne dans la table cellier_bouteilles
+     */
     public static function suprimerCellierBouteille($idCellier, $idBouteille, $millesime)
     {
         
@@ -181,7 +188,18 @@ class CellierBouteille extends Model
         ->delete();
     }
 
-
+    /**
+     * @param idCellier
+     * @param idBouteille
+     * @param millesime
+     * @param quantite
+     * @param date_achat
+     * @param commentaire
+     * @param garde_jusqua
+     * @param note
+     * @param prix
+     * Ajouter un ligne dans la table cellier_bouteilles
+     */
     public static function ajouterCellierBouteille($idCellier, $idBouteille, $millesime, $note, $prix, $quantite, $date_achat, $commentaire=null, $garde_jusqua=null)
     {
         

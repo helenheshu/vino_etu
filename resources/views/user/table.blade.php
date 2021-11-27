@@ -19,8 +19,10 @@
               <td>
                 
                 @if($user->admin === 1)
+
                 <span>Oui</span>
                 @else
+
                 <span>Non</span>
                 @endif
                 </form>
