@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
       edge: 'right'
     });
   
+    /**
+     * Bouton de retour dans le footer
+     */
     const page = location.href.split('/')[3];
     const footerNav = document.querySelector('.footer-nav');
     const url = location.href;

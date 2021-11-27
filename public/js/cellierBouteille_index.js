@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    /**
+     * Afficher un message lorsqu'une bouteille est supprimée
+     */
     if(localStorage.getItem('aucunMillesime') != null) {
         localStorage.clear();
             var toastHTML =
@@ -190,13 +193,14 @@ document.addEventListener("DOMContentLoaded", function () {
     let chemin; 
     let timer; //https://typeofnan.dev/how-to-execute-a-function-after-the-user-stops-typing-in-javascript/
 
-    /**
-     * Redéssiner le DOM lors d'une recherche
-     */
+   
     barreRecherche.addEventListener("input", () => {
         redessinerListeVins();
     });
 
+    /**
+     * Déactiver le bouton enter lors d'une recherche
+     */
     barreRecherche.addEventListener("keydown", (e) => {
         if(e.keyCode == 13) {
             e.preventDefault();
@@ -217,6 +221,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
        
     })
+
+    /**
+     * fonctionnalité de tri
+     * @param trierPar 
+     * @param response 
+     */
     const trierCellier = (trierPar, response) => {
         if(trierPar == 'nom'){
             response.sort((a, b) => (a.nom.toLowerCase() > b.nom.toLowerCase()) ? 1 : (b.nom.toLowerCase() > a.nom.toLowerCase()) ? -1 : 0)
@@ -232,6 +242,10 @@ document.addEventListener("DOMContentLoaded", function () {
             response.sort((a, b) => (a.taille > b.taille) ? 1 : (b.taille > a.taille) ? -1 : 0)     
         }
     }
+
+     /**
+     * Redéssiner le DOM lors d'une recherche
+     */
 
     const redessinerListeVins =  () => {
         chemin = `/rechercheDansCellier/${barreRecherche.value.trim().replaceAll('.', "~point~").replaceAll('#', "~sharp~").replaceAll('%', "~pourcent~")}/${idCellier}`;
@@ -380,6 +394,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 300);    
     }
 
+    /**
+     * Réinitialiser le tri
+     */
     document.querySelector("#reinitialiser").addEventListener('click', () => {
         const trierPar = document.querySelector('input[name=tri]:checked');
         
@@ -389,13 +406,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         
     })
+
+    /**
+     * Mettre un délai lors du dérulement de la liste de vin pour empêcher de cliquer sur les notes et les boutons pour modifier la quantité
+     */
     var isScrolling;
     document.addEventListener('scroll', ()=> {
         document.querySelector('body').classList.add('disabled')
        
 	window.clearTimeout( isScrolling );
 
-	// Set a timeout to run after scrolling ends
 	isScrolling = setTimeout(function() {
    
         document.querySelector('body').classList.remove('disabled');
