@@ -55,7 +55,6 @@
                     <a href="#!" class="modal-close waves-effect waves-green btn-flat">Annuler</a>
                 </div>
             </div>
-            <!-- <a class="btn waves-effect waves-light button btn-supprimer " href="#"><i class="material-icons">delete</i></a> -->
         </div>
     </form>
 </div>

@@ -139,8 +139,8 @@ class CellierBouteilleController extends Controller
     /**
      * @param idCellier
      * @param idBouteille
-     * Obtenir une liste des millisimes équivalent à idCellier et idBouteille
-     * @return response une liste des millisime
+     * Obtenir une liste des millésimes équivalent à idCellier et idBouteille
+     * @return response une liste des millésime
      */
     public static function obtenirMillesimesParBouteille($idCellier, $idBouteille)
     {
@@ -222,19 +222,7 @@ class CellierBouteilleController extends Controller
             return response()->json();
 
         }
-     /*    $validator = Validator::make(['note' => $note], [
-            'note' => 'require|integer|min:0|max:5'
-        ]);
-        
-        if ($validator->fails()) {
-            return response()->json($validator->errors());
-        } else {
-            CellierBouteille::ajouterNote($idCellier, $idBouteille, $millesime, $note);
-            return response()->json();
-
-        }
-        
-        CellierBouteille::ajouterNote($idCellier, $idBouteille, $millesime, $note); */
+  
     }
 
 
@@ -271,7 +259,12 @@ class CellierBouteilleController extends Controller
     }
 
 
-
+  /**
+    * @param idCellier
+    * @param idBouteille
+    * @param millesime
+    * @return response les informations d'une bouteille d'un millésime particulier
+    */
     public function obtenirMillesime($idCellier, $idBouteille, $millesime)
     {
         
@@ -282,19 +275,18 @@ class CellierBouteilleController extends Controller
        
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\CellierBouteille  $cellierBouteille
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request)
-    {   
-     
-
-    }
-
+  /**
+    * @param idCellier
+    * @param idBouteille
+    * @param millesime
+    * @param quantite
+    * @param date_achat
+    * @param commentaire
+    * @param garde_jusqua
+    * @param prix
+    * modifier les informtions dans la table cellier_bouteilles
+    * @return response retourne les messages d'erreurs si c'est non valide
+    */
     public function  modifierCellierBouteille($idCellier, $idBouteille, $millesime, $prix, $quantite, $date_achat, $commentaire=null, $garde_jusqua=null)
     {   
         $prix = str_replace("~point~", ".",  $prix);
@@ -318,6 +310,18 @@ class CellierBouteilleController extends Controller
 
      }
 
+     /**
+    * @param idCellier
+    * @param idBouteille
+    * @param millesime
+    * @param quantite
+    * @param date_achat
+    * @param commentaire
+    * @param garde_jusqua
+    * @param prix
+    * ajouter une une nouvelle bouteille dans un cellier \ partur de la fiche de vin
+    * @return response retourne les messages d'erreurs si c'est non valide
+    */
      
     public function  ajouterCellierBouteille($idCellier, $idBouteille, $millesime,$note, $prix, $quantite, $date_achat, $commentaire=null, $garde_jusqua=null)
     {   

@@ -125,6 +125,12 @@ class CellierController extends Controller
         return redirect('/cellier')->withInput()->with('deleteCellier', "un cellier supprimé");
     }
 
+    /**
+     * fonctionnalité de recherche dans un cellier
+     * @param motCle
+     * @param idCellier
+     * @return response des bouteilles qui correspondent au mot clé de la recherche
+     */
 
     public function rechercheDansCellier($motCle, $idCellier)
     {
@@ -133,7 +139,11 @@ class CellierController extends Controller
         return response()->json($bouteilles);
     }
 
-    
+      /**
+       * Afficher toutes les bouteilles du celliers après avoir effacer une recherche
+       * @param idCellier
+       * @return response toutes les bouteilles du celliers
+     */
     public function reinitialiserCellier($idCellier)
     {
         $bouteilles = CellierBouteille::obtenirListeBouteilleCellier($idCellier);
